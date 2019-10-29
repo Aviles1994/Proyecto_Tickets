@@ -1,0 +1,38 @@
+.body{
+  margin: 0;
+}
+.nav_horizontal{
+ position: fixed;
+  background-color: #0066cc;
+  height: 50px;
+  border-radius: 5px;
+}
+.imagen{
+  float: left;
+  background-repeat: no-repeat;
+  height: 60px;
+}
+.nav_horizontal ul {
+  top: 0;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav_horizontal li {
+  float: left;
+}
+
+.nav_horizontal li a {
+  display: block;
+  color: black;
+  text-align: center;
+  font-size: 20px;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav_horizontal li a:hover:not(.active) {
+  background-color: #0066cc;
+}

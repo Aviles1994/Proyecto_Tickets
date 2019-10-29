@@ -1,0 +1,66 @@
+/* El diseño genral para la mayor parte de interfaces*/
+/* Aqui estan las etiquetas y los input que se usaran para todo el diseño*/
+/* Aqui va ir el diseño que se usara para los formularios de llenado*/
+
+.div_formulario {
+  margin: 11px 285px;
+  width: 77%;
+  height: auto;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 5px;
+}
+.table {
+  border-spacing: 30px;
+}
+
+.table td label{
+  font-size: 20px;
+  width: 100%;
+}
+
+.div_borde{
+  border-radius: 5px;
+  margin: 10px;
+  border: 1px solid #404040;
+  border-collapse: separate;
+}
+
+.table td input, select{
+  width: 100%;
+  padding: 14px 30px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+ .table th{
+   text-align: left;
+   font-size: 18px;
+   letter-spacing: 2px;
+   font-weight: normal;
+ }
+
+.table_busqueda{
+  border: 1px solid #000099;
+
+}
+
+.table_busqueda th{
+  text-align: center;
+  width: 200px;
+  height: auto;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  border: 1px solid #000099;
+}
+.table_busqueda td{
+  text-align: left;
+  width: 200px;
+  font-family: "Times New Roman", Times, serif;
+  height: auto;
+  font-size: 15px;
+  border: 1px solid  #000099;
+}

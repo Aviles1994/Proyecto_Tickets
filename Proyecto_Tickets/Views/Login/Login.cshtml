@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="div">
+    <form id="frm">
+        <label class="label" for="">Usuario</label>
+        <input class="input" type="text" name="Nombre_Usuario_Login" placeholder="Nombre del Usuario">
+        <label class="label" for="">Contraseña</label>
+        <input class="input" type="password" name="contraseña" placeholder="contraseña">
+        <button type="submit" name="iniciarsesion" class="button button-success" value="Entrar">Entrar</button>
+    </form>
+</div>
+@{
+    var a = 1;
+}
+
+@section scripts
+{
+    <script>
+    $(document).ready(function ()
+    {
+        $("#frm").submit(function (e)
+        {
+            e.preventDefault();
+
+            url = "@Url.Content("~/Login/Enter")"
+            parametros = $(this).serialize();
+
+            $.post(url, parametros, function (data) {
+
+                if (data == "1") {
+                    document.location.href = "@Url.Content("~/")"
+                } else
+                {
+                    alert(data)
+                }
+
+            })
+        })
+    })
+
+    </script>
+}

@@ -1,0 +1,43 @@
+.button {
+background-color: #008CBA;
+border-color: #008CBA;
+color: white;
+font-size: 20px;
+float: right;
+margin-left: 700px;
+border-radius: 4px;
+}
+
+.btn_busqueda{
+  float: left;
+  margin-left: 0px;
+  background-color: #008CBA;
+  border-radius: 4px;
+  width: 50px;
+  height: 45px;
+  border-color: #008CBA;
+}
+
+.btn_Acción{
+  width: 50px;
+  height: 40;
+  background-color: #008CBA;
+  border-radius: 4px;
+  border-color: #008CBA;
+}
+
+.button:hover {
+ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.btn{
+ font-size: 16px;
+ background-color: white;
+ color: black;
+ float: left;
+ border-color: white;
+}
+
+.btn:hover{
+ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.0), 0 17px 50px 0 rgba(0,0,0,0.0);
+}

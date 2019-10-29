@@ -1,0 +1,1343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Sistema_TicketsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Cliente" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Calle" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="Colonia" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Correo_Electronico" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ID_Entidad_Federativa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="ID_Departamento" />
+          </Key>
+          <Property Name="ID_Departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Departamento" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entidad_Federativa">
+          <Key>
+            <PropertyRef Name="ID_Entidad_Federativa" />
+          </Key>
+          <Property Name="ID_Entidad_Federativa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Entidad_Federativa" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="ID_Estado" />
+          </Key>
+          <Property Name="ID_Estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Estado" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Historial_Ticket">
+          <Key>
+            <PropertyRef Name="ID_Historial" />
+          </Key>
+          <Property Name="ID_Historial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Accion_Realizada" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fecha_Modificacion" Type="date" Nullable="false" />
+          <Property Name="Hora_Modificacion" Type="time" Precision="7" Nullable="false" />
+          <Property Name="ID_Estratei" Type="int" Nullable="false" />
+          <Property Name="ID_Ticket" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medio_de_Contacto">
+          <Key>
+            <PropertyRef Name="ID_Medio_de_Contacto" />
+          </Key>
+          <Property Name="ID_Medio_de_Contacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_MedioC" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modulos">
+          <Key>
+            <PropertyRef Name="ID_Modulo" />
+          </Key>
+          <Property Name="ID_Modulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Modulo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Numero_de_Pantallas" Type="int" Nullable="false" />
+          <Property Name="Descripcion_Modulo" Type="varchar(max)" Nullable="false" />
+          <Property Name="ID_Sistema" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pantallas">
+          <Key>
+            <PropertyRef Name="ID_Pantalla" />
+          </Key>
+          <Property Name="ID_Pantalla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Pantalla" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descripcion_Pantalla" Type="varchar(max)" Nullable="false" />
+          <Property Name="Funcionalidad" Type="varchar(max)" Nullable="false" />
+          <Property Name="ID_Modulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personal_Estratei">
+          <Key>
+            <PropertyRef Name="ID_Estratei" />
+          </Key>
+          <Property Name="ID_Estratei" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_PEstratei" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido_PaternoPEstratei" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido_MaternoPEstratei" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Celular" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Correo_Electronico" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Estatus" Type="bit" Nullable="false" />
+          <Property Name="ID_Departamento" Type="int" Nullable="false" />
+          <Property Name="ID_Usuarios_Login" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prioridad">
+          <Key>
+            <PropertyRef Name="ID_Prioridad" />
+          </Key>
+          <Property Name="ID_Prioridad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Prioridad" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="ID_Servicio" />
+          </Key>
+          <Property Name="ID_Servicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Servicio" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sistema">
+          <Key>
+            <PropertyRef Name="ID_Sistema" />
+          </Key>
+          <Property Name="ID_Sistema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Sistema" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion_Sistema" Type="varchar(max)" Nullable="false" />
+          <Property Name="Version_Sistema" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sistema_Cliente">
+          <Key>
+            <PropertyRef Name="ID_Sistema" />
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Sistema" Type="int" Nullable="false" />
+          <Property Name="ID_Cliente" Type="int" Nullable="false" />
+          <Property Name="Version_Cliente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Fecha_Contrato" Type="date" Nullable="false" />
+          <Property Name="Vigencia" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Solucion">
+          <Key>
+            <PropertyRef Name="ID_Solucion" />
+          </Key>
+          <Property Name="ID_Solucion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion_en_Pasos" Type="varchar(max)" Nullable="false" />
+          <Property Name="Fecha_Solucion" Type="date" Nullable="false" />
+          <Property Name="ID_Ticket" Type="int" Nullable="false" />
+          <Property Name="ID_Estratei" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="ID_Ticket" />
+          </Key>
+          <Property Name="ID_Ticket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha_Inicio" Type="date" Nullable="false" />
+          <Property Name="Hora_Inicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Duracion" Type="time" Precision="7" />
+          <Property Name="Version_Usuario" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre_Problema" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descripcion_Problema" Type="varchar(max)" Nullable="false" />
+          <Property Name="Imagen" Type="varchar(max)" />
+          <Property Name="Fecha_Fin" Type="date" />
+          <Property Name="Hora_Fin" Type="time" Precision="7" />
+          <Property Name="ID_Pantalla" Type="int" Nullable="false" />
+          <Property Name="ID_Usuario_Cliente" Type="int" Nullable="false" />
+          <Property Name="ID_Medio_de_Contacto" Type="int" Nullable="false" />
+          <Property Name="ID_Servicio" Type="int" Nullable="false" />
+          <Property Name="ID_Estado" Type="int" Nullable="false" />
+          <Property Name="ID_Prioridad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Usuarios">
+          <Key>
+            <PropertyRef Name="ID_Tipo_Usuarios" />
+          </Key>
+          <Property Name="ID_Tipo_Usuarios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Tipo_Usuarios" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario_Cliente">
+          <Key>
+            <PropertyRef Name="ID_Usuario_Cliente" />
+          </Key>
+          <Property Name="ID_Usuario_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_UCliente" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Apellido_PaternoUCliente" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Apellido_MaternoUCliente" Type="varchar" MaxLength="15" />
+          <Property Name="Usuario_Clave" Type="bit" Nullable="false" />
+          <Property Name="Celular" Type="varchar" MaxLength="10" />
+          <Property Name="Correo_Electronico" Type="varchar" MaxLength="40" />
+          <Property Name="Telefono_Oficina" Type="varchar" MaxLength="15" />
+          <Property Name="Extension" Type="int" />
+          <Property Name="Estatus" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ID_Cliente" Type="int" Nullable="false" />
+          <Property Name="ID_Usuarios_Login" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios_Login">
+          <Key>
+            <PropertyRef Name="ID_Usuarios_Login" />
+          </Key>
+          <Property Name="ID_Usuarios_Login" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Usuarios_Login" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Contraseña" Type="varchar(max)" Nullable="false" />
+          <Property Name="Estatus" Type="bit" Nullable="false" />
+          <Property Name="Ultimo_Login" Type="date" />
+          <Property Name="Correo_electronico" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ID_Tipo_Usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_ID_Cliente_Sistema_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Sistema_Cliente" Type="Self.Sistema_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Sistema_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Cliente_Usuario_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Usuario_Cliente" Type="Self.Usuario_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Usuario_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Departamento_Personal_Estratei">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Personal_Estratei" Type="Self.Personal_Estratei" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="ID_Departamento" />
+            </Principal>
+            <Dependent Role="Personal_Estratei">
+              <PropertyRef Name="ID_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Entidad_Federativa_Cliente">
+          <End Role="Entidad_Federativa" Type="Self.Entidad_Federativa" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entidad_Federativa">
+              <PropertyRef Name="ID_Entidad_Federativa" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="ID_Entidad_Federativa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Estado_Ticket">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="ID_Estado" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Estratei_Historial_Ticket">
+          <End Role="Personal_Estratei" Type="Self.Personal_Estratei" Multiplicity="1" />
+          <End Role="Historial_Ticket" Type="Self.Historial_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_Estratei">
+              <PropertyRef Name="ID_Estratei" />
+            </Principal>
+            <Dependent Role="Historial_Ticket">
+              <PropertyRef Name="ID_Estratei" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Estratei_Solucion">
+          <End Role="Personal_Estratei" Type="Self.Personal_Estratei" Multiplicity="1" />
+          <End Role="Solucion" Type="Self.Solucion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_Estratei">
+              <PropertyRef Name="ID_Estratei" />
+            </Principal>
+            <Dependent Role="Solucion">
+              <PropertyRef Name="ID_Estratei" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Medio_de_Contacto_Ticket">
+          <End Role="Medio_de_Contacto" Type="Self.Medio_de_Contacto" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medio_de_Contacto">
+              <PropertyRef Name="ID_Medio_de_Contacto" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Medio_de_Contacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Modulo_Pantallas">
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="1" />
+          <End Role="Pantallas" Type="Self.Pantallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulos">
+              <PropertyRef Name="ID_Modulo" />
+            </Principal>
+            <Dependent Role="Pantallas">
+              <PropertyRef Name="ID_Modulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Pantalla_Ticket">
+          <End Role="Pantallas" Type="Self.Pantallas" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pantallas">
+              <PropertyRef Name="ID_Pantalla" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Pantalla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Prioridad_Ticket">
+          <End Role="Prioridad" Type="Self.Prioridad" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prioridad">
+              <PropertyRef Name="ID_Prioridad" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Prioridad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Servicio_Ticket">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="ID_Servicio" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Sistema_Modulos">
+          <End Role="Sistema" Type="Self.Sistema" Multiplicity="1" />
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sistema">
+              <PropertyRef Name="ID_Sistema" />
+            </Principal>
+            <Dependent Role="Modulos">
+              <PropertyRef Name="ID_Sistema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Sistema_Sistema_Cliente">
+          <End Role="Sistema" Type="Self.Sistema" Multiplicity="1" />
+          <End Role="Sistema_Cliente" Type="Self.Sistema_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sistema">
+              <PropertyRef Name="ID_Sistema" />
+            </Principal>
+            <Dependent Role="Sistema_Cliente">
+              <PropertyRef Name="ID_Sistema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Ticket_Historial_Ticket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="Historial_Ticket" Type="Self.Historial_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ID_Ticket" />
+            </Principal>
+            <Dependent Role="Historial_Ticket">
+              <PropertyRef Name="ID_Ticket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Ticket_Solucion">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="Solucion" Type="Self.Solucion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ID_Ticket" />
+            </Principal>
+            <Dependent Role="Solucion">
+              <PropertyRef Name="ID_Ticket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Tipo_Usuario_Usuarios_Login">
+          <End Role="Tipo_Usuarios" Type="Self.Tipo_Usuarios" Multiplicity="1" />
+          <End Role="Usuarios_Login" Type="Self.Usuarios_Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuarios">
+              <PropertyRef Name="ID_Tipo_Usuarios" />
+            </Principal>
+            <Dependent Role="Usuarios_Login">
+              <PropertyRef Name="ID_Tipo_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Usuario_Cliente_Ticket">
+          <End Role="Usuario_Cliente" Type="Self.Usuario_Cliente" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario_Cliente">
+              <PropertyRef Name="ID_Usuario_Cliente" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Usuario_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Usuarios_Login_Personal_Estratei">
+          <End Role="Usuarios_Login" Type="Self.Usuarios_Login" Multiplicity="1" />
+          <End Role="Personal_Estratei" Type="Self.Personal_Estratei" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios_Login">
+              <PropertyRef Name="ID_Usuarios_Login" />
+            </Principal>
+            <Dependent Role="Personal_Estratei">
+              <PropertyRef Name="ID_Usuarios_Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Usuarios_Login_Usuario_liente">
+          <End Role="Usuarios_Login" Type="Self.Usuarios_Login" Multiplicity="1" />
+          <End Role="Usuario_Cliente" Type="Self.Usuario_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios_Login">
+              <PropertyRef Name="ID_Usuarios_Login" />
+            </Principal>
+            <Dependent Role="Usuario_Cliente">
+              <PropertyRef Name="ID_Usuarios_Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Sistema_TicketsModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entidad_Federativa" EntityType="Self.Entidad_Federativa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Historial_Ticket" EntityType="Self.Historial_Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medio_de_Contacto" EntityType="Self.Medio_de_Contacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modulos" EntityType="Self.Modulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pantallas" EntityType="Self.Pantallas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personal_Estratei" EntityType="Self.Personal_Estratei" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prioridad" EntityType="Self.Prioridad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sistema" EntityType="Self.Sistema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sistema_Cliente" EntityType="Self.Sistema_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Solucion" EntityType="Self.Solucion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Usuarios" EntityType="Self.Tipo_Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario_Cliente" EntityType="Self.Usuario_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios_Login" EntityType="Self.Usuarios_Login" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_ID_Cliente_Sistema_Cliente" Association="Self.fk_ID_Cliente_Sistema_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Sistema_Cliente" EntitySet="Sistema_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Cliente_Usuario_Cliente" Association="Self.fk_ID_Cliente_Usuario_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Usuario_Cliente" EntitySet="Usuario_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Departamento_Personal_Estratei" Association="Self.fk_ID_Departamento_Personal_Estratei">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Entidad_Federativa_Cliente" Association="Self.fk_ID_Entidad_Federativa_Cliente">
+            <End Role="Entidad_Federativa" EntitySet="Entidad_Federativa" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Estado_Ticket" Association="Self.fk_ID_Estado_Ticket">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Estratei_Historial_Ticket" Association="Self.fk_ID_Estratei_Historial_Ticket">
+            <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
+            <End Role="Historial_Ticket" EntitySet="Historial_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Estratei_Solucion" Association="Self.fk_ID_Estratei_Solucion">
+            <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
+            <End Role="Solucion" EntitySet="Solucion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Medio_de_Contacto_Ticket" Association="Self.fk_ID_Medio_de_Contacto_Ticket">
+            <End Role="Medio_de_Contacto" EntitySet="Medio_de_Contacto" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Modulo_Pantallas" Association="Self.fk_ID_Modulo_Pantallas">
+            <End Role="Modulos" EntitySet="Modulos" />
+            <End Role="Pantallas" EntitySet="Pantallas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Pantalla_Ticket" Association="Self.fk_ID_Pantalla_Ticket">
+            <End Role="Pantallas" EntitySet="Pantallas" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Prioridad_Ticket" Association="Self.fk_ID_Prioridad_Ticket">
+            <End Role="Prioridad" EntitySet="Prioridad" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Servicio_Ticket" Association="Self.fk_ID_Servicio_Ticket">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Sistema_Modulos" Association="Self.fk_ID_Sistema_Modulos">
+            <End Role="Sistema" EntitySet="Sistema" />
+            <End Role="Modulos" EntitySet="Modulos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Sistema_Sistema_Cliente" Association="Self.fk_ID_Sistema_Sistema_Cliente">
+            <End Role="Sistema" EntitySet="Sistema" />
+            <End Role="Sistema_Cliente" EntitySet="Sistema_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Ticket_Historial_Ticket" Association="Self.fk_ID_Ticket_Historial_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="Historial_Ticket" EntitySet="Historial_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Ticket_Solucion" Association="Self.fk_ID_Ticket_Solucion">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="Solucion" EntitySet="Solucion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Tipo_Usuario_Usuarios_Login" Association="Self.fk_ID_Tipo_Usuario_Usuarios_Login">
+            <End Role="Tipo_Usuarios" EntitySet="Tipo_Usuarios" />
+            <End Role="Usuarios_Login" EntitySet="Usuarios_Login" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Usuario_Cliente_Ticket" Association="Self.fk_ID_Usuario_Cliente_Ticket">
+            <End Role="Usuario_Cliente" EntitySet="Usuario_Cliente" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Usuarios_Login_Personal_Estratei" Association="Self.fk_ID_Usuarios_Login_Personal_Estratei">
+            <End Role="Usuarios_Login" EntitySet="Usuarios_Login" />
+            <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Usuarios_Login_Usuario_liente" Association="Self.fk_ID_Usuarios_Login_Usuario_liente">
+            <End Role="Usuarios_Login" EntitySet="Usuarios_Login" />
+            <End Role="Usuario_Cliente" EntitySet="Usuario_Cliente" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Sistema_TicketsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Cliente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Calle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Colonia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo_Electronico" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Entidad_Federativa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sistema_Cliente" Relationship="Self.fk_ID_Cliente_Sistema_Cliente" FromRole="Cliente" ToRole="Sistema_Cliente" />
+          <NavigationProperty Name="Usuario_Cliente" Relationship="Self.fk_ID_Cliente_Usuario_Cliente" FromRole="Cliente" ToRole="Usuario_Cliente" />
+          <NavigationProperty Name="Entidad_Federativa" Relationship="Self.fk_ID_Entidad_Federativa_Cliente" FromRole="Cliente" ToRole="Entidad_Federativa" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="ID_Departamento" />
+          </Key>
+          <Property Name="ID_Departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Departamento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Personal_Estratei" Relationship="Self.fk_ID_Departamento_Personal_Estratei" FromRole="Departamento" ToRole="Personal_Estratei" />
+        </EntityType>
+        <EntityType Name="Entidad_Federativa">
+          <Key>
+            <PropertyRef Name="ID_Entidad_Federativa" />
+          </Key>
+          <Property Name="ID_Entidad_Federativa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Entidad_Federativa" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.fk_ID_Entidad_Federativa_Cliente" FromRole="Entidad_Federativa" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="ID_Estado" />
+          </Key>
+          <Property Name="ID_Estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Estado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ticket" Relationship="Self.fk_ID_Estado_Ticket" FromRole="Estado" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Historial_Ticket">
+          <Key>
+            <PropertyRef Name="ID_Historial" />
+          </Key>
+          <Property Name="ID_Historial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Accion_Realizada" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora_Modificacion" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="ID_Estratei" Type="Int32" Nullable="false" />
+          <Property Name="ID_Ticket" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personal_Estratei" Relationship="Self.fk_ID_Estratei_Historial_Ticket" FromRole="Historial_Ticket" ToRole="Personal_Estratei" />
+          <NavigationProperty Name="Ticket" Relationship="Self.fk_ID_Ticket_Historial_Ticket" FromRole="Historial_Ticket" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Medio_de_Contacto">
+          <Key>
+            <PropertyRef Name="ID_Medio_de_Contacto" />
+          </Key>
+          <Property Name="ID_Medio_de_Contacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_MedioC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ticket" Relationship="Self.fk_ID_Medio_de_Contacto_Ticket" FromRole="Medio_de_Contacto" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Modulos">
+          <Key>
+            <PropertyRef Name="ID_Modulo" />
+          </Key>
+          <Property Name="ID_Modulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Modulo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Numero_de_Pantallas" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion_Modulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Sistema" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pantallas" Relationship="Self.fk_ID_Modulo_Pantallas" FromRole="Modulos" ToRole="Pantallas" />
+          <NavigationProperty Name="Sistema" Relationship="Self.fk_ID_Sistema_Modulos" FromRole="Modulos" ToRole="Sistema" />
+        </EntityType>
+        <EntityType Name="Pantallas">
+          <Key>
+            <PropertyRef Name="ID_Pantalla" />
+          </Key>
+          <Property Name="ID_Pantalla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Pantalla" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion_Pantalla" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Funcionalidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Modulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Modulos" Relationship="Self.fk_ID_Modulo_Pantallas" FromRole="Pantallas" ToRole="Modulos" />
+          <NavigationProperty Name="Ticket" Relationship="Self.fk_ID_Pantalla_Ticket" FromRole="Pantallas" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Personal_Estratei">
+          <Key>
+            <PropertyRef Name="ID_Estratei" />
+          </Key>
+          <Property Name="ID_Estratei" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_PEstratei" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido_PaternoPEstratei" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido_MaternoPEstratei" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Celular" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo_Electronico" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estatus" Type="Boolean" Nullable="false" />
+          <Property Name="ID_Departamento" Type="Int32" Nullable="false" />
+          <Property Name="ID_Usuarios_Login" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.fk_ID_Departamento_Personal_Estratei" FromRole="Personal_Estratei" ToRole="Departamento" />
+          <NavigationProperty Name="Historial_Ticket" Relationship="Self.fk_ID_Estratei_Historial_Ticket" FromRole="Personal_Estratei" ToRole="Historial_Ticket" />
+          <NavigationProperty Name="Solucion" Relationship="Self.fk_ID_Estratei_Solucion" FromRole="Personal_Estratei" ToRole="Solucion" />
+          <NavigationProperty Name="Usuarios_Login" Relationship="Self.fk_ID_Usuarios_Login_Personal_Estratei" FromRole="Personal_Estratei" ToRole="Usuarios_Login" />
+        </EntityType>
+        <EntityType Name="Prioridad">
+          <Key>
+            <PropertyRef Name="ID_Prioridad" />
+          </Key>
+          <Property Name="ID_Prioridad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Prioridad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ticket" Relationship="Self.fk_ID_Prioridad_Ticket" FromRole="Prioridad" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="ID_Servicio" />
+          </Key>
+          <Property Name="ID_Servicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Servicio" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ticket" Relationship="Self.fk_ID_Servicio_Ticket" FromRole="Servicio" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Sistema">
+          <Key>
+            <PropertyRef Name="ID_Sistema" />
+          </Key>
+          <Property Name="ID_Sistema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Sistema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion_Sistema" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version_Sistema" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Modulos" Relationship="Self.fk_ID_Sistema_Modulos" FromRole="Sistema" ToRole="Modulos" />
+          <NavigationProperty Name="Sistema_Cliente" Relationship="Self.fk_ID_Sistema_Sistema_Cliente" FromRole="Sistema" ToRole="Sistema_Cliente" />
+        </EntityType>
+        <EntityType Name="Sistema_Cliente">
+          <Key>
+            <PropertyRef Name="ID_Sistema" />
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Sistema" Type="Int32" Nullable="false" />
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Version_Cliente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Contrato" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Vigencia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.fk_ID_Cliente_Sistema_Cliente" FromRole="Sistema_Cliente" ToRole="Cliente" />
+          <NavigationProperty Name="Sistema" Relationship="Self.fk_ID_Sistema_Sistema_Cliente" FromRole="Sistema_Cliente" ToRole="Sistema" />
+        </EntityType>
+        <EntityType Name="Solucion">
+          <Key>
+            <PropertyRef Name="ID_Solucion" />
+          </Key>
+          <Property Name="ID_Solucion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion_en_Pasos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Solucion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_Ticket" Type="Int32" Nullable="false" />
+          <Property Name="ID_Estratei" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personal_Estratei" Relationship="Self.fk_ID_Estratei_Solucion" FromRole="Solucion" ToRole="Personal_Estratei" />
+          <NavigationProperty Name="Ticket" Relationship="Self.fk_ID_Ticket_Solucion" FromRole="Solucion" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="ID_Ticket" />
+          </Key>
+          <Property Name="ID_Ticket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora_Inicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Duracion" Type="Time" Precision="7" />
+          <Property Name="Version_Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_Problema" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion_Problema" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Fin" Type="DateTime" Precision="0" />
+          <Property Name="Hora_Fin" Type="Time" Precision="7" />
+          <Property Name="ID_Pantalla" Type="Int32" Nullable="false" />
+          <Property Name="ID_Usuario_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="ID_Medio_de_Contacto" Type="Int32" Nullable="false" />
+          <Property Name="ID_Servicio" Type="Int32" Nullable="false" />
+          <Property Name="ID_Estado" Type="Int32" Nullable="false" />
+          <Property Name="ID_Prioridad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Estado" Relationship="Self.fk_ID_Estado_Ticket" FromRole="Ticket" ToRole="Estado" />
+          <NavigationProperty Name="Historial_Ticket" Relationship="Self.fk_ID_Ticket_Historial_Ticket" FromRole="Ticket" ToRole="Historial_Ticket" />
+          <NavigationProperty Name="Medio_de_Contacto" Relationship="Self.fk_ID_Medio_de_Contacto_Ticket" FromRole="Ticket" ToRole="Medio_de_Contacto" />
+          <NavigationProperty Name="Pantallas" Relationship="Self.fk_ID_Pantalla_Ticket" FromRole="Ticket" ToRole="Pantallas" />
+          <NavigationProperty Name="Prioridad" Relationship="Self.fk_ID_Prioridad_Ticket" FromRole="Ticket" ToRole="Prioridad" />
+          <NavigationProperty Name="Servicio" Relationship="Self.fk_ID_Servicio_Ticket" FromRole="Ticket" ToRole="Servicio" />
+          <NavigationProperty Name="Solucion" Relationship="Self.fk_ID_Ticket_Solucion" FromRole="Ticket" ToRole="Solucion" />
+          <NavigationProperty Name="Usuario_Cliente" Relationship="Self.fk_ID_Usuario_Cliente_Ticket" FromRole="Ticket" ToRole="Usuario_Cliente" />
+        </EntityType>
+        <EntityType Name="Tipo_Usuarios">
+          <Key>
+            <PropertyRef Name="ID_Tipo_Usuarios" />
+          </Key>
+          <Property Name="ID_Tipo_Usuarios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Tipo_Usuarios" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuarios_Login" Relationship="Self.fk_ID_Tipo_Usuario_Usuarios_Login" FromRole="Tipo_Usuarios" ToRole="Usuarios_Login" />
+        </EntityType>
+        <EntityType Name="Usuario_Cliente">
+          <Key>
+            <PropertyRef Name="ID_Usuario_Cliente" />
+          </Key>
+          <Property Name="ID_Usuario_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_UCliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido_PaternoUCliente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido_MaternoUCliente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario_Clave" Type="Boolean" Nullable="false" />
+          <Property Name="Celular" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Correo_Electronico" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Oficina" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Extension" Type="Int32" />
+          <Property Name="Estatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="ID_Usuarios_Login" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.fk_ID_Cliente_Usuario_Cliente" FromRole="Usuario_Cliente" ToRole="Cliente" />
+          <NavigationProperty Name="Ticket" Relationship="Self.fk_ID_Usuario_Cliente_Ticket" FromRole="Usuario_Cliente" ToRole="Ticket" />
+          <NavigationProperty Name="Usuarios_Login" Relationship="Self.fk_ID_Usuarios_Login_Usuario_liente" FromRole="Usuario_Cliente" ToRole="Usuarios_Login" />
+        </EntityType>
+        <EntityType Name="Usuarios_Login">
+          <Key>
+            <PropertyRef Name="ID_Usuarios_Login" />
+          </Key>
+          <Property Name="ID_Usuarios_Login" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Usuarios_Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estatus" Type="Boolean" Nullable="false" />
+          <Property Name="Ultimo_Login" Type="DateTime" Precision="0" />
+          <Property Name="Correo_electronico" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Tipo_Usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personal_Estratei" Relationship="Self.fk_ID_Usuarios_Login_Personal_Estratei" FromRole="Usuarios_Login" ToRole="Personal_Estratei" />
+          <NavigationProperty Name="Tipo_Usuarios" Relationship="Self.fk_ID_Tipo_Usuario_Usuarios_Login" FromRole="Usuarios_Login" ToRole="Tipo_Usuarios" />
+          <NavigationProperty Name="Usuario_Cliente" Relationship="Self.fk_ID_Usuarios_Login_Usuario_liente" FromRole="Usuarios_Login" ToRole="Usuario_Cliente" />
+        </EntityType>
+        <Association Name="fk_ID_Cliente_Sistema_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Sistema_Cliente" Type="Self.Sistema_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Sistema_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Cliente_Usuario_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Usuario_Cliente" Type="Self.Usuario_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Usuario_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Entidad_Federativa_Cliente">
+          <End Role="Entidad_Federativa" Type="Self.Entidad_Federativa" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entidad_Federativa">
+              <PropertyRef Name="ID_Entidad_Federativa" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="ID_Entidad_Federativa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Departamento_Personal_Estratei">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Personal_Estratei" Type="Self.Personal_Estratei" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="ID_Departamento" />
+            </Principal>
+            <Dependent Role="Personal_Estratei">
+              <PropertyRef Name="ID_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Estado_Ticket">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="ID_Estado" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Estratei_Historial_Ticket">
+          <End Role="Personal_Estratei" Type="Self.Personal_Estratei" Multiplicity="1" />
+          <End Role="Historial_Ticket" Type="Self.Historial_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_Estratei">
+              <PropertyRef Name="ID_Estratei" />
+            </Principal>
+            <Dependent Role="Historial_Ticket">
+              <PropertyRef Name="ID_Estratei" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Ticket_Historial_Ticket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="Historial_Ticket" Type="Self.Historial_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ID_Ticket" />
+            </Principal>
+            <Dependent Role="Historial_Ticket">
+              <PropertyRef Name="ID_Ticket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Medio_de_Contacto_Ticket">
+          <End Role="Medio_de_Contacto" Type="Self.Medio_de_Contacto" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medio_de_Contacto">
+              <PropertyRef Name="ID_Medio_de_Contacto" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Medio_de_Contacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Modulo_Pantallas">
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="1" />
+          <End Role="Pantallas" Type="Self.Pantallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulos">
+              <PropertyRef Name="ID_Modulo" />
+            </Principal>
+            <Dependent Role="Pantallas">
+              <PropertyRef Name="ID_Modulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Sistema_Modulos">
+          <End Role="Sistema" Type="Self.Sistema" Multiplicity="1" />
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sistema">
+              <PropertyRef Name="ID_Sistema" />
+            </Principal>
+            <Dependent Role="Modulos">
+              <PropertyRef Name="ID_Sistema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Pantalla_Ticket">
+          <End Role="Pantallas" Type="Self.Pantallas" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pantallas">
+              <PropertyRef Name="ID_Pantalla" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Pantalla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Estratei_Solucion">
+          <End Role="Personal_Estratei" Type="Self.Personal_Estratei" Multiplicity="1" />
+          <End Role="Solucion" Type="Self.Solucion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_Estratei">
+              <PropertyRef Name="ID_Estratei" />
+            </Principal>
+            <Dependent Role="Solucion">
+              <PropertyRef Name="ID_Estratei" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Usuarios_Login_Personal_Estratei">
+          <End Role="Usuarios_Login" Type="Self.Usuarios_Login" Multiplicity="1" />
+          <End Role="Personal_Estratei" Type="Self.Personal_Estratei" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios_Login">
+              <PropertyRef Name="ID_Usuarios_Login" />
+            </Principal>
+            <Dependent Role="Personal_Estratei">
+              <PropertyRef Name="ID_Usuarios_Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Prioridad_Ticket">
+          <End Role="Prioridad" Type="Self.Prioridad" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prioridad">
+              <PropertyRef Name="ID_Prioridad" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Prioridad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Servicio_Ticket">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="ID_Servicio" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Sistema_Sistema_Cliente">
+          <End Role="Sistema" Type="Self.Sistema" Multiplicity="1" />
+          <End Role="Sistema_Cliente" Type="Self.Sistema_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sistema">
+              <PropertyRef Name="ID_Sistema" />
+            </Principal>
+            <Dependent Role="Sistema_Cliente">
+              <PropertyRef Name="ID_Sistema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Ticket_Solucion">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="Solucion" Type="Self.Solucion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ID_Ticket" />
+            </Principal>
+            <Dependent Role="Solucion">
+              <PropertyRef Name="ID_Ticket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Usuario_Cliente_Ticket">
+          <End Role="Usuario_Cliente" Type="Self.Usuario_Cliente" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario_Cliente">
+              <PropertyRef Name="ID_Usuario_Cliente" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Usuario_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Tipo_Usuario_Usuarios_Login">
+          <End Role="Tipo_Usuarios" Type="Self.Tipo_Usuarios" Multiplicity="1" />
+          <End Role="Usuarios_Login" Type="Self.Usuarios_Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuarios">
+              <PropertyRef Name="ID_Tipo_Usuarios" />
+            </Principal>
+            <Dependent Role="Usuarios_Login">
+              <PropertyRef Name="ID_Tipo_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Usuarios_Login_Usuario_liente">
+          <End Role="Usuarios_Login" Type="Self.Usuarios_Login" Multiplicity="1" />
+          <End Role="Usuario_Cliente" Type="Self.Usuario_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios_Login">
+              <PropertyRef Name="ID_Usuarios_Login" />
+            </Principal>
+            <Dependent Role="Usuario_Cliente">
+              <PropertyRef Name="ID_Usuarios_Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Sistema_TicketsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Entidad_Federativa" EntityType="Self.Entidad_Federativa" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Historial_Ticket" EntityType="Self.Historial_Ticket" />
+          <EntitySet Name="Medio_de_Contacto" EntityType="Self.Medio_de_Contacto" />
+          <EntitySet Name="Modulos" EntityType="Self.Modulos" />
+          <EntitySet Name="Pantallas" EntityType="Self.Pantallas" />
+          <EntitySet Name="Personal_Estratei" EntityType="Self.Personal_Estratei" />
+          <EntitySet Name="Prioridad" EntityType="Self.Prioridad" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" />
+          <EntitySet Name="Sistema" EntityType="Self.Sistema" />
+          <EntitySet Name="Sistema_Cliente" EntityType="Self.Sistema_Cliente" />
+          <EntitySet Name="Solucion" EntityType="Self.Solucion" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" />
+          <EntitySet Name="Tipo_Usuarios" EntityType="Self.Tipo_Usuarios" />
+          <EntitySet Name="Usuario_Cliente" EntityType="Self.Usuario_Cliente" />
+          <EntitySet Name="Usuarios_Login" EntityType="Self.Usuarios_Login" />
+          <AssociationSet Name="fk_ID_Cliente_Sistema_Cliente" Association="Self.fk_ID_Cliente_Sistema_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Sistema_Cliente" EntitySet="Sistema_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Cliente_Usuario_Cliente" Association="Self.fk_ID_Cliente_Usuario_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Usuario_Cliente" EntitySet="Usuario_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Entidad_Federativa_Cliente" Association="Self.fk_ID_Entidad_Federativa_Cliente">
+            <End Role="Entidad_Federativa" EntitySet="Entidad_Federativa" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Departamento_Personal_Estratei" Association="Self.fk_ID_Departamento_Personal_Estratei">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Estado_Ticket" Association="Self.fk_ID_Estado_Ticket">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Estratei_Historial_Ticket" Association="Self.fk_ID_Estratei_Historial_Ticket">
+            <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
+            <End Role="Historial_Ticket" EntitySet="Historial_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Ticket_Historial_Ticket" Association="Self.fk_ID_Ticket_Historial_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="Historial_Ticket" EntitySet="Historial_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Medio_de_Contacto_Ticket" Association="Self.fk_ID_Medio_de_Contacto_Ticket">
+            <End Role="Medio_de_Contacto" EntitySet="Medio_de_Contacto" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Modulo_Pantallas" Association="Self.fk_ID_Modulo_Pantallas">
+            <End Role="Modulos" EntitySet="Modulos" />
+            <End Role="Pantallas" EntitySet="Pantallas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Sistema_Modulos" Association="Self.fk_ID_Sistema_Modulos">
+            <End Role="Sistema" EntitySet="Sistema" />
+            <End Role="Modulos" EntitySet="Modulos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Pantalla_Ticket" Association="Self.fk_ID_Pantalla_Ticket">
+            <End Role="Pantallas" EntitySet="Pantallas" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Estratei_Solucion" Association="Self.fk_ID_Estratei_Solucion">
+            <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
+            <End Role="Solucion" EntitySet="Solucion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Usuarios_Login_Personal_Estratei" Association="Self.fk_ID_Usuarios_Login_Personal_Estratei">
+            <End Role="Usuarios_Login" EntitySet="Usuarios_Login" />
+            <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Prioridad_Ticket" Association="Self.fk_ID_Prioridad_Ticket">
+            <End Role="Prioridad" EntitySet="Prioridad" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Servicio_Ticket" Association="Self.fk_ID_Servicio_Ticket">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Sistema_Sistema_Cliente" Association="Self.fk_ID_Sistema_Sistema_Cliente">
+            <End Role="Sistema" EntitySet="Sistema" />
+            <End Role="Sistema_Cliente" EntitySet="Sistema_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Ticket_Solucion" Association="Self.fk_ID_Ticket_Solucion">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="Solucion" EntitySet="Solucion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Usuario_Cliente_Ticket" Association="Self.fk_ID_Usuario_Cliente_Ticket">
+            <End Role="Usuario_Cliente" EntitySet="Usuario_Cliente" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Tipo_Usuario_Usuarios_Login" Association="Self.fk_ID_Tipo_Usuario_Usuarios_Login">
+            <End Role="Tipo_Usuarios" EntitySet="Tipo_Usuarios" />
+            <End Role="Usuarios_Login" EntitySet="Usuarios_Login" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Usuarios_Login_Usuario_liente" Association="Self.fk_ID_Usuarios_Login_Usuario_liente">
+            <End Role="Usuarios_Login" EntitySet="Usuarios_Login" />
+            <End Role="Usuario_Cliente" EntitySet="Usuario_Cliente" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Sistema_TicketsModelStoreContainer" CdmEntityContainer="Sistema_TicketsEntities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
+                <ScalarProperty Name="ID_Entidad_Federativa" ColumnName="ID_Entidad_Federativa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="ID_Departamento" ColumnName="ID_Departamento" />
+                <ScalarProperty Name="Nombre_Departamento" ColumnName="Nombre_Departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entidad_Federativa">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Entidad_Federativa">
+              <MappingFragment StoreEntitySet="Entidad_Federativa">
+                <ScalarProperty Name="ID_Entidad_Federativa" ColumnName="ID_Entidad_Federativa" />
+                <ScalarProperty Name="Nombre_Entidad_Federativa" ColumnName="Nombre_Entidad_Federativa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="ID_Estado" ColumnName="ID_Estado" />
+                <ScalarProperty Name="Nombre_Estado" ColumnName="Nombre_Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Historial_Ticket">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Historial_Ticket">
+              <MappingFragment StoreEntitySet="Historial_Ticket">
+                <ScalarProperty Name="ID_Historial" ColumnName="ID_Historial" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Accion_Realizada" ColumnName="Accion_Realizada" />
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Hora_Modificacion" ColumnName="Hora_Modificacion" />
+                <ScalarProperty Name="ID_Estratei" ColumnName="ID_Estratei" />
+                <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medio_de_Contacto">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Medio_de_Contacto">
+              <MappingFragment StoreEntitySet="Medio_de_Contacto">
+                <ScalarProperty Name="ID_Medio_de_Contacto" ColumnName="ID_Medio_de_Contacto" />
+                <ScalarProperty Name="Nombre_MedioC" ColumnName="Nombre_MedioC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modulos">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Modulos">
+              <MappingFragment StoreEntitySet="Modulos">
+                <ScalarProperty Name="ID_Modulo" ColumnName="ID_Modulo" />
+                <ScalarProperty Name="Nombre_Modulo" ColumnName="Nombre_Modulo" />
+                <ScalarProperty Name="Numero_de_Pantallas" ColumnName="Numero_de_Pantallas" />
+                <ScalarProperty Name="Descripcion_Modulo" ColumnName="Descripcion_Modulo" />
+                <ScalarProperty Name="ID_Sistema" ColumnName="ID_Sistema" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pantallas">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Pantallas">
+              <MappingFragment StoreEntitySet="Pantallas">
+                <ScalarProperty Name="ID_Pantalla" ColumnName="ID_Pantalla" />
+                <ScalarProperty Name="Nombre_Pantalla" ColumnName="Nombre_Pantalla" />
+                <ScalarProperty Name="Descripcion_Pantalla" ColumnName="Descripcion_Pantalla" />
+                <ScalarProperty Name="Funcionalidad" ColumnName="Funcionalidad" />
+                <ScalarProperty Name="ID_Modulo" ColumnName="ID_Modulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personal_Estratei">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Personal_Estratei">
+              <MappingFragment StoreEntitySet="Personal_Estratei">
+                <ScalarProperty Name="ID_Estratei" ColumnName="ID_Estratei" />
+                <ScalarProperty Name="Nombre_PEstratei" ColumnName="Nombre_PEstratei" />
+                <ScalarProperty Name="Apellido_PaternoPEstratei" ColumnName="Apellido_PaternoPEstratei" />
+                <ScalarProperty Name="Apellido_MaternoPEstratei" ColumnName="Apellido_MaternoPEstratei" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="ID_Departamento" ColumnName="ID_Departamento" />
+                <ScalarProperty Name="ID_Usuarios_Login" ColumnName="ID_Usuarios_Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prioridad">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Prioridad">
+              <MappingFragment StoreEntitySet="Prioridad">
+                <ScalarProperty Name="ID_Prioridad" ColumnName="ID_Prioridad" />
+                <ScalarProperty Name="Nombre_Prioridad" ColumnName="Nombre_Prioridad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicio">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="ID_Servicio" ColumnName="ID_Servicio" />
+                <ScalarProperty Name="Nombre_Servicio" ColumnName="Nombre_Servicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sistema">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Sistema">
+              <MappingFragment StoreEntitySet="Sistema">
+                <ScalarProperty Name="ID_Sistema" ColumnName="ID_Sistema" />
+                <ScalarProperty Name="Nombre_Sistema" ColumnName="Nombre_Sistema" />
+                <ScalarProperty Name="Descripcion_Sistema" ColumnName="Descripcion_Sistema" />
+                <ScalarProperty Name="Version_Sistema" ColumnName="Version_Sistema" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sistema_Cliente">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Sistema_Cliente">
+              <MappingFragment StoreEntitySet="Sistema_Cliente">
+                <ScalarProperty Name="ID_Sistema" ColumnName="ID_Sistema" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="Version_Cliente" ColumnName="Version_Cliente" />
+                <ScalarProperty Name="Fecha_Contrato" ColumnName="Fecha_Contrato" />
+                <ScalarProperty Name="Vigencia" ColumnName="Vigencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Solucion">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Solucion">
+              <MappingFragment StoreEntitySet="Solucion">
+                <ScalarProperty Name="ID_Solucion" ColumnName="ID_Solucion" />
+                <ScalarProperty Name="Descripcion_en_Pasos" ColumnName="Descripcion_en_Pasos" />
+                <ScalarProperty Name="Fecha_Solucion" ColumnName="Fecha_Solucion" />
+                <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+                <ScalarProperty Name="ID_Estratei" ColumnName="ID_Estratei" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Hora_Inicio" ColumnName="Hora_Inicio" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Version_Usuario" ColumnName="Version_Usuario" />
+                <ScalarProperty Name="Nombre_Problema" ColumnName="Nombre_Problema" />
+                <ScalarProperty Name="Descripcion_Problema" ColumnName="Descripcion_Problema" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+                <ScalarProperty Name="Hora_Fin" ColumnName="Hora_Fin" />
+                <ScalarProperty Name="ID_Pantalla" ColumnName="ID_Pantalla" />
+                <ScalarProperty Name="ID_Usuario_Cliente" ColumnName="ID_Usuario_Cliente" />
+                <ScalarProperty Name="ID_Medio_de_Contacto" ColumnName="ID_Medio_de_Contacto" />
+                <ScalarProperty Name="ID_Servicio" ColumnName="ID_Servicio" />
+                <ScalarProperty Name="ID_Estado" ColumnName="ID_Estado" />
+                <ScalarProperty Name="ID_Prioridad" ColumnName="ID_Prioridad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Usuarios">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Tipo_Usuarios">
+              <MappingFragment StoreEntitySet="Tipo_Usuarios">
+                <ScalarProperty Name="ID_Tipo_Usuarios" ColumnName="ID_Tipo_Usuarios" />
+                <ScalarProperty Name="Nombre_Tipo_Usuarios" ColumnName="Nombre_Tipo_Usuarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario_Cliente">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Usuario_Cliente">
+              <MappingFragment StoreEntitySet="Usuario_Cliente">
+                <ScalarProperty Name="ID_Usuario_Cliente" ColumnName="ID_Usuario_Cliente" />
+                <ScalarProperty Name="Nombre_UCliente" ColumnName="Nombre_UCliente" />
+                <ScalarProperty Name="Apellido_PaternoUCliente" ColumnName="Apellido_PaternoUCliente" />
+                <ScalarProperty Name="Apellido_MaternoUCliente" ColumnName="Apellido_MaternoUCliente" />
+                <ScalarProperty Name="Usuario_Clave" ColumnName="Usuario_Clave" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
+                <ScalarProperty Name="Telefono_Oficina" ColumnName="Telefono_Oficina" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="ID_Usuarios_Login" ColumnName="ID_Usuarios_Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios_Login">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Usuarios_Login">
+              <MappingFragment StoreEntitySet="Usuarios_Login">
+                <ScalarProperty Name="ID_Usuarios_Login" ColumnName="ID_Usuarios_Login" />
+                <ScalarProperty Name="Nombre_Usuarios_Login" ColumnName="Nombre_Usuarios_Login" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Ultimo_Login" ColumnName="Ultimo_Login" />
+                <ScalarProperty Name="Correo_electronico" ColumnName="Correo_electronico" />
+                <ScalarProperty Name="ID_Tipo_Usuario" ColumnName="ID_Tipo_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
