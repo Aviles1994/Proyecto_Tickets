@@ -11,7 +11,7 @@ namespace Proyecto_Tickets.Firters
 {
     public class VerifySession : ActionFilterAttribute 
     {
-        public override void OnActionExecuted(ActionExecutedContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var user = (Usuarios_Login)HttpContext.Current.Session["user"];
 
@@ -30,7 +30,7 @@ namespace Proyecto_Tickets.Firters
                 }
             }
 
-            base.OnActionExecuted(filterContext);
+            base.OnActionExecuting(filterContext);
         }
     }
 }
