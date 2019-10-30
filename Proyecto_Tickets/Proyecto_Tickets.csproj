@@ -193,7 +193,6 @@
     <Compile Include="Models\Solucion.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TableViewsModels\ClientesTableViewsModel.cs" />
     <Compile Include="Models\TableViewsModels\UserSession.cs" />
     <Compile Include="Models\Ticket.cs">
       <DependentUpon>BD.tt</DependentUpon>
@@ -207,6 +206,8 @@
     <Compile Include="Models\Usuario_Cliente.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewsModels\ClientesViewsModel.cs" />
+    <Compile Include="Models\ViewsModels\Entidad_federativaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,43 +1,49 @@
-﻿
+﻿@model Proyecto_Tickets.Models.ViewsModels.ClientesViewsModel
 @{
     ViewBag.Title = "CrearCliente";
     Layout= "~/Views/Shared/_LayoutDiseño.cshtml";
+
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
 }
 
 <main>
     <div style="height:575px;" class="div_formulario">
 
-        <table class="table">
-            <tr>
-                <td> <label for="nombre_del_cliente"> Nombre del Cliente</label></td>
-                <td> <input type="text" placeholder="escribe nombre del cliente " name="nombre_del_cliente"></td>
-                <td> <label for="calle"> Calle</label></td>
-                <td> <input type="text" placeholder=" nombre de la calle" name="calle"></td>
-            </tr>
-            <tr>
-                <td> <label for="correo_electronico">Correo Electronico </label></td>
-                <td> <input type="email" placeholder=" ejemplo12@estratei.com" name="correo_electronico"></td>
-                <td> <label for="numero">Numero</label></td>
-                <td> <input type="number" placeholder="escribe el numero interior" name="numero"></td>
-            </tr>
-            <tr>
-                <td> <label for="telefono">Telefono</label></td>
-                <td> <input type="number" placeholder="escribe el teléfono " name="telefono"></td>
-                <td> <label for="colonia"> Colonia</label></td>
-                <td> <input type="text" placeholder="nombre de la colonia" name="colonia"></td>
-            </tr>
-            <tr>
-                <td> <label for="entidad_federativa">Entidad Federativa</label></td>
-                <td>
-                    <select class="combo" placeholder="escribe el nombre de (entidad/ciudad)" name="entidad_federativa">
-                        <option> Elija una Entidad Federativa</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4"> <button class="button" type="button" name="button"> Registrar</button></td>
-            </tr>
-        </table>
+        @using (Html.BeginForm("CrearCliente", "Clientes", FormMethod.Post, new { role = "form", @Class = "" }))
+        {
+           
+
+           
+            <table class="table">
+                <tr>
+                    <td> <label for="nombre_del_cliente"> Nombre del Cliente</label></td>
+                    <td> @Html.TextBoxFor(d=>d.Nombre_Cliente) </td>
+                    <td> <label for="calle"> Calle</label></td>
+                    <td> @Html.TextBoxFor(d => d.Calle)</td>
+                </tr>
+                <tr>
+                    <td> <label for="correo_electronico">Correo Electronico </label></td>
+                    <td> @Html.TextBoxFor(d => d.Correo_Electronico)</td>
+                    <td> <label for="numero">Numero</label></td>
+                    <td> @Html.TextBoxFor(d => d.Numero)</td>
+                </tr>
+                <tr>
+                    <td> <label for="telefono">Telefono</label></td>
+                    <td> @Html.TextBoxFor(d => d.Telefono)</td>
+                    <td> <label for="colonia"> Colonia</label></td>
+                    <td> @Html.TextBoxFor(d => d.Colonia)</td>
+                </tr>
+                <tr>
+                    <td> <label for="entidad_federativa">Entidad Federativa</label></td>
+                    <td>
+                        @Html.DropDownListFor(d => d.ID_Entidad_Federativa, items, "Selecciona Entidad Federativa", new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4"> <button class="button" type="submit" value="Registrar" > Registrar</button></td>
+                </tr>
+            </table>
+        }
     </div>
 </main>
 
