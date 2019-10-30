@@ -14,19 +14,19 @@ namespace Proyecto_Tickets.Controllers
             return View();
         }
 
-        public ActionResult Enter(string Nombre_Usuario_Login, string contraseña)
+        public ActionResult Enter(string user, string contraseña)
         {
             try
             {
                 using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
                 {
                     var lst = from d in db.Usuarios_Login
-                              where d.Nombre_Usuarios_Login == Nombre_Usuario_Login && d.Contraseña == contraseña && d.Estatus == true
+                              where d.Nombre_Usuarios_Login == user && d.Contraseña == contraseña && d.Estatus == true
                               select d;
                     if (lst.Count() > 0)
                     {
-                        var obtener = lst.First();
-                        Session["Nombre_Usuario_Login"] = obtener;
+                        Usuarios_Login oUser = lst.First();
+                        Session["user"] = oUser;
                         return Content("1");
                     }
                     else
