@@ -131,6 +131,7 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Firters\VerifySession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -192,6 +193,8 @@
     <Compile Include="Models\Solucion.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TableViewsModels\ClientesTableViewsModel.cs" />
+    <Compile Include="Models\TableViewsModels\UserSession.cs" />
     <Compile Include="Models\Ticket.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
@@ -270,14 +273,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Clientes\CrearCliente.cshtml" />
+    <Content Include="Views\Shared\_LayoutDiseño.cshtml" />
+    <Content Include="Views\Clientes\BuscarCliente.cshtml" />
+    <Content Include="Views\Clientes\VerClientes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Tickets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

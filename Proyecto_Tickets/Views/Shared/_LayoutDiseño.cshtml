@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Styles/diseño_asidevertical.css" rel="stylesheet" />
+    <link href="~/Styles/diseño_barranavegación.css" rel="stylesheet" />
+    <link href="~/Styles/diseño_buttons.css" rel="stylesheet" />
+    <link href="~/Styles/diseño_formularios.css" rel="stylesheet" />
+    <link href="~/Styles/diseño_login.css" rel="stylesheet" />
+</head>
+<body class="body">
+    <div>
+    <nav class="nav_horizontal">
+      <div class="div_horizontal">
+        <ul class="nav_horizontal" >
+          <li><img  class="imagen" src="../Imagenes/escudo1.png" alt=""> </li>
+          <li><a href="#">ESTRATEI Sistemas de informacion</a></li>
+          <li style="float:right"><a href="#">@ViewData["nombre_user"]</a></li>
+        </ul>
+      </div>
+    </nav>
+    </div>
+
+    <div>
+        <aside class="aside_vertical">
+            <div class="div_vertical">
+                <ul class="ul a">
+                    <li><a href="#"> Ticket </a></li>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <li><a href="#"> Agenda de Clientes </a></li>
+                    <ul>
+                        <li>@Html.ActionLink("Agregar Cliente", "CrearCliente", "Clientes")</li>
+                        <li>@Html.ActionLink("Buscar Cliente", "BuscarCliente", "Clientes")</li>
+                        <li>@Html.ActionLink("Ver Clientes", "VerClientes", "Clientes")</li>
+                    </ul>
+                    <li><a href="#"> Base de Conocimiento </a></li>
+                    <ul>
+                        <li><a href="#"> Consultar Problemas </a></li>
+                    </ul>
+                    <li><a href="#"> Consultas y Reportes </a></li>
+                    <ul>
+                        <li><a href="#"> Generar Consultas </a></li>
+                        <li><a href="#"> Genrar Estadisticas </a></li>
+                    </ul>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

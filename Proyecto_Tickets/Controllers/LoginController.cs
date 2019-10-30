@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Proyecto_Tickets.Models;
+using Proyecto_Tickets.Models.TableViewsModels;
+
 namespace Proyecto_Tickets.Controllers
 {
     public class LoginController : Controller
@@ -27,6 +29,8 @@ namespace Proyecto_Tickets.Controllers
                     {
                         Usuarios_Login oUser = lst.First();
                         Session["user"] = oUser;
+                        UserSession.nombre_user = oUser.Nombre_Usuarios_Login;
+                        ViewData["nombre_user"] = UserSession.nombre_user; 
                         return Content("1");
                     }
                     else

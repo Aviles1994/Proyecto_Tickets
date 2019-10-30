@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "BuscarCliente";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+}
+
+<main>
+    <div class="div_formulario">
+        <div class="div_borde">
+            <table class="table">
+                <tr>
+                    <td rowspan="3"> <label for="cliente"> Cliente </label></td>
+                    <td rowspan="3">
+                        <select class="combo" name="cliente">
+                            <option value="0">Elija un cliente</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <table class="table">
+                <tr>
+                    <td><button class="button" type="button" name="button"> Buscar </button></td>
+                </tr>
+            </table>
+        </div>
+        <table class="table_busqueda">
+            <tr>
+                <th>Nombre de Cliente</th>
+                <th>Calle</th>
+                <th>Numero</th>
+                <th>Colinia</th>
+                <th>Telefono</th>
+                <th>Correro Electrónico</th>
+                <th>Entidad Federativa</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <td>Cremeria Perez</td>
+                <td>Martinez Navarrete</td>
+                <td>20</td>
+                <td>Duero</td>
+                <td>5178633</td>
+                <td>cperez@gmail.com</td>
+                <td>Zamora</td>
+                <td>
+                    <button class="btn_Acción" type="submit" name="button"> <img src="../Imagenes/add_user.png" alt=""></button>
+                    <button class="btn_Acción" type="submit" name="button"> <img src="../Imagenes/update_user.png" alt=""></button>
+                    <button class="btn_Acción" type="submit" name="button"> <img src="../Imagenes/contacts.png" alt=""> </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</main>
+
