@@ -53,7 +53,8 @@ namespace Proyecto_Tickets.Controllers
             {
                 return View(model);
             }
-
+            string mensaje = "";
+            string op = null; 
             using (var db = new Sistema_TicketsEntities())
             {
                 Cliente clientes = new Cliente();
@@ -65,16 +66,21 @@ namespace Proyecto_Tickets.Controllers
                 clientes.Correo_Electronico = model.Correo_Electronico;
                 clientes.ID_Entidad_Federativa = model.ID_Entidad_Federativa;
 
-                db.Cliente.Add(clientes);
-                db.SaveChanges();
-            }
 
-            respuesta = 1;
-            string mensaje = "";
-            if (respuesta == 1) {
-                mensaje = "exito";
+
+                try
+                {
+                    db.Cliente.Add(clientes);
+                    db.SaveChanges();
+                  
+                    
+                }
+                catch (Exception ex)
+                {
+                    return Content("Ocurrio un error" + ex.Message);
+                }
             }
-            return Content(mensaje);
+            return Content("1");
 
         }
 

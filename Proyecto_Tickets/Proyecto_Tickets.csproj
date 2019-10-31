@@ -129,10 +129,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
-    <Compile Include="Controllers\Crear_Usuario_ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
+    <Compile Include="Controllers\UsuariosClienteController.cs" />
     <Compile Include="Firters\VerifySession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -280,7 +280,7 @@
     <Content Include="Views\Shared\_LayoutDiseño.cshtml" />
     <Content Include="Views\Clientes\BuscarCliente.cshtml" />
     <Content Include="Views\Clientes\VerClientes.cshtml" />
-    <Content Include="Views\Crear_Usuario_Cliente\Crear_Usuario_Cliente.cshtml" />
+    <Content Include="Views\UsuariosCliente\AddUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

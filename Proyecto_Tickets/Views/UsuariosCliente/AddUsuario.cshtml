@@ -1,8 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "Crear_Usuario_Cliente";
+    ViewBag.Title = "AddUsuario";
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
 }
+
+
 
 <main>
     <div class="div_formulario">
@@ -38,12 +40,6 @@
             <tr>
                 <td> <label for="celular"> Celular</label></td>
                 <td> <input type="number" placeholder="número de celular" name="celular" value=""></td>
-                <td> <label for="puesto"> Puesto </label></td>
-                <td>
-                    <select class="combo" name="puesto">
-                        <option value="0"> Elija un puesto </option>
-                    </select>
-                </td>
             </tr>
             <tr>
                 <td> <label for="telefono_oficina"> Teléfono de Oficina </label></td>
@@ -59,7 +55,5 @@
                 <td colspan="4"> <button class="button" type="button" name="button"> Registrar </button></td>
             </tr>
         </table>
-
     </div>
 </main>
-
