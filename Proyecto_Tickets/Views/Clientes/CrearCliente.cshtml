@@ -1,7 +1,7 @@
 ﻿@model Proyecto_Tickets.Models.ViewsModels.ClientesViewsModel
 @{
     ViewBag.Title = "CrearCliente";
-    Layout= "~/Views/Shared/_LayoutDiseño.cshtml";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
 
     List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
 }
@@ -9,15 +9,15 @@
 <main>
     <div style="height:575px;" class="div_formulario">
 
-        @using (Html.BeginForm("CrearCliente", "Clientes", FormMethod.Post, new { role = "form", @Class = "" }))
+        @using (Html.BeginForm("CrearCliente", "Clientes", FormMethod.Post, new { role = "form", @Class = " " }))
         {
-           
 
-           
+
+
             <table class="table">
                 <tr>
                     <td> <label for="nombre_del_cliente"> Nombre del Cliente</label></td>
-                    <td> @Html.TextBoxFor(d=>d.Nombre_Cliente) </td>
+                    <td> @Html.TextBoxFor(d => d.Nombre_Cliente) </td>
                     <td> <label for="calle"> Calle</label></td>
                     <td> @Html.TextBoxFor(d => d.Calle)</td>
                 </tr>
@@ -40,10 +40,39 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4"> <button class="button" type="submit" value="Registrar" > Registrar</button></td>
+                    <td colspan="4"> <button class="button" type="submit" value="Registrar"> Registrar</button></td>
                 </tr>
             </table>
         }
     </div>
 </main>
+
+@section scripts
+{
+    
+    <script>
+        $(document).ready(function () {
+
+            $(".form").submit(function (e)
+        {
+            e.preventDefault();
+            url = "@Url.Content("~/Clientes/CrearCliente")"
+            parametros = $(this).serialize();
+
+            $.post(url, parametros, function (data) {
+
+                if (data == "1") {
+                    alert(data);
+                } else
+                {
+                    alert(data);
+                }
+
+            })
+        })
+
+        });
+
+    </script>
+}
 

@@ -11,6 +11,7 @@ namespace Proyecto_Tickets.Controllers
 {
     public class ClientesController : Controller
     {
+        int respuesta = 0;   
         public ActionResult CrearCliente() {
             ViewData["nombre_user"] = UserSession.nombre_user;
             List<Entidad_federativaViewModel> lst = null;
@@ -67,7 +68,12 @@ namespace Proyecto_Tickets.Controllers
                 db.Cliente.Add(clientes);
                 db.SaveChanges();
             }
-            return Redirect(Url.Content("~/Crear_Usuario_Cliente/Crear_Usuario_Cliente"));
+
+            respuesta = 1;
+            if (respuesta == 1) {
+                return Content("1");
+            }
+            return View();
 
     }
 
