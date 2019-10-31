@@ -70,12 +70,13 @@ namespace Proyecto_Tickets.Controllers
             }
 
             respuesta = 1;
+            string mensaje = "";
             if (respuesta == 1) {
-                return Content("1");
+                mensaje = "exito";
             }
-            return View();
+            return Content(mensaje);
 
-    }
+        }
 
         public ActionResult BuscarCliente()
         {

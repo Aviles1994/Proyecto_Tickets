@@ -9,7 +9,7 @@
 <main>
     <div style="height:575px;" class="div_formulario">
 
-        @using (Html.BeginForm("CrearCliente", "Clientes", FormMethod.Post, new { role = "form", @Class = " " }))
+        @using (Html.BeginForm("CrearCliente", "Clientes", FormMethod.Post, new { role = "form", @Class = " form" }))
         {
 
 
@@ -61,11 +61,11 @@
 
             $.post(url, parametros, function (data) {
 
-                if (data == "1") {
+                if (data == "exito") {
                     alert(data);
                 } else
                 {
-                    alert(data);
+                    console.log("Error");
                 }
 
             })
