@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Crear_Usuario_Cliente";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+}
+
+<main>
+    <div class="div_formulario">
+        <table class="table">
+            <tr>
+                <td> <label for="nombre_del_usuario">Nombre del Usuario </label></td>
+                <td> <input type="text" name="nombre_del_usuario" placeholder="nombre o nombres " value=""></td>
+                <td> <label for="usuario_clave"> Usuario Clave</label></td>
+                <th> <input type="checkbox" name="usario_clave" value="">         Sí</th>
+            </tr>
+            <tr>
+                <td> <label for="apellido_paterno"> Apellido Paterno</label></td>
+                <td> <input type="text" name="apellido_paterno" placeholder="apellido parterno" value=""></td>
+                <td> <label for="estatus"> Estatus</label> </td>
+                <th> <input type="checkbox" name="estatus" value=""> Activo</th>
+            </tr>
+            <tr>
+                <td> <label for="apellido_materno"> Apellido Materno</label></td>
+                <td> <input type="text" name="apellido_materno" placeholder="apellido materno" value=""></td>
+                <td> <label for="contraseña"> Contraseña</label></td>
+                <td> <input type="password" name="contraseña" placeholder="*********" value=""></td>
+            </tr>
+            <tr>
+                <td> <label for="nombre_de_login"> Nombre de Login</label></td>
+                <td> <input type="text" name="nombre_de_login" placeholder="jvalencia23" value=""></td>
+                <td> <label for="cliente"> Cliente </label></td>
+                <td>
+                    <select class="combo" name="cliente">
+                        <option value="0"> Elija un cliente </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="celular"> Celular</label></td>
+                <td> <input type="number" placeholder="número de celular" name="celular" value=""></td>
+                <td> <label for="puesto"> Puesto </label></td>
+                <td>
+                    <select class="combo" name="puesto">
+                        <option value="0"> Elija un puesto </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="telefono_oficina"> Teléfono de Oficina </label></td>
+                <td> <input type="number" name="telefono_de_oficina" placeholder="teléfono de oficina" value=""></td>
+                <td> <label for="correo_electronico"> Correo Eléctronico</label></td>
+                <td> <input type="email" name="correo_electronico" placeholder="ejemplo27@hotmail.com" value=""></td>
+            </tr>
+            <tr>
+                <td> <label for="extención"> Extención </label></td>
+                <td> <input type="number" placeholder="número de la extención" name="extención" value=""></td>
+            </tr>
+            <tr>
+                <td colspan="4"> <button class="button" type="button" name="button"> Registrar </button></td>
+            </tr>
+        </table>
+
+    </div>
+</main>
+

@@ -65,21 +65,9 @@ namespace Proyecto_Tickets.Controllers
                 clientes.ID_Entidad_Federativa = model.ID_Entidad_Federativa;
 
                 db.Cliente.Add(clientes);
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (Exception err)
-                {
-
-                    throw new Exception(err.Message);
-                }
-                
-
-                
-
+                db.SaveChanges();
             }
-            return Redirect(Url.Content("~/Views/Clientes/BuscarCliente/"));
+            return Redirect(Url.Content("~/Crear_Usuario_Cliente/Crear_Usuario_Cliente"));
 
     }
 
