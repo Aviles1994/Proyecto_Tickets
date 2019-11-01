@@ -10,7 +10,7 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public int ULid { get; set; }
         public string ULnombre { get; set; }
         public string ULcontraseña { get; set; }
-        public string ULestatus { get; set; }
+        public bool ULestatus { get; set; }
         public DateTime UCUltimoLogin { get; set; }
         public string ULCcorreo_electronico { get; set; }
         public int ID_Tipo_Usuario { get; set; }

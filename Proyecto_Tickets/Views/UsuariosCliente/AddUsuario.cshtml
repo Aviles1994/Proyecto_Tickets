@@ -16,34 +16,35 @@
                 <td> <label for="nombre_del_usuario">Nombre del Usuario </label></td>
                 <td> @Html.TextBoxFor(d => d.UCnombre) </td>
                 <td> <label for="usuario_clave"> Usuario Clave</label></td>
-                <th> @Html.CheckBoxFor(d => d.UcusuarioClave)</th>
+                <th> @Html.CheckBoxFor(d => d.UcusuarioClave) Si</th>
             </tr>
             <tr>
                 <td> <label for="apellido_paterno"> Apellido Paterno</label></td>
                 <td> @Html.TextBoxFor(d => d.UCapellidoP)</td>
                 <td> <label for="estatus"> Estatus</label> </td>
-                <th> @Html.CheckBoxFor(d => d.UcusuarioClave) </th>
+                <th> @Html.CheckBoxFor(d => d.ULestatus) Activo</th>
             </tr>
             <tr>
                 <td> <label for="apellido_materno"> Apellido Materno</label></td>
                 <td> @Html.TextBoxFor(d => d.UCapellidoM)</td>
                 <td> <label for="contraseña"> Contraseña</label></td>
-                <td> @Html.TextBoxFor(d =>d.ULCcorreo_electronico)</td>
+                <td> @Html.TextBoxFor(d =>d.ULcontraseña)</td>
             </tr>
             <tr>
                 <td> <label for="nombre_de_login"> Nombre de Login</label></td>
-                <td> @Html.TextBoxFor(d =>d.ID_Usurios_Login) </td>
-                <td> <label for="cliente"> Cliente </label></td>
+                <td> @Html.TextBoxFor(d => d.ULnombre) </td>
+                <td> <label for="correo_electronico"> Correo Eléctronico</label></td>
+                <td> @Html.TextBoxFor(d => d.ULCcorreo_electronico)</td>
+
             </tr>
             <tr>
                 <td> <label for="celular"> Celular</label></td>
                 <td> @Html.TextBoxFor(d => d.UCcelular)</td>
+
             </tr>
             <tr>
                 <td> <label for="telefono_oficina"> Teléfono de Oficina </label></td>
                 <td> @Html.TextBoxFor(d => d.UctelOf)</td>
-                <td> <label for="correo_electronico"> Correo Eléctronico</label></td>
-                <td> @Html.TextBoxFor(d => d.ULCcorreo_electronico)</td>
             </tr>
             <tr>
                 <td> <label for="extención"> Extención </label></td>
