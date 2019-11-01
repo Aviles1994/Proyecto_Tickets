@@ -26,10 +26,8 @@ namespace Proyecto_Tickets.Models
         public string Apellido_MaternoUCliente { get; set; }
         public bool Usuario_Clave { get; set; }
         public string Celular { get; set; }
-        public string Correo_Electronico { get; set; }
         public string Telefono_Oficina { get; set; }
         public Nullable<int> Extension { get; set; }
-        public string Estatus { get; set; }
         public int ID_Cliente { get; set; }
         public int ID_Usuarios_Login { get; set; }
     

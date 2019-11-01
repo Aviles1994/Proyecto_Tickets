@@ -26,8 +26,6 @@ namespace Proyecto_Tickets.Models
         public string Apellido_PaternoPEstratei { get; set; }
         public string Apellido_MaternoPEstratei { get; set; }
         public string Celular { get; set; }
-        public string Correo_Electronico { get; set; }
-        public bool Estatus { get; set; }
         public int ID_Departamento { get; set; }
         public int ID_Usuarios_Login { get; set; }
     

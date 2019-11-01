@@ -129,7 +129,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UsuariosClienteController.cs" />
@@ -209,6 +208,8 @@
     </Compile>
     <Compile Include="Models\ViewsModels\ClientesViewsModel.cs" />
     <Compile Include="Models\ViewsModels\Entidad_federativaViewModel.cs" />
+    <Compile Include="Models\ViewsModels\UsuariosClienteViewModel.cs" />
+    <Compile Include="Models\ViewsModels\UsuariosLoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
