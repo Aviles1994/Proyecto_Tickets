@@ -4,25 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e27c3dcc31e54e659f00d61d438334a4" Name="Diagram1">
+      <Diagram DiagramId="e27c3dcc31e54e659f00d61d438334a4" Name="Diagram1" ZoomLevel="82">
         <EntityTypeShape EntityType="Sistema_TicketsModel.Cliente" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Sistema_TicketsModel.Departamento" Width="1.5" PointX="5.25" PointY="22.625" />
+        <EntityTypeShape EntityType="Sistema_TicketsModel.Departamento" Width="1.5" PointX="5.25" PointY="21.625" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Entidad_Federativa" Width="1.5" PointX="1.5" PointY="11.5" />
-        <EntityTypeShape EntityType="Sistema_TicketsModel.Estado" Width="1.5" PointX="5.25" PointY="19.25" />
+        <EntityTypeShape EntityType="Sistema_TicketsModel.Estado" Width="1.5" PointX="5.25" PointY="11.625" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Historial_Ticket" Width="1.5" PointX="9.75" PointY="8" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Medio_de_Contacto" Width="1.5" PointX="5.25" PointY="5.375" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Modulos" Width="1.5" PointX="3" PointY="8.25" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Pantallas" Width="1.5" PointX="5.25" PointY="8.25" />
-        <EntityTypeShape EntityType="Sistema_TicketsModel.Personal_Estratei" Width="1.5" PointX="7.5" PointY="21.875" />
-        <EntityTypeShape EntityType="Sistema_TicketsModel.Prioridad" Width="1.5" PointX="5.25" PointY="12" />
+        <EntityTypeShape EntityType="Sistema_TicketsModel.Personal_Estratei" Width="1.5" PointX="7.5" PointY="20.875" />
+        <EntityTypeShape EntityType="Sistema_TicketsModel.Prioridad" Width="1.5" PointX="5.25" PointY="14" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Servicio" Width="1.5" PointX="5.25" PointY="3" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Sistema" Width="1.5" PointX="0.75" PointY="5.25" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Sistema_Cliente" Width="1.5" PointX="3" PointY="5.125" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Solucion" Width="1.5" PointX="12.75" PointY="8.25" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Ticket" Width="1.5" PointX="7.5" PointY="6.625" />
-        <EntityTypeShape EntityType="Sistema_TicketsModel.Tipo_Usuarios" Width="1.5" PointX="0.75" PointY="15.625" />
-        <EntityTypeShape EntityType="Sistema_TicketsModel.Usuario_Cliente" Width="1.5" PointX="5.25" PointY="14.625" />
-        <EntityTypeShape EntityType="Sistema_TicketsModel.Usuarios_Login" Width="1.5" PointX="3" PointY="15" />
+        <EntityTypeShape EntityType="Sistema_TicketsModel.Tipo_Usuarios" Width="1.5" PointX="0.75" PointY="17.375" />
+        <EntityTypeShape EntityType="Sistema_TicketsModel.Usuario_Cliente" Width="1.5" PointX="5.25" PointY="16.375" />
+        <EntityTypeShape EntityType="Sistema_TicketsModel.Usuarios_Login" Width="1.5" PointX="3" PointY="16.625" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Cliente_Sistema_Cliente" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Cliente_Usuario_Cliente" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Entidad_Federativa_Cliente" />

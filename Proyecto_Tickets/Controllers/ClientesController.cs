@@ -80,6 +80,8 @@ namespace Proyecto_Tickets.Controllers
                     return Content("Ocurrio un error" + ex.Message);
                 }
             }
+            
+
             return Content("1");
 
         }

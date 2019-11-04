@@ -13,12 +13,12 @@
             @using (Html.BeginForm("CrearCliente", "Clientes", FormMethod.Post, new { role = "form" ,Id ="frm", @Class = " form" }))
             {
 
-
+          
 
                 <table class="table">
                     <tr>
                         <td> <label for="nombre_del_cliente"> Nombre del Cliente</label></td>
-                        <td> @Html.TextBoxFor(d => d.Nombre_Cliente) </td>
+                        <td> @Html.TextBoxFor(d => d.Nombre_Cliente)</td>
                         <td> <label for="calle"> Calle</label></td>
                         <td> @Html.TextBoxFor(d => d.Calle)</td>
                     </tr>
