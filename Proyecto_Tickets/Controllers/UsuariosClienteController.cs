@@ -44,9 +44,9 @@ namespace Proyecto_Tickets.Controllers
             }
 
 
-            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            using (Sistema_TicketsEntities dba = new Sistema_TicketsEntities())
             {
-                var lst = from d in db.Usuarios_Login
+                var lst = from d in dba.Usuarios_Login
                           where d.Nombre_Usuarios_Login == model.ULnombre
                           select d;
                 if (lst.Count() > 0)
@@ -61,7 +61,7 @@ namespace Proyecto_Tickets.Controllers
 
             }
 
-            using (var db = new Sistema_TicketsEntities())
+            using (var dbc = new Sistema_TicketsEntities())
             {
                 UC.Nombre_UCliente = model.UCnombre;
                 UC.Apellido_PaternoUCliente = model.UCapellidoP;
@@ -70,13 +70,13 @@ namespace Proyecto_Tickets.Controllers
                 UC.Celular = model.UCcelular;
                 UC.Telefono_Oficina = model.UctelOf;
                 UC.Extension = model.UCext;
-                UC.ID_Cliente = 1;
+                UC.ID_Cliente = Clientes.idCliente;
                 UC.ID_Usuarios_Login = model.ULid;
 
                 try
                 { 
-                db.Usuario_Cliente.Add(UC);
-                db.SaveChanges();
+                dbc.Usuario_Cliente.Add(UC);
+                dbc.SaveChanges();
 
                 }
                 catch (Exception ex)

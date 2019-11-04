@@ -53,8 +53,7 @@ namespace Proyecto_Tickets.Controllers
             {
                 return View(model);
             }
-            string mensaje = "";
-            string op = null; 
+            
             using (var db = new Sistema_TicketsEntities())
             {
                 Cliente clientes = new Cliente();
@@ -72,7 +71,7 @@ namespace Proyecto_Tickets.Controllers
                 {
                     db.Cliente.Add(clientes);
                     db.SaveChanges();
-                  
+                    Clientes.idCliente = clientes.ID_Cliente;
                     
                 }
                 catch (Exception ex)
