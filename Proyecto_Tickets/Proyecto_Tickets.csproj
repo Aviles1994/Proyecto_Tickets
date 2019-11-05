@@ -193,9 +193,8 @@
     <Compile Include="Models\Solucion.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TableViewsModels\ClienteExpecificoTableViewModel.cs" />
-    <Compile Include="Models\TableViewsModels\ClientesTableViewModel.cs" />
-    <Compile Include="Models\SelectViewsmodel\ObtenerClienteTableViewModel.cs" />
+    <Compile Include="Models\TableViewsModels\SeeClientesTableViewModel.cs" />
+    <Compile Include="Models\ListViewsModel\ListClienteTableViewModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVariablesGlobalesViewModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\UserSessionVariablesGlobalesViewModel.cs" />
     <Compile Include="Models\Ticket.cs">
@@ -210,10 +209,10 @@
     <Compile Include="Models\Usuario_Cliente.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ViewsModels\ClientesViewsModel.cs" />
-    <Compile Include="Models\ViewsModels\Entidad_federativaViewModel.cs" />
-    <Compile Include="Models\ViewsModels\UsuariosClienteViewModel.cs" />
-    <Compile Include="Models\ViewsModels\UsuariosLoginViewModel.cs" />
+    <Compile Include="Models\ViewsModels\AddTicketsViewModel.cs" />
+    <Compile Include="Models\ViewsModels\AddClientesViewsModel.cs" />
+    <Compile Include="Models\ListViewsModel\ListEntidad_federativaViewModel.cs" />
+    <Compile Include="Models\ViewsModels\AddUsuariosClienteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -286,10 +285,10 @@
     <Content Include="Views\Clientes\BuscarCliente.cshtml" />
     <Content Include="Views\Clientes\VerClientes.cshtml" />
     <Content Include="Views\UsuariosCliente\AddUsuario.cshtml" />
+    <Content Include="Views\Tickets\Add_Ticket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Tickets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

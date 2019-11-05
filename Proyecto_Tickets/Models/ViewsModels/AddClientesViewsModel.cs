@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Proyecto_Tickets.Models.ViewsModels
 {
-    public class ClientesViewsModel
+    public class AddClientesViewsModel
     {
 
         

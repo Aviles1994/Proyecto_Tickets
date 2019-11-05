@@ -20,7 +20,7 @@ namespace Proyecto_Tickets.Controllers
 
 
         [HttpPost]
-        public ActionResult AddUsuario(UsuariosClienteViewModel model) 
+        public ActionResult AddUsuario(AddUsuariosClienteViewModel model) 
         {
             if (!ModelState.IsValid)
             {

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Proyecto_Tickets.Models.ViewsModels
 {
-    public class UsuariosClienteViewModel
+    public class AddUsuariosClienteViewModel
     {
         public int ULid { get; set; }
         public string ULnombre { get; set; }

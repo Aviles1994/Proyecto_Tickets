@@ -41,7 +41,7 @@ namespace Proyecto_Tickets.Controllers
         }
 
         [HttpPost]
-        public ActionResult CrearCliente(ClientesViewsModel model)
+        public ActionResult CrearCliente(AddClientesViewsModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -112,12 +112,12 @@ namespace Proyecto_Tickets.Controllers
             ViewData["nombre_user"] = UserSession.nombre_user;
 
 
-            List<ClientesTableViewModel> lst = null;
+            List<SeeClientesTableViewModel> lst = null;
             using (var dbc = new Sistema_TicketsEntities())
             {
                 lst = (from d in dbc.Cliente
                        orderby d.ID_Cliente
-                       select new ClientesTableViewModel
+                       select new SeeClientesTableViewModel
                        {
                            idCliente = d.ID_Cliente,
                            NameCliente = d.Nombre_Cliente,
