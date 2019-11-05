@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Proyecto_Tickets.Models.TableViewsModels
 {
-    public class ObtenerClienteTableViewModel
+    public class listCliente
     {
         public  int id { get; set; }
         public  string namecliente { get; set; }

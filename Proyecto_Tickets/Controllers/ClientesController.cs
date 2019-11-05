@@ -10,14 +10,15 @@ namespace Proyecto_Tickets.Controllers
     public class ClientesController : Controller
     {
 
-        public ActionResult CrearCliente() {
+        public ActionResult AddCliente() {
             ViewData["nombre_user"] = UserSession.nombre_user;
             return View();
         }
 
         [HttpPost]
-        public ActionResult CrearCliente(AddClientesViewsModel model)
+        public ActionResult AddCliente(AddClientesViewsModel model)
         {
+            llenarListaEntidadFederativa();
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -54,19 +55,19 @@ namespace Proyecto_Tickets.Controllers
 
         }
 
-        public ActionResult BuscarCliente()
+        public ActionResult SearchCliente()
         {
             ViewData["nombre_user"] = UserSession.nombre_user;
             llenarlistaCliente();
 
-            List<ClienteExpecificoTableViewModel> lst = null;
+            List<SearchClienteTableViewModel> lst = null;
             using (var dbs = new Sistema_TicketsEntities())
             {
-                ObtenerClienteTableViewModel ele = new ObtenerClienteTableViewModel();
+                listCliente list_name = new listCliente();
                 lst = (from d in dbs.Cliente
-                       where d.Nombre_Cliente == ele.namecliente
+                       where d.Nombre_Cliente == list_name.namecliente
 
-                       select new ClienteExpecificoTableViewModel
+                       select new SearchClienteTableViewModel
                        {
                            idCliente = d.ID_Cliente,
                            NameCliente = d.Nombre_Cliente,
@@ -82,7 +83,7 @@ namespace Proyecto_Tickets.Controllers
  
         }
 
-        public ActionResult VerClientes()
+        public ActionResult SeeClientes()
         {
             ViewData["nombre_user"] = UserSession.nombre_user;
 
@@ -110,12 +111,12 @@ namespace Proyecto_Tickets.Controllers
 
         public void llenarlistaCliente()
         {
-            List<ListClienteTableViewModel> lst = null;
+            List<listCliente> lst = null;
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
             {
                 lst =
                   (from d in db.Cliente
-                   select new ObtenerClienteTableViewModel
+                   select new listCliente
                    {
                        id = d.ID_Cliente,
                        namecliente = d.Nombre_Cliente
@@ -136,12 +137,12 @@ namespace Proyecto_Tickets.Controllers
 
         public void llenarListaEntidadFederativa()
         {
-            List<Entidad_federativaViewModel> lst = null;
+            List<listEntidadFederativa> lst = null;
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
             {
                 lst =
                   (from d in db.Entidad_Federativa
-                   select new Entidad_federativaViewModel
+                   select new listEntidadFederativa
                    {
                        ID_Entidad = d.ID_Entidad_Federativa,
                        Nombre = d.Nombre_Entidad_Federativa

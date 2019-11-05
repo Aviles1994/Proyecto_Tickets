@@ -193,8 +193,9 @@
     <Compile Include="Models\Solucion.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TableViewsModels\SearchClienteTableViewModel.cs" />
     <Compile Include="Models\TableViewsModels\SeeClientesTableViewModel.cs" />
-    <Compile Include="Models\ComboViewsModel\ListClienteTableViewModel.cs" />
+    <Compile Include="Models\ComboViewsModel\ListClienteViewModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVariablesGlobalesViewModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\UserLoginVariablesGlobalesViewsModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\UserSessionVariablesGlobalesViewModel.cs" />
@@ -281,10 +282,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Clientes\CrearCliente.cshtml" />
+    <Content Include="Views\Clientes\AddCliente.cshtml" />
     <Content Include="Views\Shared\_LayoutDiseño.cshtml" />
-    <Content Include="Views\Clientes\BuscarCliente.cshtml" />
-    <Content Include="Views\Clientes\VerClientes.cshtml" />
+    <Content Include="Views\Clientes\SearchCliente.cshtml" />
+    <Content Include="Views\Clientes\SeeClientes.cshtml" />
     <Content Include="Views\UsuariosCliente\AddUsuario.cshtml" />
     <Content Include="Views\Tickets\Add_Ticket.cshtml" />
   </ItemGroup>
