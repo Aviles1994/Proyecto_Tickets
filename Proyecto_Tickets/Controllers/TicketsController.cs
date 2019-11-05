@@ -15,5 +15,11 @@ namespace Proyecto_Tickets.Controllers
             ViewData["nombre_user"] = UserSession.nombre_user;
             return View();
         }
+
+        public ActionResult SearchTickets()
+        {
+            ViewData["nombre_user"] = UserSession.nombre_user;
+            return View();
+        }
     }
 }

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "SearchTickets";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+}
+
+<main>
+    <div class="div_formulario">
+
+        <!-- aqui esta el primer slector de busqueda-->
+        <div class="div_borde">
+            <table class="table">
+                <tr>
+                    <td><label for="cliente"> Clientes   </label></td>
+                    <td>
+                        <select class="combo" name="cliente">
+                            <option value=""> Elija un cliente </option>
+                        </select>
+                    </td>
+                    <td><label for="usuario_cliente"> Usuarios del Cliente</label></td>
+                    <td>
+                        <select class="combo" name="usuario_cliente">
+                            <option value=""> Elija un usuario cliente </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5"><button class="button" type="button" name="button"> Buscar</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="div_borde">
+            <table class="table">
+                <tr>
+                    <td><label for="numero_seguimiento"> Numero del ticket </label> </td>
+                    <td><input type="number" name="numero_seguimiento" placeholder=" numero de seguimiento"></td>
+                </tr>
+                <table class="table">
+                    <tr>
+                        <td colspan="4"><button class="button" type="button" name="button"> Buscar </button></td>
+                    </tr>
+                </table>
+            </table>
+        </div>
+
+        <div class="div_borde">
+            <table class="table">
+                <tr>
+                    <td><label for="mtpendientes"> Mostrar Tickets Pendientes</label></td>
+                <tr>
+                    <td colspan="5"><button class="button" type="button" name="button"> Mostrar</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="div_borde">
+            <table class="table">
+                <tr>
+                    <td><label for="mtsinsolución"> Mostrar Tickets sin Solución</label></td>
+                <tr>
+                    <td colspan="5"><button class="button" type="button" name="button"> Mostrar</button></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</main>
+

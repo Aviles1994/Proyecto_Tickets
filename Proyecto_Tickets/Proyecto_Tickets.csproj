@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProblemasController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UsuariosClienteController.cs" />
     <Compile Include="Firters\VerifySession.cs" />
@@ -288,6 +289,8 @@
     <Content Include="Views\Clientes\SeeClientes.cshtml" />
     <Content Include="Views\UsuariosCliente\AddUsuario.cshtml" />
     <Content Include="Views\Tickets\Add_Ticket.cshtml" />
+    <Content Include="Views\Tickets\SearchTickets.cshtml" />
+    <Content Include="Views\Problemas\SearchProblemas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
