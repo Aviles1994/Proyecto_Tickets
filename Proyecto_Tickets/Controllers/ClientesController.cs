@@ -12,13 +12,36 @@ namespace Proyecto_Tickets.Controllers
 
         public ActionResult AddCliente() {
             ViewData["nombre_user"] = UserSession.nombre_user;
+            List<listEntidadFederativa> lst = null;
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                lst =
+                  (from d in db.Entidad_Federativa
+                   select new listEntidadFederativa
+                   {
+                       ID_Entidad = d.ID_Entidad_Federativa,
+                       Nombre = d.Nombre_Entidad_Federativa
+
+                   }).ToList();
+            }
+            List<SelectListItem> items = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre.ToString(),
+                    Value = d.ID_Entidad.ToString(),
+                    Selected = false
+                };
+            });
+            ViewBag.items = items;
+
             return View();
         }
 
         [HttpPost]
         public ActionResult AddCliente(AddClientesViewsModel model)
         {
-            llenarListaEntidadFederativa();
+            
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -135,30 +158,5 @@ namespace Proyecto_Tickets.Controllers
             ViewBag.items = items;
         }
 
-        public void llenarListaEntidadFederativa()
-        {
-            List<listEntidadFederativa> lst = null;
-            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
-            {
-                lst =
-                  (from d in db.Entidad_Federativa
-                   select new listEntidadFederativa
-                   {
-                       ID_Entidad = d.ID_Entidad_Federativa,
-                       Nombre = d.Nombre_Entidad_Federativa
-
-                   }).ToList();
-            }
-            List<SelectListItem> items = lst.ConvertAll(d =>
-            {
-                return new SelectListItem()
-                {
-                    Text = d.Nombre.ToString(),
-                    Value = d.ID_Entidad.ToString(),
-                    Selected = false
-                };
-            });
-            ViewBag.items = items;
-        }
     }
 }

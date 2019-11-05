@@ -10,7 +10,7 @@
 
     <div style="height:575px;" class="div_formulario">
 
-            @using (Html.BeginForm("CrearCliente", "Clientes", FormMethod.Post, new { role = "form" ,Id ="frm", @Class = " form" }))
+            @using (Html.BeginForm("AddCliente", "Clientes", FormMethod.Post, new { role = "form" ,Id ="frm", @Class = " form" }))
             {
 
           
@@ -58,7 +58,7 @@
         {
             e.preventDefault();
 
-            url = "@Url.Content("~/Clientes/CrearCliente")"
+            url = "@Url.Content("~/Clientes/AddCliente")"
             parametros = $(this).serialize();
 
             $.post(url, parametros, function (data) {
@@ -68,7 +68,7 @@
                     if (confirm('Deseas agregar un usuario al cliente')) {
                         document.location.href = "@Url.Content("~/UsuariosCliente/AddUsuario")"
                     } else {
-                        document.location.href = "@Url.Content("~/Clientes/CrearCliente")"
+                        document.location.href = "@Url.Content("~/Clientes/AddCliente")"
                     }
                 }
             })
