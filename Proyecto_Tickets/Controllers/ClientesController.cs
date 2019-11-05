@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Proyecto_Tickets.Models;
+using Proyecto_Tickets.Models.Viewslist;
 using Proyecto_Tickets.Models.ViewsModels;
 using Proyecto_Tickets.Models.TableViewsModels;
 namespace Proyecto_Tickets.Controllers
@@ -78,17 +79,44 @@ namespace Proyecto_Tickets.Controllers
 
         }
 
+        int idc;
+        public ActionResult SelecSearchCliente()
+        {
+            List<listCliente> lst = null;
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                lst =
+                  (from d in db.Cliente
+                   select new listCliente
+                   {
+                       id = d.ID_Cliente,
+                       name = d.Nombre_Cliente
+                   }).ToList();
+            }
+            List<SelectListItem> items = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.name.ToString(),
+                    Value = d.id.ToString(),
+                    Selected = false
+                };
+
+            });
+            ViewBag.items = items;
+            return View();
+        }
+
         public ActionResult SearchCliente()
         {
             ViewData["nombre_user"] = UserSession.nombre_user;
-            llenarlistaCliente();
 
-            List<SearchClienteTableViewModel> lst = null;
+            List<SearchClienteTableViewModel> lst;
             using (var dbs = new Sistema_TicketsEntities())
             {
-                listCliente list_name = new listCliente();
+                listCliente list_id = new listCliente();
                 lst = (from d in dbs.Cliente
-                       where d.Nombre_Cliente == list_name.namecliente
+                       where d.ID_Cliente == list_id.id
 
                        select new SearchClienteTableViewModel
                        {
@@ -132,31 +160,6 @@ namespace Proyecto_Tickets.Controllers
             return View(lst);
         }
 
-        public void llenarlistaCliente()
-        {
-            List<listCliente> lst = null;
-            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
-            {
-                lst =
-                  (from d in db.Cliente
-                   select new listCliente
-                   {
-                       id = d.ID_Cliente,
-                       namecliente = d.Nombre_Cliente
-                   }).ToList();
-            }
-            List<SelectListItem> items = lst.ConvertAll(d =>
-            {
-                return new SelectListItem()
-                {
-                    Text = d.namecliente.ToString(),
-                    Value = d.id.ToString(),
-                    Selected = false
-                };
-
-            });
-            ViewBag.items = items;
-        }
 
     }
 }

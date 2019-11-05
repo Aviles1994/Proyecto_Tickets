@@ -196,8 +196,8 @@
     </Compile>
     <Compile Include="Models\TableViewsModels\SearchClienteTableViewModel.cs" />
     <Compile Include="Models\TableViewsModels\SeeClientesTableViewModel.cs" />
-    <Compile Include="Models\ComboViewsModel\ListClienteViewModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVariablesGlobalesViewModel.cs" />
+    <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVarViewsModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\UserLoginVariablesGlobalesViewsModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\UserSessionVariablesGlobalesViewModel.cs" />
     <Compile Include="Models\Ticket.cs">
@@ -212,9 +212,10 @@
     <Compile Include="Models\Usuario_Cliente.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Viewslist\listCliente.cs" />
+    <Compile Include="Models\Viewslist\listEntidadFederativa.cs" />
     <Compile Include="Models\ViewsModels\AddTicketsViewModel.cs" />
     <Compile Include="Models\ViewsModels\AddClientesViewsModel.cs" />
-    <Compile Include="Models\ComboViewsModel\ListEntidad_federativaViewModel.cs" />
     <Compile Include="Models\ViewsModels\AddUsuariosClienteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -291,6 +292,7 @@
     <Content Include="Views\Tickets\Add_Ticket.cshtml" />
     <Content Include="Views\Tickets\SearchTickets.cshtml" />
     <Content Include="Views\Problemas\SearchProblemas.cshtml" />
+    <Content Include="Views\Clientes\SelecSearchCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

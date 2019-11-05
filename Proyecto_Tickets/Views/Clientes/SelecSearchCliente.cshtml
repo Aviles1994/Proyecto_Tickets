@@ -1,0 +1,62 @@
+﻿@model Proyecto_Tickets.Models.VariablesGlobalesViewsModels.ClientesVarViewsModel
+@{
+    ViewBag.Title = "SelecSearchCliente";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+}
+
+@using (Html.BeginForm("SearchCliente", "Clientes", new { role = "form", Id = "frm", @Class = " form" }))
+{
+    <div class="div_formulario">
+        <div class="div_borde">
+            <table class="table">
+                <tr>
+                    <td rowspan="3"> <label for="cliente"> Cliente </label></td>
+
+                    <td rowspan="3">
+                        @Html.DropDownList("", items, "Selecciona Cliente", new { @class = "form-control" })
+                    </td>
+
+                </tr>
+            </table>
+            <table class="table">
+                <tr>
+                    <td><button class="button" type="submit" name="button" value="BuscarCliente"> Buscar </button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+}
+
+
+
+
+@section scripts
+{
+    <script>
+    $(document).ready(function ()
+    {
+        $("#frm").submit(function (e)
+        {
+            e.preventDefault();
+
+            url = "@Url.Content("~/Clientes/SearchCliente")"
+            parametros = $(this).serialize();
+
+            $.post(url, parametros, function (data) {
+
+                if (data == "1") {
+                    document.location.href = "@Url.Content("~/Clientes/SearchCliente")"
+                } else
+                {
+                    alert(data)
+                }
+
+            })
+        })
+    })
+
+    </script>
+}
