@@ -194,8 +194,9 @@
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TableViewsModels\SeeClientesTableViewModel.cs" />
-    <Compile Include="Models\ListViewsModel\ListClienteTableViewModel.cs" />
+    <Compile Include="Models\ComboViewsModel\ListClienteTableViewModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVariablesGlobalesViewModel.cs" />
+    <Compile Include="Models\VariablesGlobalesViewsModels\UserLoginVariablesGlobalesViewsModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\UserSessionVariablesGlobalesViewModel.cs" />
     <Compile Include="Models\Ticket.cs">
       <DependentUpon>BD.tt</DependentUpon>
@@ -211,7 +212,7 @@
     </Compile>
     <Compile Include="Models\ViewsModels\AddTicketsViewModel.cs" />
     <Compile Include="Models\ViewsModels\AddClientesViewsModel.cs" />
-    <Compile Include="Models\ListViewsModel\ListEntidad_federativaViewModel.cs" />
+    <Compile Include="Models\ComboViewsModel\ListEntidad_federativaViewModel.cs" />
     <Compile Include="Models\ViewsModels\AddUsuariosClienteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

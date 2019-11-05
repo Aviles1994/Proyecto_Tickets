@@ -1,12 +1,10 @@
-﻿using Proyecto_Tickets.Models.TableViewsModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Proyecto_Tickets.Models;
 using Proyecto_Tickets.Models.ViewsModels;
-
+using Proyecto_Tickets.Models.TableViewsModels;
 namespace Proyecto_Tickets.Controllers
 {
     public class ClientesController : Controller
@@ -14,29 +12,6 @@ namespace Proyecto_Tickets.Controllers
 
         public ActionResult CrearCliente() {
             ViewData["nombre_user"] = UserSession.nombre_user;
-            List<Entidad_federativaViewModel> lst = null;
-            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
-            {
-                lst =
-                  (from d in db.Entidad_Federativa
-                   select new Entidad_federativaViewModel
-                   {
-                       ID_Entidad = d.ID_Entidad_Federativa,
-                       Nombre = d.Nombre_Entidad_Federativa
-
-                   }).ToList();
-            }
-            List<SelectListItem> items = lst.ConvertAll(d =>
-            {
-                return new SelectListItem()
-                {
-                    Text = d.Nombre.ToString(),
-                    Value = d.ID_Entidad.ToString(),
-                    Selected = false
-                };
-            });
-            ViewBag.items = items;
-
             return View();
         }
 
@@ -135,10 +110,10 @@ namespace Proyecto_Tickets.Controllers
 
         public void llenarlistaCliente()
         {
-            List<ObtenerClienteTableViewModel> lstt = null;
+            List<ListClienteTableViewModel> lst = null;
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
             {
-                lstt =
+                lst =
                   (from d in db.Cliente
                    select new ObtenerClienteTableViewModel
                    {
@@ -146,7 +121,7 @@ namespace Proyecto_Tickets.Controllers
                        namecliente = d.Nombre_Cliente
                    }).ToList();
             }
-            List<SelectListItem> items = lstt.ConvertAll(d =>
+            List<SelectListItem> items = lst.ConvertAll(d =>
             {
                 return new SelectListItem()
                 {
@@ -155,6 +130,32 @@ namespace Proyecto_Tickets.Controllers
                     Selected = false
                 };
 
+            });
+            ViewBag.items = items;
+        }
+
+        public void llenarListaEntidadFederativa()
+        {
+            List<Entidad_federativaViewModel> lst = null;
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                lst =
+                  (from d in db.Entidad_Federativa
+                   select new Entidad_federativaViewModel
+                   {
+                       ID_Entidad = d.ID_Entidad_Federativa,
+                       Nombre = d.Nombre_Entidad_Federativa
+
+                   }).ToList();
+            }
+            List<SelectListItem> items = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre.ToString(),
+                    Value = d.ID_Entidad.ToString(),
+                    Selected = false
+                };
             });
             ViewBag.items = items;
         }

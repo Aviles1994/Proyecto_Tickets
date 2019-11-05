@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Proyecto_Tickets.Models.VariablesGlobalesViewsModels;
 
 namespace Proyecto_Tickets.Controllers
 {
@@ -27,11 +28,11 @@ namespace Proyecto_Tickets.Controllers
                 return View(model);
             }
 
-            Usuarios_Login UL = new Usuarios_Login();
             Usuario_Cliente UC = new Usuario_Cliente();
             model.ULUltimoLogin = DateTime.Now;
             using (var db = new Sistema_TicketsEntities())
             {
+                Usuarios_Login UL = new Usuarios_Login();
                 UL.Nombre_Usuarios_Login = model.ULnombre;
                 UL.Contraseña = model.ULcontraseña;
                 UL.Estatus = model.ULestatus;
@@ -41,25 +42,9 @@ namespace Proyecto_Tickets.Controllers
 
                 db.Usuarios_Login.Add(UL);
                 db.SaveChanges();
+                UserLogin.id_User = UL.ID_Usuarios_Login;
             }
 
-
-            using (Sistema_TicketsEntities dba = new Sistema_TicketsEntities())
-            {
-                var lst = from d in dba.Usuarios_Login
-                          where d.Nombre_Usuarios_Login == model.ULnombre
-                          select d;
-                if (lst.Count() > 0)
-                {
-                    Usuarios_Login user = lst.First();
-                    model.ULid = user.ID_Usuarios_Login;
-                }
-                else
-                {
-                    return Content("Error");
-                }
-
-            }
 
             using (var dbc = new Sistema_TicketsEntities())
             {
@@ -71,7 +56,7 @@ namespace Proyecto_Tickets.Controllers
                 UC.Telefono_Oficina = model.UctelOf;
                 UC.Extension = model.UCext;
                 UC.ID_Cliente = Clientes.idCliente;
-                UC.ID_Usuarios_Login = model.ULid;
+                UC.ID_Usuarios_Login = UserLogin.id_User;
 
                 try
                 { 
