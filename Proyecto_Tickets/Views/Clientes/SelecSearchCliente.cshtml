@@ -15,7 +15,7 @@
                     <td rowspan="3"> <label for="cliente"> Cliente </label></td>
 
                     <td rowspan="3">
-                        @Html.DropDownList("", items, "Selecciona Cliente", new { @class = "form-control" })
+                        @Html.DropDownListFor(d=>d.idcliente, items, "Selecciona Cliente", new { @class = "form-control" })
                     </td>
 
                 </tr>

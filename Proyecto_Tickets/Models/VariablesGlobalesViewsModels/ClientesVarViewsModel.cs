@@ -7,8 +7,8 @@ namespace Proyecto_Tickets.Models.VariablesGlobalesViewsModels
 {
     public class ClientesVarViewsModel
     {
-        public static int idcliente {get; set;} 
-        public static string namec { get; set; }
+        public int idcliente {get; set;} 
+        public string namec { get; set; }
 
     }
 }

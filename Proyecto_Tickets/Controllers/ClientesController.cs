@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Proyecto_Tickets.Models;
 using Proyecto_Tickets.Models.Viewslist;
 using Proyecto_Tickets.Models.ViewsModels;
+using Proyecto_Tickets.Models.VariablesGlobalesViewsModels;
 using Proyecto_Tickets.Models.TableViewsModels;
 namespace Proyecto_Tickets.Controllers
 {
@@ -79,7 +80,7 @@ namespace Proyecto_Tickets.Controllers
 
         }
 
-        int idc;
+        
         public ActionResult SelecSearchCliente()
         {
             List<listCliente> lst = null;
@@ -107,16 +108,16 @@ namespace Proyecto_Tickets.Controllers
             return View();
         }
 
-        public ActionResult SearchCliente()
+        public ActionResult SearchCliente(ClientesVarViewsModel model)
         {
             ViewData["nombre_user"] = UserSession.nombre_user;
 
             List<SearchClienteTableViewModel> lst;
             using (var dbs = new Sistema_TicketsEntities())
             {
-                listCliente list_id = new listCliente();
+                ClientesVarViewsModel elegido = new ClientesVarViewsModel();
                 lst = (from d in dbs.Cliente
-                       where d.ID_Cliente == list_id.id
+                       where d.ID_Cliente == model.idcliente
 
                        select new SearchClienteTableViewModel
                        {

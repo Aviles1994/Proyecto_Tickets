@@ -6,38 +6,41 @@
 
 <main>
     <div class="div_formulario">
-      <table class="table_busqueda">
-        <tr>
-           <th>Id</th>
-             <th>Nombre de Cliente</th>
-              <th>Calle</th>
-               <th>Numero</th>
-               <th>Colinia</th>
-               <th>Telefono</th>
-               <th>Correro Electrónico</th>
-               <th>Entidad Federativa</th>
-               <th>Acción</th>
+        <table class="table_busqueda">
+            <tr>
+                <th>Id</th>
+                <th>Nombre de Cliente</th>
+                <th>Calle</th>
+                <th>Numero</th>
+                <th>Colinia</th>
+                <th>Telefono</th>
+                <th>Correro Electrónico</th>
+                <th>Entidad Federativa</th>
+                <th>Acción</th>
             </tr>
-                @foreach (var oElemento in Model)
-                {
-                    <tr>
-                        <td>@oElemento.idCliente</td>
-                        <td>@oElemento.NameCliente</td>
-                        <td>@oElemento.Calle</td>
-                        <td>@oElemento.numero</td>
-                        <td>@oElemento.colonia</td>
-                        <td>@oElemento.telefono</td>
-                        <td>@oElemento.correo_electronico</td>
-                        <td>@oElemento.etidad_feerativa</td>
-                        <td>
-                            <button class="btn_Acción" type="submit" name="button"> <img src="../Imagenes/add_user.png" alt=""></button>
-                            <button class="btn_Acción" type="submit" name="button"> <img src="../Imagenes/update_user.png" alt=""></button>
-                            <button class="btn_Acción" type="submit" name="button"> <img src="../Imagenes/contacts.png" alt=""> </button>
-                        </td>
-                    </tr>
-                }
+            @foreach (var oElemento in Model)
+            {
+                <tr>
+                    <td>@oElemento.idCliente</td>
+                    <td>@oElemento.NameCliente</td>
+                    <td>@oElemento.Calle</td>
+                    <td>@oElemento.numero</td>
+                    <td>@oElemento.colonia</td>
+                    <td>@oElemento.telefono</td>
+                    <td>@oElemento.correo_electronico</td>
+                    <td>@oElemento.etidad_feerativa</td>
 
-       </table>
+
+                    <td>
+                        <button class="btn_Acción" type="submit" name="button"> <img src="../Imagenes/add_user.png" alt=""></button>
+                        <button class="btn_Acción" type="submit" name="button"> <img src="../Imagenes/update_user.png" alt=""></button>
+                        <button class="btn_Acción" type="submit" name="button"> <img src="../Imagenes/contacts.png" alt=""></button>
+                    </td>
+
+
+                </tr>
+            }
+        </table>
      </div>
 </main>
 
