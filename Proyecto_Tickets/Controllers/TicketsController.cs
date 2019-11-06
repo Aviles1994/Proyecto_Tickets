@@ -79,5 +79,23 @@ namespace Proyecto_Tickets.Controllers
             ViewBag.items = items;
         }
 
+        public ActionResult llenarListaSistema()
+        {
+            List<SelectListItem> lst = new List<SelectListItem>();
+
+            using (Sistema_TicketsEntities db= new Sistema_TicketsEntities())
+            {
+                lst = (from d in db.Sistema
+                       select new SelectListItem
+                       {
+                           Value = d.ID_Sistema.ToString(),
+                           Text = d.Nombre_Sistema
+                       }).ToList();
+            }
+
+            return View(lst);
+        }
+
+
     }
 }
