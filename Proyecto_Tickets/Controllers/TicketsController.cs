@@ -27,31 +27,6 @@ namespace Proyecto_Tickets.Controllers
             return View();
         }
 
-        public void llenarListaServicios()
-        {
-            List<listServico> lst = null;
-            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
-            {
-                lst =
-                  (from d in db.Servicio
-                   select new listServico
-                   {
-                       idservicio = d.ID_Servicio,
-                       nameservicio = d.Nombre_Servicio
-                   }).ToList();
-            }
-            List<SelectListItem> items = lst.ConvertAll(d =>
-            {
-                return new SelectListItem()
-                {
-                    Text = d.nameservicio.ToString(),
-                    Value = d.idservicio.ToString(),
-                    Selected = false
-                };
-
-            });
-            ViewBag.items = items;
-        }
 
         public void llenarListaMedioContacto()
         {
@@ -66,7 +41,7 @@ namespace Proyecto_Tickets.Controllers
                        namemedio = d.Nombre_MedioC
                    }).ToList();
             }
-            List<SelectListItem> items = lst.ConvertAll(d =>
+            List<SelectListItem> items_MC = lst.ConvertAll(d =>
             {
                 return new SelectListItem()
                 {
@@ -76,7 +51,33 @@ namespace Proyecto_Tickets.Controllers
                 };
 
             });
-            ViewBag.items = items;
+            ViewBag.items_MC = items_MC;
+        }
+
+        public void llenarListaServicios()
+        {
+            List<listServico> lst = null;
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                lst =
+                  (from d in db.Servicio
+                   select new listServico
+                   {
+                       idservicio = d.ID_Servicio,
+                       nameservicio = d.Nombre_Servicio
+                   }).ToList();
+            }
+            List<SelectListItem> items_S = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.nameservicio.ToString(),
+                    Value = d.idservicio.ToString(),
+                    Selected = false
+                };
+
+            });
+            ViewBag.items_S = items_S;
         }
 
     }

@@ -4,7 +4,11 @@
     ViewBag.Title = "Add_Ticket";
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
 
-    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+    List<SelectListItem> items_MC = (List<SelectListItem>)ViewBag.items_MC;
+    List<SelectListItem> items_S = (List<SelectListItem>)ViewBag.items_S;
+
+
+
 }
 
 @using (Html.BeginForm("Add_Ticket", "Tickets", new { role = "form", Id = "frm", @Class = " form" }))
@@ -15,11 +19,11 @@
             <tr>
                 <td> <label for="medio_de_contacto"> Medio de Contacto</label> </td>
                 <td>
-                    @Html.DropDownListFor(d => d.ID_MedioContacto, items, "Selecciona el servicio", new { @class = "form-control" })
+                    @Html.DropDownListFor(d => d.ID_MedioContacto, items_MC, "Selecciona el Medio Contacto", new { @class = "form-control" })
                 </td>
                 <td> <label for="servicio"> Servicio</label> </td>
                 <td>
-                    @Html.DropDownListFor(d => d.ID_Servico, items, "Selecciona el servicio", new { @class = "form-control" })
+                    @Html.DropDownListFor(d => d.ID_Servico, items_S, "Selecciona el servicio", new { @class = "form-control" })
                 </td>
             </tr>
             <tr>
