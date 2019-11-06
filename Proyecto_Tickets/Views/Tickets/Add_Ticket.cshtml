@@ -1,24 +1,25 @@
-﻿
+﻿@model Proyecto_Tickets.Models.ViewsModels.AddTicketsViewModel
+
 @{
     ViewBag.Title = "Add_Ticket";
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
 }
 
+@using (Html.BeginForm("Add_Ticket", "Tickets", new { role = "form", Id = "frm", @Class = " form" }))
+{
 <main>
     <div class="div_formulario">
         <table class="table">
             <tr>
                 <td> <label for="medio_de_contacto"> Medio de Contacto</label> </td>
                 <td>
-                    <select class="combo" name="medio_de_contacto">
-                        <option> Elija un medio de contacto </option>
-                    </select>
+                    @Html.DropDownListFor(d => d.ID_MedioContacto, items, "Selecciona el servicio", new { @class = "form-control" })
                 </td>
                 <td> <label for="servicio"> Servicio</label> </td>
                 <td>
-                    <select class="combo" name="servicio">
-                        <option> Elija un servicio </option>
-                    </select>
+                    @Html.DropDownListFor(d => d.ID_Servico, items, "Selecciona el servicio", new { @class = "form-control" })
                 </td>
             </tr>
             <tr>
@@ -77,4 +78,4 @@
         </table>
     </div>
 </main>
-
+}
