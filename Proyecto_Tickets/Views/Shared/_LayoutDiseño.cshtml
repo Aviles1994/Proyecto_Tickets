@@ -15,41 +15,53 @@
 </head>
 <body class="body">
     <div>
-    <nav class="nav_horizontal">
-      <div class="div_horizontal">
-        <ul class="nav_horizontal" >
-          <li><img  class="imagen" src="../Imagenes/escudo1.png" alt=""> </li>
-          <li><a href="#">ESTRATEI Sistemas de informacion</a></li>
-          <li style="float:right"><a href="#">@ViewData["nombre_user"]</a></li>
-        </ul>
-      </div>
-    </nav>
+        <nav class="nav_horizontal">
+            <div class="div_horizontal">
+                <ul class="nav_horizontal">
+                    <li><img class="imagen" src="../Imagenes/escudo1.png" alt=""> </li>
+                    <li><a href="#">ESTRATEI Sistemas de informacion</a></li>
+                    <li style="float:right"><a href="#">@ViewData["nombre_user"]</a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
 
     <div>
         <aside class="aside_vertical">
             <div class="div_vertical">
-                <ul class="ul a">
-                    <li><a href="#"> Ticket </a></li>
-                    <ul>
-                        <li>@Html.ActionLink("Agregar Ticket", "Add_Ticket", "Tickets")</li>
-                        <li>@Html.ActionLink("Buscar Tickets", "SearchTickets", "Tickets")</li>
-                    </ul>
-                    <li><a href="#"> Agenda de Clientes </a></li>
-                    <ul>
-                        <li>@Html.ActionLink("Agregar Cliente", "AddCliente", "Clientes")</li>
-                        <li>@Html.ActionLink("Buscar Cliente", "SelecSearchCliente", "Clientes")</li>
-                        <li>@Html.ActionLink("Ver Clientes", "SeeClientes", "Clientes")</li>
-                    </ul>
-                    <li><a href="#"> Base de Conocimiento </a></li>
-                    <ul>
-                        <li>@Html.ActionLink("Consultar Problemas", "SearchProblemas", "Problemas")</li>
-                    </ul>
-                    <li><a href="#"> Consultas y Reportes </a></li>
-                    <ul>
-                        <li><a href="#"> Generar Consultas </a></li>
-                        <li><a href="#"> Genrar Estadisticas </a></li>
-                    </ul>
+                <ul class="ul a sidebar-menu">
+                    <li class="treeview">
+                        <a href="#"> Ticket </a>
+                        <ul class="treeview-menu">
+                            <li>@Html.ActionLink("Agregar Ticket", "Add_Ticket", "Tickets")</li>
+                            <li>@Html.ActionLink("Buscar Tickets", "SearchTickets", "Tickets")</li>
+                        </ul>
+                    </li>
+                    
+                    <li class="treeview">
+                        <a href="#"> Agenda de Clientes </a>
+                        <ul class="treeview-menu">
+                            <li>@Html.ActionLink("Agregar Cliente", "AddCliente", "Clientes")</li>
+                            <li>@Html.ActionLink("Buscar Cliente", "SelecSearchCliente", "Clientes")</li>
+                            <li>@Html.ActionLink("Ver Clientes", "SeeClientes", "Clientes")</li>
+                        </ul>
+                    </li>
+                    
+                    <li class="treeview">
+                        <a href="#"> Base de Conocimiento </a>
+                        <ul class="treeview-menu">
+                            <li>@Html.ActionLink("Consultar Problemas", "SearchProblemas", "Problemas")</li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#"> Consultas y Reportes </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"> Generar Consultas </a></li>
+                            <li><a href="#"> Genrar Estadisticas </a></li>
+                        </ul>
+                    </li>
+                    
                 </ul>
             </div>
         </aside>
@@ -61,6 +73,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/adminlte")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -3,48 +3,48 @@
     ViewBag.Title = "CrearCliente";
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
 
-    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+    List<SelectListItem> items= (List<SelectListItem>)ViewBag.items;
 }
 
 <main>
 
     <div style="height:575px;" class="div_formulario">
 
-            @using (Html.BeginForm("AddCliente", "Clientes", FormMethod.Post, new { role = "form" ,Id ="frm", @Class = " form" }))
-            {
+        @using (Html.BeginForm("AddCliente", "Clientes", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
+        {
 
-          
 
-                <table class="table">
-                    <tr>
-                        <td> <label for="nombre_del_cliente"> Nombre del Cliente</label></td>
-                        <td> @Html.TextBoxFor(d => d.Nombre_Cliente)</td>
-                        <td> <label for="calle"> Calle</label></td>
-                        <td> @Html.TextBoxFor(d => d.Calle)</td>
-                    </tr>
-                    <tr>
-                        <td> <label for="correo_electronico">Correo Electronico </label></td>
-                        <td> @Html.TextBoxFor(d => d.Correo_Electronico)</td>
-                        <td> <label for="numero">Numero</label></td>
-                        <td> @Html.TextBoxFor(d => d.Numero)</td>
-                    </tr>
-                    <tr>
-                        <td> <label for="telefono">Telefono</label></td>
-                        <td> @Html.TextBoxFor(d => d.Telefono)</td>
-                        <td> <label for="colonia"> Colonia</label></td>
-                        <td> @Html.TextBoxFor(d => d.Colonia)</td>
-                    </tr>
-                    <tr>
-                        <td> <label for="entidad_federativa">Entidad Federativa</label></td>
-                        <td>
-                            @Html.DropDownListFor(d => d.ID_Entidad_Federativa, items, "Selecciona Entidad Federativa", new { @class = "form-control" })
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4"> <button class="button" type="submit" value="Registrar"> Registrar</button></td>
-                    </tr>
-                </table>
-            }
+
+            <table class="table">
+                <tr>
+                    <td> <label for="nombre_del_cliente"> Nombre del Cliente</label></td>
+                    <td> @Html.TextBoxFor(d => d.Nombre_Cliente)</td>
+                    <td> <label for="calle"> Calle</label></td>
+                    <td> @Html.TextBoxFor(d => d.Calle)</td>
+                </tr>
+                <tr>
+                    <td> <label for="correo_electronico">Correo Electronico </label></td>
+                    <td> @Html.TextBoxFor(d => d.Correo_Electronico)</td>
+                    <td> <label for="numero">Numero</label></td>
+                    <td> @Html.TextBoxFor(d => d.Numero)</td>
+                </tr>
+                <tr>
+                    <td> <label for="telefono">Telefono</label></td>
+                    <td> @Html.TextBoxFor(d => d.Telefono)</td>
+                    <td> <label for="colonia"> Colonia</label></td>
+                    <td> @Html.TextBoxFor(d => d.Colonia)</td>
+                </tr>
+                <tr>
+                    <td> <label for="entidad_federativa">Entidad Federativa</label></td>
+                    <td>
+                        @Html.DropDownListFor(d => d.ID_Entidad_Federativa, items, "Selecciona Entidad Federativa", new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4"> <button class="button" type="submit" value="Registrar"> Registrar</button></td>
+                </tr>
+            </table>
+        }
     </div>
 
 </main>
@@ -52,8 +52,12 @@
 @section scripts
 {
     <script>
+        
+
     $(document).ready(function ()
     {
+        $('.sidebar-menu').tree();
+
         $("#frm").submit(function (e)
         {
             e.preventDefault();
@@ -77,4 +81,5 @@
 
     </script>
 }
+
 

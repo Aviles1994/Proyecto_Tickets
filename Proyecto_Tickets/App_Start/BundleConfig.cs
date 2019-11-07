@@ -25,6 +25,9 @@ namespace Proyecto_Tickets
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/adminlte").Include(
+                      "~/Scripts/adminlte.js"));
         }
     }
 }
