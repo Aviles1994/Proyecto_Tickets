@@ -17,12 +17,43 @@ namespace Proyecto_Tickets.Controllers
         public ActionResult Add_Ticket()
         {
             ViewData["nombre_user"] = UserSession.nombre_user;
-            llenarListaMedioContacto();
             llenarListaServicios();
-            llenarListaCliente();
+            llenarListaMedioContacto();
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                List<Cliente> clientelist = db.Cliente.ToList();
+                ViewBag.clientelist = new SelectList(clientelist, "ID_Cliente", "Nombre_Cliente");
+                
+            }
+
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                List<Sistema> sistemalist = db.Sistema.ToList();
+                ViewBag.sistemalist = new SelectList(sistemalist, "ID_Sistema", "Nombre_Sistema");
+
+            }
 
             return View();
         }
+
+        public JsonResult GetCliente(int ID_Cliente)
+        {
+
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Usuario_Cliente> userlist = db.Usuario_Cliente.Where(x => x.ID_Cliente == ID_Cliente).ToList();
+                return Json(userlist, JsonRequestBehavior.AllowGet);
+
+            }
+        }
+
+
+
+
+
+
+
 
         public ActionResult SearchTickets()
         {
@@ -82,59 +113,6 @@ namespace Proyecto_Tickets.Controllers
             });
             ViewBag.items_S = items_S;
         }
-
-        public void llenarListaCliente()
-        {
-            List<listCliente> lst = null;
-            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
-            {
-                lst =
-                  (from d in db.Cliente
-                   select new listCliente
-                   {
-                       id = d.ID_Cliente,
-                       name = d.Nombre_Cliente
-                   }).ToList();
-            }
-            List<SelectListItem> items_Cli = lst.ConvertAll(d =>
-            {
-                return new SelectListItem()
-                {
-                    Text = d.name.ToString(),
-                    Value = d.name.ToString(),
-                    Selected = false
-                };
-
-            });
-            ViewBag.items_Cli = items_Cli;
-        }
-
-        [HttpGet]
-        public JsonResult UsuarioCliente(int idCliente)
-        {
-            List<ElementJasonIintKey> lst = new List<ElementJasonIintKey>();
-            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
-            {
-                lst = (from d in db.Usuario_Cliente
-                       where d.ID_Cliente == idCliente
-                       select new ElementJasonIintKey
-                       {
-                           value = d.ID_Usuario_Cliente,
-                           Text = d.Nombre_UCliente
-                       }).ToList();
-            }
-            return Json(lst, JsonRequestBehavior.AllowGet);
-        }
-
-        public class ElementJasonIintKey
-        {
-            public int value { get; set; }
-            public string Text{ get; set; }
-        }
-
-
-
-
 
     }
 }

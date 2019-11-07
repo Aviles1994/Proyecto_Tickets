@@ -7,7 +7,7 @@ namespace Proyecto_Tickets.Models.Viewslist
 {
     public class listCliente
     {
-        public int id { get; set; }
+        public int id{ get; set; }
         public string name { get; set; }
     }
 }

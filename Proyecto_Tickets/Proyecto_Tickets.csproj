@@ -216,7 +216,6 @@
     <Compile Include="Models\Viewslist\listCliente.cs" />
     <Compile Include="Models\Viewslist\listEntidadFederativa.cs" />
     <Compile Include="Models\Viewslist\listServico.cs" />
-    <Compile Include="Models\Viewslist\listUsuarioCliente.cs" />
     <Compile Include="Models\ViewsModels\AddTicketsViewModel.cs" />
     <Compile Include="Models\ViewsModels\AddClientesViewsModel.cs" />
     <Compile Include="Models\ViewsModels\AddUsuariosClienteViewModel.cs" />

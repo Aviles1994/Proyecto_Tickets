@@ -3,11 +3,8 @@
 @{
     ViewBag.Title = "Add_Ticket";
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
-
-
     List<SelectListItem> items_MC = (List<SelectListItem>)ViewBag.items_MC;
-    List<SelectListItem> items_S = (List<SelectListItem>)ViewBag.item_S;
-    List<SelectListItem> items_Cli = (List<SelectListItem>)ViewBag.items_Cli;
+    List<SelectListItem> items_S = (List<SelectListItem>)ViewBag.items_S;
 }
 
 
@@ -23,7 +20,7 @@
                     </td>
                     <td> <label for="servicio"> Servicio</label> </td>
                     <td>
-                        @Html.DropDownListFor(d => d.ID_Servico, items_S, "Selecciona el servicio", new { @class = "form-control" })
+                        @Html.DropDownListFor(d => d.ID_Servico, items_S, "Selecciona el Servicio", new { @class = "form-control" })
                     </td>
                 </tr>
                 <tr>
@@ -41,21 +38,23 @@
             <tr>
                 <td> <label for="sistema">Sistema</label> </td>
                 <td>
+                    @if (ViewBag.sistemalist != null)
+                    {
+                        @Html.DropDownListFor(d => d.ID_Sistema, ViewBag.sistemalist as SelectList, "Seleccione un Sistema", new { @class = "form-control" })
+                    }
 
                 </td>
                 <td> <label for="modulo"> Modulo</label> </td>
                 <td>
-                    <select class="combo" name="modulo">
-                        <option value="0">Elija un modulo</option>
-                    </select>
+                    @Html.DropDownListFor(d => d.ID_Modulo, new SelectList(" "), "Seleccione un Modulo", new { @class = "form-control" })
+
                 </td>
             </tr>
             <tr>
                 <td> <label for="pantalla"> Pantalla </label> </td>
                 <td>
-                    <select class="combo" name="pantalla">
-                        <option value="0">Elija una pantalla </option>
-                    </select>
+                    @Html.DropDownListFor(d => d.ID_Pantalla, new SelectList(" "), "Seleccione un Pantalla", new { @class = "form-control" })
+
                 </td>
                 <td> <label for="versión"> Versión</label> </td>
                 <td> <input type="number" name="versión" value=""> </td>
@@ -63,13 +62,14 @@
             <tr>
                 <td> <label for="cliente"> Cliente</label> </td>
                 <td>
-                    @Html.DropDownListFor(d => d.ID_cliente, items_Cli, "Selecciona el Cliente", new { @class = "form-control" })
+                    @if (ViewBag.clientelist != null)
+                    {
+                        @Html.DropDownListFor(d=>d.ID_cliente, ViewBag.clientelist as SelectList, "Seleccione un cliente", new { @class="form-control"})
+                    }
                 </td>
                 <td> <label for="usuario_cliente">Usuario del Cliente</label> </td>
                 <td>
-                    <select class="combo" name="usuario_cliente">
-                        <option value="0">Elija un usuario del cliente</option>
-                    </select>
+                    @Html.DropDownListFor(d => d.ID_usuarioCliente, new SelectList(" "), "Seleccione un usuario", new { @class = "form-control" })
                 </td>
             </tr>
             <tr>
@@ -79,3 +79,20 @@
     </div>
 </main>
 }
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function ()
+        {
+            $('.sidebar-menu').tree();
+            $("#ID_cliente").change(function ()
+            {
+                $.get("/Tickets/GetCliente", { ID_Cliente: $(ID_cliente).val() }, function (data) {
+                    $("#ID_usuarioCliente").empty();
+                    $.each(data, function (index, row) {
+                        $("#ID_usuarioCliente").append("<option value='" + row.ID_Usuario_Cliente + "'>" + row.Nombre_UCliente+"</option>")
+                    });
+                });
+            });
+        });
+    </script>
