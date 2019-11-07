@@ -14,7 +14,7 @@ namespace Proyecto_Tickets.Controllers
     public class TicketsController : Controller
     {
         // GET: Tickets
-        public ActionResult Add_Ticket(AddTicketsViewModel model)
+        public ActionResult Add_Ticket()
         {
             ViewData["nombre_user"] = UserSession.nombre_user;
             llenarListaMedioContacto();
@@ -82,6 +82,7 @@ namespace Proyecto_Tickets.Controllers
             });
             ViewBag.items_S = items_S;
         }
+
         public void llenarListaCliente()
         {
             List<listCliente> lst = null;

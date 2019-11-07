@@ -4,7 +4,10 @@
     ViewBag.Title = "Add_Ticket";
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
 
-    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+
+    List<SelectListItem> items_MC = (List<SelectListItem>)ViewBag.items_MC;
+    List<SelectListItem> items_S = (List<SelectListItem>)ViewBag.item_S;
+    List<SelectListItem> items_Cli = (List<SelectListItem>)ViewBag.items_Cli;
 }
 
 
@@ -60,9 +63,7 @@
             <tr>
                 <td> <label for="cliente"> Cliente</label> </td>
                 <td>
-                    <select class="combo" name="cliente">
-                        <option value="0">Elija un cliente</option>
-                    </select>
+                    @Html.DropDownListFor(d => d.ID_cliente, items_Cli, "Selecciona el Cliente", new { @class = "form-control" })
                 </td>
                 <td> <label for="usuario_cliente">Usuario del Cliente</label> </td>
                 <td>
