@@ -17,6 +17,8 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public DateTime fechafin { get; set; }
         public DateTime horafin { get; set; }
         public int ID_Pantalla { get; set; }
+
+        public int ID_cliente { get; set; }
         public int ID_usuarioCliente{ get; set; }
         public int ID_MedioContacto { get; set; }
         public int ID_Servico { get; set; }

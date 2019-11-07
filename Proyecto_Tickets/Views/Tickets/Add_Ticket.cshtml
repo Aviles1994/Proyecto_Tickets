@@ -4,76 +4,115 @@
     ViewBag.Title = "Add_Ticket";
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
 
-    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+    List<SelectListItem> items_S = (List<SelectListItem>)ViewBag.items_S;
+    List<SelectListItem> items_MC = (List<SelectListItem>)ViewBag.items_MC;
+    List<SelectListItem> items_Cli = (List<SelectListItem>)ViewBag.items_Cli;
+    List<SelectListItem> items_UC = (List<SelectListItem>)ViewBag.items_UC;
 }
+
 
 @using (Html.BeginForm("Add_Ticket", "Tickets", new { role = "form", Id = "frm", @Class = " form" }))
 {
-<main>
-    <div class="div_formulario">
-        <table class="table">
-            <tr>
-                <td> <label for="medio_de_contacto"> Medio de Contacto</label> </td>
-                <td>
-                    @Html.DropDownListFor(d => d.ID_MedioContacto, items_MC, "Selecciona el Medio Contacto", new { @class = "form-control" })
-                </td>
-                <td> <label for="servicio"> Servicio</label> </td>
-                <td>
-                    @Html.DropDownListFor(d => d.ID_Servico, items_S, "Selecciona el servicio", new { @class = "form-control" })
-                </td>
-            </tr>
-            <tr>
-                <td> <label for="nombre_del_Problema"> Nombre del Problema </label> </td>
-                <td> <input type="text" name="nombre_del_problema"> </td>
-                <td> <label for="evidencia">Evidencia</label> </td>
-                <td> <button class="btn" type="button" name="button">Agregar imagen </button> </td>
-            </tr>
+    <main>
+        <div class="div_formulario">
+            <table class="table">
+                <tr>
+                    <td> <label for="medio_de_contacto"> Medio de Contacto</label> </td>
+                    <td>
+                        @Html.DropDownListFor(d => d.ID_MedioContacto, items_MC, "Selecciona el Medio Contacto", new { @class = "form-control" })
+                    </td>
+                    <td> <label for="servicio"> Servicio</label> </td>
+                    <td>
+                        @Html.DropDownListFor(d => d.ID_Servico, items_S, "Selecciona el servicio", new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td> <label for="nombre_del_Problema"> Nombre del Problema </label> </td>
+                    <td> <input type="text" name="nombre_del_problema"> </td>
+                    <td> <label for="evidencia">Evidencia</label> </td>
+                    <td> <button class="btn" type="button" name="button">Agregar imagen </button> </td>
+                </tr>
 
-            <tr>
-                <td> <label for="descripcion_problema">Descripción del Problema</label> </td>
-                <td colspan="3"> <textarea name="descripcion_problema" rows="8" cols="100">Escriba Aqui </textarea> </td>
-            </tr>
+                <tr>
+                    <td> <label for="descripcion_problema">Descripción del Problema</label> </td>
+                    <td colspan="3"> <textarea name="descripcion_problema" rows="8" cols="100">Escriba Aqui </textarea> </td>
+                </tr>
 
-            <tr>
-                <td> <label for="sistema">Sistema</label> </td>
-                <td>
-
-                </td>
-                <td> <label for="modulo"> Modulo</label> </td>
-                <td>
-                    <select class="combo" name="modulo">
-                        <option value="0">Elija un modulo</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td> <label for="pantalla"> Pantalla </label> </td>
-                <td>
-                    <select class="combo" name="pantalla">
-                        <option value="0">Elija una pantalla </option>
-                    </select>
-                </td>
-                <td> <label for="versión"> Versión</label> </td>
-                <td> <input type="number" name="versión" value=""> </td>
-            </tr>
-            <tr>
-                <td> <label for="cliente"> Cliente</label> </td>
-                <td>
-                    <select class="combo" name="cliente">
-                        <option value="0">Elija un cliente</option>
-                    </select>
-                </td>
-                <td> <label for="usuario_cliente">Usuario del Cliente</label> </td>
-                <td>
-                    <select class="combo" name="usuario_cliente">
-                        <option value="0">Elija un usuario del cliente</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4"><button class="button" type="button" name="registrar">Registrar</button></td>
-            </tr>
-        </table>
-    </div>
-</main>
+                <tr>
+                    <td> <label for="sistema">Sistema</label> </td>
+                    <td></td>
+                    <td> <label for="modulo"> Modulo</label> </td>
+                    <td>
+                        <select class="combo" name="modulo">
+                            <option value="0">Elija un modulo</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <label for="pantalla"> Pantalla </label> </td>
+                    <td>
+                        <select class="combo" name="pantalla">
+                            <option value="0">Elija una pantalla </option>
+                        </select>
+                    </td>
+                    <td> <label for="versión"> Versión</label> </td>
+                    <td> <input type="number" name="versión" value=""> </td>
+                </tr>
+                <tr>
+                    <td> <label for="cliente"> Cliente</label> </td>
+                    <td>
+                        @Html.DropDownListFor(d=>d.ID_cliente, items_Cli, "Selecciona el Cliente",new { @class = "form-control", id="idcliente"})
+                    </td>
+                    <td> <label for="usuario_cliente">Usuario del Cliente</label> </td>
+                    <td>
+                        <select id="cliente" >
+                            
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4"><button class="button" type="button" name="registrar">Registrar</button></td>
+                </tr>
+            </table>
+        </div>
+    </main>
 }
+
+    <script>
+
+        var cboUserCliete = document.getElementById("idcliente");
+        cboUserCliete.addEventListener("Change", Refresh)
+        Refresh();
+        function Refresh()
+        {
+            fetch("@Url.Content("~/Tickets/UsuarioCliente")" + "?cliente" + cboUserCliete.nodeValue)
+                .then(function (result) {
+                    if (result.ok) {
+                        return result.json();
+                    }
+                })
+                .then(function (data)
+                {
+                    console.log(data);
+                    cbo = document.getElementById("User");
+                    cbo.innerHtml = "";
+                    data.forEach(function (element)
+                    {
+                        let.opt = document.createElement("option");
+                        opt.appendChild(document.createTextNode(element.Text));
+                        opt.value = element.value;
+
+                        cbo.appendChild(opt);
+                    })
+                }
+                    )
+        }
+
+
+    </script>
+
+
+
+
+
+
