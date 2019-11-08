@@ -48,7 +48,29 @@ namespace Proyecto_Tickets.Controllers
             }
         }
 
+        public JsonResult GetSistema(int ID_Sistema)
+        {
 
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Modulos> moduloslist = db.Modulos.Where(x => x.ID_Sistema == ID_Sistema).ToList();
+                return Json(moduloslist, JsonRequestBehavior.AllowGet);
+
+            }
+        }
+
+        public JsonResult GetModulo(int ID_Modulo)
+        {
+
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Pantallas> pantallalist = db.Pantallas.Where(x => x.ID_Modulo == ID_Modulo).ToList();
+                return Json(pantallalist, JsonRequestBehavior.AllowGet);
+
+            }
+        }
 
 
 

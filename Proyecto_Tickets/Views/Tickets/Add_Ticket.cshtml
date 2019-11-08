@@ -95,4 +95,27 @@
                 });
             });
         });
+
+        $(document).ready(function () {
+            $("#ID_Sistema").change(function () {
+                $.get("/Tickets/GetSistema", { ID_Sistema: $(ID_Sistema).val() }, function (data) {
+                    $("#ID_Modulo").empty();
+                    $.each(data, function (index, row) {
+                        $("#ID_Modulo").append("<option value='" + row.ID_Modulo + "'>" + row.Nombre_Modulo + "</option>")
+                    });
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $("#ID_Modulo").change(function () {
+                $.get("/Tickets/GetModulo", { ID_Modulo: $(ID_Modulo).val() }, function (data) {
+                    $("#ID_Pantalla").empty();
+                    $.each(data, function (index, row) {
+                        $("#ID_Pantalla").append("<option value='" + row.ID_Pantalla + "'>" + row.Nombre_Pantalla + "</option>")
+                    });
+                });
+            });
+        });
+ 
     </script>
