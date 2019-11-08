@@ -14,28 +14,29 @@ namespace Proyecto_Tickets.Controllers
 
         public ActionResult AddCliente() {
             ViewData["nombre_user"] = UserSession.nombre_user;
-            List<listEntidadFederativa> lst = null;
-            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
-            {
-                lst =
-                  (from d in db.Entidad_Federativa
-                   select new listEntidadFederativa
-                   {
-                       ID_Entidad = d.ID_Entidad_Federativa,
-                       Nombre = d.Nombre_Entidad_Federativa
-
-                   }).ToList();
-            }
-            List<SelectListItem> items = lst.ConvertAll(d =>
+            Sistema_TicketsEntities db = new Sistema_TicketsEntities();
+            List<Entidad_Federativa> entidadlist = db.Entidad_Federativa.ToList();
+         
+            ViewBag.entidadlist = new SelectList(entidadlist, "ID_Entidad_Federativa", "Nombre_Entidad_Federativa");
+            List<SelectListItem> items_EF = entidadlist.ConvertAll(d =>
             {
                 return new SelectListItem()
                 {
-                    Text = d.Nombre.ToString(),
-                    Value = d.ID_Entidad.ToString(),
+                    Text = d.Nombre_Entidad_Federativa.ToString(),
+                    Value = d.ID_Entidad_Federativa.ToString(),
                     Selected = false
                 };
+
             });
-            ViewBag.items = items;
+            ViewBag.items_EF = items_EF;
+
+
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                List<Sistema> sistemalist = db.Sistema.ToList();
+                ViewBag.sistemalist = new SelectList(sistemalist, "ID_Sistema", "Nombre_Sistema");
+
+            }
 
             return View();
         }

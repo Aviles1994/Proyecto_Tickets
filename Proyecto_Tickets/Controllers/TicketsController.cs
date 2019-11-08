@@ -19,12 +19,14 @@ namespace Proyecto_Tickets.Controllers
             ViewData["nombre_user"] = UserSession.nombre_user;
             llenarListaServicios();
             llenarListaMedioContacto();
+            
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
             {
                 List<Cliente> clientelist = db.Cliente.ToList();
                 ViewBag.clientelist = new SelectList(clientelist, "ID_Cliente", "Nombre_Cliente");
                 
             }
+
 
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
             {
@@ -72,10 +74,7 @@ namespace Proyecto_Tickets.Controllers
             }
         }
 
-
-
-
-
+        
 
         public ActionResult SearchTickets()
         {

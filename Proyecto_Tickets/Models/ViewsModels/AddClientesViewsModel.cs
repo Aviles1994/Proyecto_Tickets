@@ -17,5 +17,11 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string Telefono { get; set; }
         public string Correo_Electronico { get; set; }
         public int  ID_Entidad_Federativa { get; set; }
+
+        public int ID_Sistema { get; set; }
+        public DateTime fecha_contrato { get; set; }
+        public string version_sis { get; set; }
+        public string  vigencia { get; set; }
+
     }
 }
