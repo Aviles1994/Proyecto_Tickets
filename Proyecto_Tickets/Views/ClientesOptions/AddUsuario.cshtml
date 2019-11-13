@@ -1,0 +1,91 @@
+﻿@model Proyecto_Tickets.Models.ViewsModels.AddUsuariosClienteViewModel
+
+@{
+    ViewBag.Title = "AddUsuario";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+}
+
+
+<main>
+    <div class="div_formulario">
+
+        @using (Html.BeginForm("AddUsuario", "ClientesOptions", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
+        {
+            <table class="table">
+                <tr>
+                    <td> <label for="nombre_del_usuario">Nombre del Usuario </label></td>
+                    <td> @Html.TextBoxFor(d => d.UCnombre) </td>
+                    <td> <label for="usuario_clave"> Usuario Clave</label></td>
+                    <th> @Html.CheckBoxFor(d => d.UcusuarioClave) Si</th>
+                </tr>
+                <tr>
+                    <td> <label for="apellido_paterno"> Apellido Paterno</label></td>
+                    <td> @Html.TextBoxFor(d => d.UCapellidoP)</td>
+                    <td> <label for="estatus"> Estatus</label> </td>
+                    <th> @Html.CheckBoxFor(d => d.ULestatus) Activo</th>
+                </tr>
+                <tr>
+                    <td> <label for="apellido_materno"> Apellido Materno</label></td>
+                    <td> @Html.TextBoxFor(d => d.UCapellidoM)</td>
+                    <td> <label for="contraseña"> Contraseña</label></td>
+                    <td> @Html.TextBoxFor(d => d.ULcontraseña)</td>
+                </tr>
+                <tr>
+                    <td> <label for="nombre_de_login"> Nombre de Login</label></td>
+                    <td> @Html.TextBoxFor(d => d.ULnombre) </td>
+                    <td> <label for="correo_electronico"> Correo Eléctronico</label></td>
+                    <td> @Html.TextBoxFor(d => d.ULCcorreo_electronico)</td>
+
+                </tr>
+                <tr>
+                    <td> <label for="celular"> Celular</label></td>
+                    <td> @Html.TextBoxFor(d => d.UCcelular)</td>
+
+                </tr>
+                <tr>
+                    <td> <label for="telefono_oficina"> Teléfono de Oficina </label></td>
+                    <td> @Html.TextBoxFor(d => d.UctelOf)</td>
+                </tr>
+                <tr>
+                    <td> <label for="extención"> Extención </label></td>
+                    <td> @Html.TextBoxFor(d => d.UCext) </td>
+                </tr>
+                <tr>
+                    <td colspan="4"> <button class="button" type="submit" name="button"> Registrar </button></td>
+                </tr>
+            </table>
+        }
+    </div>
+</main>
+scripts
+{
+    <script>
+
+
+    $(document).ready(function ()
+    {
+        $('.sidebar-menu').tree();
+
+        $("#frm").submit(function (e)
+        {
+            e.preventDefault();
+
+            url = "@Url.Content("~/ClientesOptions/AddUsuario")"
+            parametros = $(this).serialize();
+
+            $.post(url, parametros, function (data) {
+
+                if (data =="1")
+                {
+                    if (confirm('Deseas agregar un usuario nuevo')) {
+                        document.location.href = "@Url.Content("~/ClientesOptions/AddUsuario")"
+                    } else {
+                        document.location.href = "@Url.Content("~/Clientes/AddCliente")"
+                    }
+                }
+            })
+        })
+    })
+
+    </script>
+}

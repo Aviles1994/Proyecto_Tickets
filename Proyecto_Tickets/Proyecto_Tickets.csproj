@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ClientesOptionsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProblemasController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
@@ -301,7 +302,8 @@
     <Content Include="Views\Tickets\SearchTickets.cshtml" />
     <Content Include="Views\Problemas\SearchProblemas.cshtml" />
     <Content Include="Views\Clientes\SelecSearchCliente.cshtml" />
-    <Content Include="Views\UsuariosCliente\SeeUsuario.cshtml" />
+    <Content Include="Views\ClientesOptions\SeeUsuario.cshtml" />
+    <Content Include="Views\ClientesOptions\AddUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

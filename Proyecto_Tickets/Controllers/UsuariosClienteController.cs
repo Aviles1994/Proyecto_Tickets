@@ -76,37 +76,7 @@ namespace Proyecto_Tickets.Controllers
         }
         
 
-        [HttpGet]
-        public ActionResult SeeUsuario(SeeUsuariosClienteTableViewModel model)
-        {
-            ViewData["nombre_user"] = UserSession.nombre_user;
-
-   
-                 
-                List<SeeUsuariosClienteTableViewModel> lst = null;
-                using (var dbc = new Sistema_TicketsEntities())
-                {
-                    lst = (from d in dbc.Usuario_Cliente
-                           where d.ID_Cliente == model.idCliente 
-                           
-                           select new SeeUsuariosClienteTableViewModel
-                           {
-                               iduserC= d.ID_Usuario_Cliente,
-                               NombreC = d.Nombre_UCliente,
-                               ApellidoP = d.Apellido_PaternoUCliente,
-                               ApellidoM = d.Apellido_MaternoUCliente,
-                               UseClave = d.Usuario_Clave,
-                               Celular = d.Celular,
-                               TelOfi = d.Telefono_Oficina,
-                               Extencion = d.Extension,
-                               idCliente=d.ID_Cliente,
-                               iduser=d.ID_Usuarios_Login
-                           }).ToList();
-
-                }
-                return View(lst);
-
-         }
+        
 
     }
 }

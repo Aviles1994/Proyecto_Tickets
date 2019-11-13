@@ -1,0 +1,43 @@
+﻿@model  List<Proyecto_Tickets.Models.TableViewsModels.SeeUsuariosClienteTableViewModel>
+@{
+    ViewBag.Title = "SeeUsuario";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+}
+<main>
+    <div class="div_formulario">
+        <table class="table_busqueda">
+            <tr>
+                <th>Nombre de Usuario</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Usuario Clave</th>
+                <th>Celular</th>
+                <th>Telefono Oficina</th>
+                <th>Extención</th>
+                <th>Cliente</th>
+                <th>Usuario Login</th>
+                <th>Acción</th>
+            </tr>
+            @foreach (var element in Model)
+            {
+                <tr>
+                    <td>@element.NombreC</td>
+                    <td>@element.ApellidoP</td>
+                    <td>@element.ApellidoM</td>
+                    <td>@element.UseClave</td>
+                    <td>@element.Celular</td>
+                    <td>@element.TelOfi</td>
+                    <td>@element.Extencion</td>
+                    <td>@element.idCliente</td>
+                    <td>@element.iduser</td>
+                    <td style="width:250px;">
+                        <button class="btn_Acción" type="submit"><img src="~/Imagenes/view_more.png"></button>
+                        <button class="btn_Acción" type="submit"><img src="~/Imagenes/update_user.png"></button>
+                        <button class="btn_Acción" type="submit"><img src="~/Imagenes/trash.png"></button>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</main>
