@@ -76,7 +76,7 @@ namespace Proyecto_Tickets.Controllers
         }
         
 
-
+        [HttpGet]
         public ActionResult SeeUsuario(SeeUsuariosClienteTableViewModel model)
         {
             ViewData["nombre_user"] = UserSession.nombre_user;
