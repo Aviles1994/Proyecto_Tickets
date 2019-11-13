@@ -19,13 +19,7 @@ namespace Proyecto_Tickets.Controllers
             ViewData["nombre_user"] = UserSession.nombre_user;
             llenarListaServicios();
             llenarListaMedioContacto();
-            
-            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
-            {
-                List<Cliente> clientelist = db.Cliente.ToList();
-                ViewBag.clientelist = new SelectList(clientelist, "ID_Cliente", "Nombre_Cliente");
-                
-            }
+            llenarCliente();
 
 
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
@@ -41,13 +35,30 @@ namespace Proyecto_Tickets.Controllers
         public JsonResult GetCliente(int ID_Cliente)
         {
 
+            List<listUserCliente> lst = null;
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                List<Usuario_Cliente> userlist = db.Usuario_Cliente.Where(x => x.ID_Cliente == ID_Cliente).ToList();
-                return Json(userlist, JsonRequestBehavior.AllowGet);
-
+                lst =
+                  (from d in db.Usuario_Cliente
+                   where d.ID_Cliente==ID_Cliente
+                   select new listUserCliente
+                   {
+                       idUserCliente= d.ID_Usuario_Cliente,
+                       nameUserCliente = d.Nombre_UCliente
+                   }).ToList();
             }
+            List<SelectListItem> items_UC = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.nameUserCliente.ToString(),
+                    Value = d.idUserCliente.ToString(),
+                    Selected = false
+                };
+
+            });
+            return Json(items_UC, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetSistema(int ID_Sistema)
@@ -80,6 +91,32 @@ namespace Proyecto_Tickets.Controllers
         {
             ViewData["nombre_user"] = UserSession.nombre_user;
             return View();
+        }
+
+        public void llenarCliente()
+        {
+            List<listCliente> lst = null;
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                lst =
+                  (from d in db.Cliente
+                   select new listCliente
+                   {
+                       id = d.ID_Cliente,
+                       name = d.Nombre_Cliente
+                   }).ToList();
+            }
+            List<SelectListItem> items_Cli = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.name.ToString(),
+                    Value = d.id.ToString(),
+                    Selected = false
+                };
+
+            });
+            ViewBag.items_Cli = items_Cli;
         }
 
 

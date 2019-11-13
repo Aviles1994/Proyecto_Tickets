@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
     List<SelectListItem> items_MC = (List<SelectListItem>)ViewBag.items_MC;
     List<SelectListItem> items_S = (List<SelectListItem>)ViewBag.items_S;
+    List<SelectListItem> items_Cli = (List<SelectListItem>)ViewBag.items_Cli;
+    List<SelectListItem> items_UC = (List<SelectListItem>)ViewBag.items_UC;
 }
 
 
@@ -62,14 +64,14 @@
             <tr>
                 <td> <label for="cliente"> Cliente</label> </td>
                 <td>
-                    @if (ViewBag.clientelist != null)
+                    @if (ViewBag.items_Cli != null)
                     {
-                        @Html.DropDownListFor(d=>d.ID_cliente, ViewBag.clientelist as SelectList, "Seleccione un cliente", new { @class="form-control"})
+                        @Html.DropDownListFor(d=>d.ID_cliente, items_Cli, "Seleccione un cliente", new { @class="form-control"})
                     }
                 </td>
                 <td> <label for="usuario_cliente">Usuario del Cliente</label> </td>
                 <td>
-                    @Html.DropDownListFor(d => d.ID_usuarioCliente, new SelectList(" "), "Seleccione un usuario", new { @class = "form-control" })
+                    @Html.DropDownListFor(d => d.ID_usuarioCliente,new SelectList(" "),"Seleccione un usuario", new { @class = "form-control" })
                 </td>
             </tr>
             <tr>
@@ -89,8 +91,8 @@
             {
                 $.get("/Tickets/GetCliente", { ID_Cliente: $(ID_cliente).val() }, function (data) {
                     $("#ID_usuarioCliente").empty();
-                    $.each(data, function (index, row) {
-                        $("#ID_usuarioCliente").append("<option value='" + row.ID_Usuario_Cliente + "'>" + row.Nombre_UCliente+"</option>")
+                    $.each(data, function (i, item) {
+                        $("#ID_usuarioCliente").append("<option value='" + item.ID_Usuario_Cliente + "'>" + item.Nombre_UCliente + "</option>")
                     });
                 });
             });

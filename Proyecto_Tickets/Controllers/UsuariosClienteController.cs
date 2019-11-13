@@ -28,7 +28,7 @@ namespace Proyecto_Tickets.Controllers
                 return View(model);
             }
 
-            Usuario_Cliente UC = new Usuario_Cliente();
+            
             model.ULUltimoLogin = DateTime.Now;
             using (var db = new Sistema_TicketsEntities())
             {
@@ -48,6 +48,7 @@ namespace Proyecto_Tickets.Controllers
 
             using (var dbc = new Sistema_TicketsEntities())
             {
+                Usuario_Cliente UC = new Usuario_Cliente();
                 UC.Nombre_UCliente = model.UCnombre;
                 UC.Apellido_PaternoUCliente = model.UCapellidoP;
                 UC.Apellido_MaternoUCliente = model.UCapellidoM;
@@ -73,5 +74,40 @@ namespace Proyecto_Tickets.Controllers
             return Content("1");
 
         }
+        
+
+
+        public ActionResult SeeUsuario(SeeUsuariosClienteTableViewModel model)
+        {
+            ViewData["nombre_user"] = UserSession.nombre_user;
+
+   
+                 
+                List<SeeUsuariosClienteTableViewModel> lst = null;
+                using (var dbc = new Sistema_TicketsEntities())
+                {
+                    lst = (from d in dbc.Usuario_Cliente
+                           where d.ID_Cliente == model.idCliente 
+                           
+                           select new SeeUsuariosClienteTableViewModel
+                           {
+                               iduserC= d.ID_Usuario_Cliente,
+                               NombreC = d.Nombre_UCliente,
+                               ApellidoP = d.Apellido_PaternoUCliente,
+                               ApellidoM = d.Apellido_MaternoUCliente,
+                               UseClave = d.Usuario_Clave,
+                               Celular = d.Celular,
+                               TelOfi = d.Telefono_Oficina,
+                               Extencion = d.Extension,
+                               idCliente=d.ID_Cliente,
+                               iduser=d.ID_Usuarios_Login
+                           }).ToList();
+
+                }
+                return View(lst);
+
+         }
+
     }
 }
+

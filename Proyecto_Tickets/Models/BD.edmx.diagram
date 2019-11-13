@@ -21,10 +21,8 @@
         <EntityTypeShape EntityType="Sistema_TicketsModel.Solucion" Width="1.5" PointX="12.75" PointY="8.25" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Ticket" Width="1.5" PointX="7.5" PointY="6.625" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Tipo_Usuarios" Width="1.5" PointX="0.75" PointY="17.375" />
-        <EntityTypeShape EntityType="Sistema_TicketsModel.Usuario_Cliente" Width="1.5" PointX="5.25" PointY="16.375" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Usuarios_Login" Width="1.5" PointX="3" PointY="16.625" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Cliente_Sistema_Cliente" />
-        <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Cliente_Usuario_Cliente" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Entidad_Federativa_Cliente" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Departamento_Personal_Estratei" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Estado_Ticket" />
@@ -40,8 +38,10 @@
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Servicio_Ticket" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Sistema_Sistema_Cliente" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Ticket_Solucion" />
-        <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Usuario_Cliente_Ticket" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Tipo_Usuario_Usuarios_Login" />
+        <EntityTypeShape EntityType="Sistema_TicketsModel.Usuario_Cliente" Width="1.5" PointX="8.25" PointY="13.375" />
+        <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Cliente_Usuario_Cliente" />
+        <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Usuario_Cliente_Ticket" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Usuarios_Login_Usuario_liente" />
       </Diagram>
     </edmx:Diagrams>

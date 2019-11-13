@@ -14,30 +14,8 @@ namespace Proyecto_Tickets.Controllers
 
         public ActionResult AddCliente() {
             ViewData["nombre_user"] = UserSession.nombre_user;
-            Sistema_TicketsEntities db = new Sistema_TicketsEntities();
-            List<Entidad_Federativa> entidadlist = db.Entidad_Federativa.ToList();
-         
-            ViewBag.entidadlist = new SelectList(entidadlist, "ID_Entidad_Federativa", "Nombre_Entidad_Federativa");
-            List<SelectListItem> items_EF = entidadlist.ConvertAll(d =>
-            {
-                return new SelectListItem()
-                {
-                    Text = d.Nombre_Entidad_Federativa.ToString(),
-                    Value = d.ID_Entidad_Federativa.ToString(),
-                    Selected = false
-                };
-
-            });
-            ViewBag.items_EF = items_EF;
-
-
-            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
-            {
-                List<Sistema> sistemalist = db.Sistema.ToList();
-                ViewBag.sistemalist = new SelectList(sistemalist, "ID_Sistema", "Nombre_Sistema");
-
-            }
-
+            llenarEntidadFederativa();
+            llenarSistema();
             return View();
         }
 
@@ -60,9 +38,6 @@ namespace Proyecto_Tickets.Controllers
                 clientes.Telefono = model.Telefono;
                 clientes.Correo_Electronico = model.Correo_Electronico;
                 clientes.ID_Entidad_Federativa = model.ID_Entidad_Federativa;
-
-
-
                 try
                 {
                     db.Cliente.Add(clientes);
@@ -76,8 +51,20 @@ namespace Proyecto_Tickets.Controllers
                 }
             }
 
+            using (var dbSistema = new Sistema_TicketsEntities())
+            {
+                Sistema_Cliente sis_Cliente = new Sistema_Cliente();
+                sis_Cliente.ID_Sistema = model.ID_Sistema;
+                sis_Cliente.ID_Cliente = Clientes.idCliente;
+                sis_Cliente.Version_Cliente = model.version_sis;
+                sis_Cliente.Vigencia = model.vigencia;
+                sis_Cliente.Fecha_Contrato = model.fecha_contrato;
 
-            return Content("1");
+                dbSistema.Sistema_Cliente.Add(sis_Cliente);
+                dbSistema.SaveChanges();
+
+            }
+        return Content("1");
 
         }
 
@@ -161,6 +148,60 @@ namespace Proyecto_Tickets.Controllers
             }
             return View(lst);
         }
+
+
+        public void llenarEntidadFederativa()
+        {
+            List<listEntidadFederativa> lst = null;
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                lst =
+                  (from d in db.Entidad_Federativa
+                   select new listEntidadFederativa
+                   {
+                       ID_Entidad = d.ID_Entidad_Federativa,
+                       Nombre = d.Nombre_Entidad_Federativa
+                   }).ToList();
+            }
+            List<SelectListItem> items_EF = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre.ToString(),
+                    Value = d.ID_Entidad.ToString(),
+                    Selected = false
+                };
+
+            });
+            ViewBag.items_EF = items_EF;
+        }
+
+        public void llenarSistema()
+        {
+            List<lisSistema> lst = null;
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                lst =
+                  (from d in db.Sistema
+                   select new lisSistema
+                   {
+                       id_Sistema = d.ID_Sistema,
+                       name_Sistema = d.Nombre_Sistema
+                   }).ToList();
+            }
+            List<SelectListItem> items_Sis = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.name_Sistema.ToString(),
+                    Value = d.id_Sistema.ToString(),
+                    Selected = false
+                };
+
+            });
+            ViewBag.items_Sis = items_Sis;
+        }
+
 
 
     }

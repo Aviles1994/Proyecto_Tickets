@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
 
     List<SelectListItem> items_EF = (List<SelectListItem>)ViewBag.items_EF;
+    List<SelectListItem> items_Sis = (List<SelectListItem>)ViewBag.items_Sis;
 
 }
 
@@ -43,7 +44,7 @@
 
                 <td> <label for="entidad_federativa">Sistema</label></td>
                 <td>
-                    @Html.DropDownListFor(d => d.ID_Sistema, ViewBag.sistemalist as SelectList, "Seleccione un Sistema", new { @class = "form-control" })
+                    @Html.DropDownListFor(d => d.ID_Sistema, items_Sis, "Seleccione un Sistema", new { @class = "form-control" })
                 </td>
             </tr>
             <tr>
@@ -53,8 +54,8 @@
                 <td> @Html.TextBoxFor(d => d.fecha_contrato)</td>
             </tr>
             <tr>
-                <td> <label for="version_Cliente">Vigencia</label></td>
-                <td> @Html.TextBoxFor(d => d.fecha_contrato)</td>
+                <td> <label for="vigecia">Vigencia</label></td>
+                <td> @Html.TextBoxFor(d => d.vigencia)</td>
             </tr>
             <tr>
                 <td colspan="4"> <button class="button" type="submit" value="Registrar"> Registrar</button></td>
