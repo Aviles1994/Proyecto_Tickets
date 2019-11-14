@@ -198,13 +198,6 @@
     <Compile Include="Models\TableViewsModels\SearchClienteTableViewModel.cs" />
     <Compile Include="Models\TableViewsModels\SeeClientesTableViewModel.cs" />
     <Compile Include="Models\TableViewsModels\SeeUsuariosClienteTableViewModel.cs" />
-    <Compile Include="Models\Usuario_Cliente.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVariablesGlobalesViewModel.cs" />
-    <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVarViewsModel.cs" />
-    <Compile Include="Models\VariablesGlobalesViewsModels\UserLoginVariablesGlobalesViewsModel.cs" />
-    <Compile Include="Models\VariablesGlobalesViewsModels\UserSessionVariablesGlobalesViewModel.cs" />
     <Compile Include="Models\Ticket.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
@@ -214,6 +207,13 @@
     <Compile Include="Models\Usuarios_Login.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Usuario_Cliente.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVariablesGlobalesViewModel.cs" />
+    <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVarViewsModel.cs" />
+    <Compile Include="Models\VariablesGlobalesViewsModels\UserLoginVariablesGlobalesViewsModel.cs" />
+    <Compile Include="Models\VariablesGlobalesViewsModels\UserSessionVariablesGlobalesViewModel.cs" />
     <Compile Include="Models\Viewslist\lisMedioContacto.cs" />
     <Compile Include="Models\Viewslist\lisSistema.cs" />
     <Compile Include="Models\Viewslist\listCliente.cs" />

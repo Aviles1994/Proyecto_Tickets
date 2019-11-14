@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Proyecto_Tickets.Models.VariablesGlobalesViewsModels;
+using System.Globalization;
 
 namespace Proyecto_Tickets.Controllers
 {
@@ -19,32 +20,35 @@ namespace Proyecto_Tickets.Controllers
             return View();
         }
 
-
         [HttpPost]
-        public ActionResult AddUsuario(AddUsuariosClienteViewModel model) 
+        public ActionResult AddUsuario(AddUsuariosClienteViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-
-            
-            model.ULUltimoLogin = DateTime.Now;
             using (var db = new Sistema_TicketsEntities())
             {
                 Usuarios_Login UL = new Usuarios_Login();
                 UL.Nombre_Usuarios_Login = model.ULnombre;
                 UL.Contraseña = model.ULcontraseña;
                 UL.Estatus = model.ULestatus;
-                UL.Ultimo_Login = model.ULUltimoLogin;
+                UL.Ultimo_Login = DateTime.Now;
                 UL.Correo_electronico = model.ULCcorreo_electronico;
                 UL.ID_Tipo_Usuario = 2;
 
-                db.Usuarios_Login.Add(UL);
-                db.SaveChanges();
-                UserLogin.id_User = UL.ID_Usuarios_Login;
+                try
+                {
+                    db.Usuarios_Login.Add(UL);
+                    db.SaveChanges();
+                    UserLogin.id_User = UL.ID_Usuarios_Login;
+                }
+                catch(Exception ex)
+                {
+                    return Content("Erro" + ex.Message);
+                }
+                
             }
-
 
             using (var dbc = new Sistema_TicketsEntities())
             {
@@ -60,18 +64,18 @@ namespace Proyecto_Tickets.Controllers
                 UC.ID_Usuarios_Login = UserLogin.id_User;
 
                 try
-                { 
-                dbc.Usuario_Cliente.Add(UC);
-                dbc.SaveChanges();
+                {
+                    dbc.Usuario_Cliente.Add(UC);
+                    dbc.SaveChanges();
 
                 }
                 catch (Exception ex)
                 {
-                    return Content("Ocurrio un error" + ex.Message);
+                    return Content("Los datos son incorrectos" + ex.Message);
                 }
-            }
 
-            return Content("1");
+                return Content("1");
+            }
 
         }
         

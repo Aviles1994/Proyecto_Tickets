@@ -32,8 +32,8 @@ namespace Proyecto_Tickets.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sistema_Cliente> Sistema_Cliente { get; set; }
-        public virtual Entidad_Federativa Entidad_Federativa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario_Cliente> Usuario_Cliente { get; set; }
+        public virtual Entidad_Federativa Entidad_Federativa { get; set; }
     }
 }

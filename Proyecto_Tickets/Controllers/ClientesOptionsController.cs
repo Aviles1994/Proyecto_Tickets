@@ -22,35 +22,35 @@ namespace Proyecto_Tickets.Controllers
 
         }
 
-
-
-
         [HttpPost]
-        public ActionResult AddUsuario(AddUsuariosClienteViewModel model)
+        public ActionResult AddUsuario(AddUsuariosOptionsClienteViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-
-            Usuarios_Login UserL = new Usuarios_Login();
-            model.ULUltimoLogin = DateTime.Now;
             using (var db = new Sistema_TicketsEntities())
             {
-                
-                UserL.Nombre_Usuarios_Login = model.ULnombre;
-                UserL.Contraseña = model.ULcontraseña;
-                UserL.Estatus = model.ULestatus;
-                UserL.Ultimo_Login = model.ULUltimoLogin;
-                UserL.Correo_electronico = model.ULCcorreo_electronico;
-                UserL.ID_Tipo_Usuario = 2;
+                Usuarios_Login UL = new Usuarios_Login();
+                UL.Nombre_Usuarios_Login = model.ULnombre;
+                UL.Contraseña = model.ULcontraseña;
+                UL.Estatus = model.ULestatus;
+                UL.Ultimo_Login = DateTime.Now;
+                UL.Correo_electronico = model.ULCcorreo_electronico;
+                UL.ID_Tipo_Usuario = 2;
 
-                db.Usuarios_Login.Add(UserL);
-                db.SaveChanges();
+                try
+                {
+                    db.Usuarios_Login.Add(UL);
+                    db.SaveChanges();
+                    UserLogin.id_User = UL.ID_Usuarios_Login;
+                }
+                catch (Exception ex)
+                {
+                    return Content("Error" + ex.InnerException);
+                }
 
-                UserLogin.id_User = UserL.ID_Usuarios_Login;
             }
-
 
             using (var dbc = new Sistema_TicketsEntities())
             {
@@ -73,14 +73,13 @@ namespace Proyecto_Tickets.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return Content("Ocurrio un error" + ex.Message);
+                    return Content("Los datos son incorrectos" + ex.Message);
                 }
+
+                return Content("1");
             }
 
-            return Content("1");
-
         }
-
 
 
         [HttpGet]
@@ -102,7 +101,7 @@ namespace Proyecto_Tickets.Controllers
                            UseClave = d.Usuario_Clave,
                            Celular = d.Celular,
                            TelOfi = d.Telefono_Oficina,
-                           Extencion = d.Extension,
+                           Extencion = (int) d.Extension,
                            idCliente = d.ID_Cliente,
                            iduser = d.ID_Usuarios_Login
                        }).ToList();

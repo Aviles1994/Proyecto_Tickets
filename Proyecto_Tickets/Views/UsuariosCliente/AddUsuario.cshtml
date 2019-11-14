@@ -61,28 +61,31 @@
 @section scripts
 {
     <script>
+
+
     $(document).ready(function ()
     {
+        $('.sidebar-menu').tree();
+
         $("#frm").submit(function (e)
         {
             e.preventDefault();
 
-            url = "@Url.Content("~/UsuariosCliente/AddUsuario")";
+            url = "@Url.Content("~/UsuariosCliente/AddUsuario")"
             parametros = $(this).serialize();
 
-            $.get();
             $.post(url, parametros, function (data) {
 
-                if (data == "1") {
-                    alert("Usuario creado correctamente");
-                }
-                else
+                if (data =="1")
                 {
-                    alert(data);
+                    if (confirm('Deseas agregar un usuario nuevo')) {
+                        document.location.href = "@Url.Content("~/UsuariosCliente/AddUsuario")"
+                    } else {
+                        document.location.href = "@Url.Content("~/Clientes/AddCliente")"
+                    }
                 }
             })
         })
     })
-
     </script>
 }

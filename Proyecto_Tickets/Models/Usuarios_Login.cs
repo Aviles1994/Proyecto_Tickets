@@ -25,7 +25,7 @@ namespace Proyecto_Tickets.Models
         public string Nombre_Usuarios_Login { get; set; }
         public string Contraseña { get; set; }
         public bool Estatus { get; set; }
-        public Nullable<System.DateTime> Ultimo_Login { get; set; }
+        public System.DateTime Ultimo_Login { get; set; }
         public string Correo_electronico { get; set; }
         public int ID_Tipo_Usuario { get; set; }
     
