@@ -15,7 +15,7 @@
                     <td rowspan="3"> <label for="cliente"> Cliente </label></td>
 
                     <td rowspan="3">
-                        @Html.DropDownListFor(d=>d.idcliente, items, "Selecciona Cliente", new { @class = "form-control" })
+                        @Html.DropDownListFor(d => d.idcliente, items, "Selecciona Cliente", new { @class = "form-control" })
                     </td>
 
                 </tr>
@@ -30,14 +30,12 @@
 
 }
 
-
-
-
 @section scripts
 {
     <script>
     $(document).ready(function ()
     {
+        $('.sidebar-menu').tree();
         $("#frm").submit(function (e)
         {
             e.preventDefault();

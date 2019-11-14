@@ -8,39 +8,50 @@
 
 
 <main>
-    <div class="div_formulario">
-        <table class="table_busqueda">
-            <tr>
-                <th>Id</th>
-                <th>Nombre de Cliente</th>
-                <th>Calle</th>
-                <th>Número</th>
-                <th>Colonia</th>
-                <th>Teléfono</th>
-                <th>Correo Electrónico</th>
-                <th>Entidad Federativa</th>
-                <th>Acción</th>
-            </tr>
-
-            @foreach (var oElemento in Model)
-            {
+        <div class="div_formulario">
+            <table class="table_busqueda">
                 <tr>
-                    <td>@oElemento.idCliente</td>
-                    <td>@oElemento.NameCliente</td>
-                    <td>@oElemento.Calle</td>
-                    <td>@oElemento.numero</td>
-                    <td>@oElemento.colonia</td>
-                    <td>@oElemento.telefono</td>
-                    <td>@oElemento.correo_electronico</td>
-                    <td>@oElemento.etidad_feerativa</td>
-                    <td style="width: 350px">
-                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/ClientesOptions/AddUsuario?model.idCliente="+ oElemento.idCliente)'"><img src="~/Imagenes/add_user.png"></button>
-                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Action("updateUsuario", "UsuariosCliente")'"><img src="~/Imagenes/update_user.png" alt=""></button>
-                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/ClientesOptions/SeeUsuario?model.idCliente="+ oElemento.idCliente)'" ><img src="~/Imagenes/contacts.png" alt=""> </button>
-                    </td>
+                    <th>Id</th>
+                    <th>Nombre de Cliente</th>
+                    <th>Calle</th>
+                    <th>Número</th>
+                    <th>Colonia</th>
+                    <th>Teléfono</th>
+                    <th>Correo Electrónico</th>
+                    <th>Entidad Federativa</th>
+                    <th>Acción</th>
                 </tr>
-            }
-        </table>
-    </div>
+
+                @foreach (var oElemento in Model)
+                {
+                    <tr>
+                        <td>@oElemento.idCliente</td>
+                        <td>@oElemento.NameCliente</td>
+                        <td>@oElemento.Calle</td>
+                        <td>@oElemento.numero</td>
+                        <td>@oElemento.colonia</td>
+                        <td>@oElemento.telefono</td>
+                        <td>@oElemento.correo_electronico</td>
+                        <td>@oElemento.etidad_feerativa</td>
+                        <td style="width: 350px">
+                            <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/ClientesOptions/AddUsuario?model.idCliente="+ oElemento.idCliente)'"><img src="~/Imagenes/add_user.png"></button>
+                            <button class="btn_Acción" type="submit" onclick="location.href='@Url.Action("updateUsuario", "UsuariosCliente")'"><img src="~/Imagenes/update_user.png" alt=""></button>
+                            <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/ClientesOptions/SeeUsuario?model.idCliente="+ oElemento.idCliente)'"><img src="~/Imagenes/contacts.png" alt=""> </button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
 </main>
 
+@section scripts
+{
+    <script>
+    $(document).ready(function ()
+    {
+        $('.sidebar-menu').tree();
+
+    })
+    </script>
+}

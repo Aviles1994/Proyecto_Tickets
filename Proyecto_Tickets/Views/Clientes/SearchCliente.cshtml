@@ -20,26 +20,34 @@
             </tr>
             @foreach (var oElemento in Model)
             {
-            <tr>
-                <td>@oElemento.idCliente</td>
-                <td>@oElemento.NameCliente</td>
-                <td>@oElemento.Calle</td>
-                <td>@oElemento.numero</td>
-                <td>@oElemento.colonia</td>
-                <td>@oElemento.telefono</td>
-                <td>@oElemento.correo_electronico</td>
-                <td>@oElemento.etidad_feerativa</td>
+                <tr>
+                    <td>@oElemento.idCliente</td>
+                    <td>@oElemento.NameCliente</td>
+                    <td>@oElemento.Calle</td>
+                    <td>@oElemento.numero</td>
+                    <td>@oElemento.colonia</td>
+                    <td>@oElemento.telefono</td>
+                    <td>@oElemento.correo_electronico</td>
+                    <td>@oElemento.etidad_feerativa</td>
 
 
-                <td style="width: 350px">
-                    <button class="btn_Acción" type="submit" onclick="location.href='@Url.Action("AddUsuario", "UsuariosCliente")'"><img src="~/Imagenes/add_user.png"></button>
-                    <button class="btn_Acción" type="submit" onclick="location.href='@Url.Action("updateUsuario", "UsuariosCliente")'"><img src="~/Imagenes/update_user.png" alt=""></button>
-                    <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosCliente/SeeUsuario/"+ oElemento.idCliente)'"><img src="~/Imagenes/contacts.png" alt=""> </button>
-                </td>
-            </tr>
+                    <td style="width: 350px">
+                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Action("AddUsuario", "UsuariosCliente")'"><img src="~/Imagenes/add_user.png"></button>
+                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Action("updateUsuario", "UsuariosCliente")'"><img src="~/Imagenes/update_user.png" alt=""></button>
+                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosCliente/SeeUsuario/"+ oElemento.idCliente)'"><img src="~/Imagenes/contacts.png" alt=""> </button>
+                    </td>
+                </tr>
             }
         </table>
-     </div>
+    </div>
 </main>
 
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.sidebar-menu').tree();
 
+        })
+    </script>
+}
