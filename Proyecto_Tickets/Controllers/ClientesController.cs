@@ -14,7 +14,7 @@ namespace Proyecto_Tickets.Controllers
 
         public ActionResult AddCliente() {
             ViewData["nombre_user"] = UserSession.nombre_user;
-            llenarEntidadFederativa();
+            llenarEntidadFedarativa();
             llenarSistema();
             return View();
         }
@@ -37,7 +37,7 @@ namespace Proyecto_Tickets.Controllers
                 clientes.Colonia = model.Colonia;
                 clientes.Telefono = model.Telefono;
                 clientes.Correo_Electronico = model.Correo_Electronico;
-                clientes.ID_Entidad_Federativa = model.ID_Entidad_Federativa;
+                clientes.ID_Entidad_Federativa = model.ID_EF;
                 try
                 {
                     db.Cliente.Add(clientes);
@@ -150,7 +150,7 @@ namespace Proyecto_Tickets.Controllers
         }
 
 
-        public void llenarEntidadFederativa()
+        public void llenarEntidadFedarativa()
         {
             List<listEntidadFederativa> lst = null;
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
@@ -159,16 +159,16 @@ namespace Proyecto_Tickets.Controllers
                   (from d in db.Entidad_Federativa
                    select new listEntidadFederativa
                    {
-                       ID_Entidad = d.ID_Entidad_Federativa,
-                       Nombre = d.Nombre_Entidad_Federativa
+                       id_EF = d.ID_Entidad_Federativa,
+                       name_EF = d.Nombre_Entidad_Federativa
                    }).ToList();
             }
             List<SelectListItem> items_EF = lst.ConvertAll(d =>
             {
                 return new SelectListItem()
                 {
-                    Text = d.Nombre.ToString(),
-                    Value = d.ID_Entidad.ToString(),
+                    Text = d.name_EF.ToString(),
+                    Value = d.id_EF.ToString(),
                     Selected = false
                 };
 

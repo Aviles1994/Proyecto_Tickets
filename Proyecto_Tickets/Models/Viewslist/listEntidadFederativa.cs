@@ -7,7 +7,7 @@ namespace Proyecto_Tickets.Models.Viewslist
 {
     public class listEntidadFederativa
     {
-        public int ID_Entidad { get; set; }
-        public string Nombre { get; set; }
+        public int id_EF { get; set; }
+        public string name_EF { get; set; }
     }
 }

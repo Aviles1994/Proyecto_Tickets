@@ -16,12 +16,30 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string Colonia { get; set; }
         public string Telefono { get; set; }
         public string Correo_Electronico { get; set; }
-        public int  ID_Entidad_Federativa { get; set; }
+        public int  ID_EF { get; set; }
 
         public int ID_Sistema { get; set; }
         public DateTime fecha_contrato { get; set; }
-        public string version_sis { get; set; }
-        public string  vigencia { get; set; }
+        public float version_sis { get; set; }
+        public DateTime  vigencia { get; set; }
+
+    }
+
+
+    public class EditClientesViewModel
+    {
+
+
+        public string Nombre_Cliente { get; set; }
+        public string Calle { get; set; }
+        public string Numero { get; set; }
+        public string Colonia { get; set; }
+        public string Telefono { get; set; }
+        public string Correo_Electronico { get; set; }
+
+        public DateTime fecha_contrato { get; set; }
+        public float version_sis { get; set; }
+        public DateTime vigencia { get; set; }
 
     }
 }

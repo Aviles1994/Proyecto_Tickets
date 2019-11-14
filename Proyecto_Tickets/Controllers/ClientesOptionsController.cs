@@ -78,6 +78,30 @@ namespace Proyecto_Tickets.Controllers
 
                 return Content("1");
             }
+        }
+
+        [HttpGet]
+        public ActionResult EditCliente(int id)
+        {
+            EditClientesViewModel model = new EditClientesViewModel();
+            using (var db = new Sistema_TicketsEntities())
+            {
+               
+            }
+                return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult EditCliente(EditClientesViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+
+            return View();
 
         }
 

@@ -22,7 +22,6 @@ namespace Proyecto_Tickets.Models
     
         public int ID_Modulo { get; set; }
         public string Nombre_Modulo { get; set; }
-        public Nullable<int> Numero_de_Pantallas { get; set; }
         public string Descripcion_Modulo { get; set; }
         public int ID_Sistema { get; set; }
     

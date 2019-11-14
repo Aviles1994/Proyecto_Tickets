@@ -22,15 +22,12 @@ namespace Proyecto_Tickets.Models
         }
     
         public int ID_Ticket { get; set; }
-        public System.DateTime Fecha_Inicio { get; set; }
-        public System.TimeSpan Hora_Inicio { get; set; }
-        public Nullable<System.TimeSpan> Duracion { get; set; }
-        public string Version_Usuario { get; set; }
+        public System.DateTime Fecha_Hora_Inicio { get; set; }
+        public double Version_Usuario { get; set; }
         public string Nombre_Problema { get; set; }
         public string Descripcion_Problema { get; set; }
         public string Imagen { get; set; }
-        public Nullable<System.DateTime> Fecha_Fin { get; set; }
-        public Nullable<System.TimeSpan> Hora_Fin { get; set; }
+        public Nullable<System.DateTime> Fecha_Hora_Fin { get; set; }
         public int ID_Pantalla { get; set; }
         public int ID_Usuario_Cliente { get; set; }
         public int ID_Medio_de_Contacto { get; set; }

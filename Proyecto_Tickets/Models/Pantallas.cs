@@ -23,7 +23,6 @@ namespace Proyecto_Tickets.Models
         public int ID_Pantalla { get; set; }
         public string Nombre_Pantalla { get; set; }
         public string Descripcion_Pantalla { get; set; }
-        public string Funcionalidad { get; set; }
         public int ID_Modulo { get; set; }
     
         public virtual Modulos Modulos { get; set; }
