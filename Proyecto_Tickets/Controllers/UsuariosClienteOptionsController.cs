@@ -19,10 +19,12 @@ namespace Proyecto_Tickets.Controllers
             {
                 var oUserC = db.Usuario_Cliente.Find(id);
                 model.ULid = oUserC.ID_Usuarios_Login;
+
                 var oUserL = db.Usuarios_Login.Find(model.ULid);
                 model.ULnombre = oUserL.Nombre_Usuarios_Login;
                 model.ULestatus = oUserL.Estatus;
                 model.ULCcorreo_electronico = oUserL.Correo_electronico;
+
                 model.UCnombre = oUserC.Nombre_UCliente;
                 model.UCapellidoP = oUserC.Apellido_PaternoUCliente;
                 model.UCapellidoM = oUserC.Apellido_MaternoUCliente;
@@ -33,6 +35,7 @@ namespace Proyecto_Tickets.Controllers
 
                 model.UCid = oUserC.ID_Usuario_Cliente;
                 model.ULid = oUserL.ID_Usuarios_Login;
+                
             }
 
             return View(model);

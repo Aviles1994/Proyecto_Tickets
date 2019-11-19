@@ -54,9 +54,8 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string ULnombre { get; set; }
         public string ULcontraseña { get; set; }
         public bool ULestatus { get; set; }
-        public DateTime ULUltimoLogin { get; set; }
         public string ULCcorreo_electronico { get; set; }
-        public int ID_Tipo_Usuario { get; set; }
+
 
         public int UCid { get; set; }
         public string UCnombre { get; set; }
@@ -66,8 +65,7 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string UCcelular { get; set; }
         public string UctelOf { get; set; }
         public int UCext { get; set; }
-        public int ID_Cliente { get; set; }
-        public int ID_Usurios_Login { get; set; }
+
     }
 
 }

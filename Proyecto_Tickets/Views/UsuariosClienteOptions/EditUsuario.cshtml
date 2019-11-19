@@ -14,6 +14,7 @@
             <table class="table">
                 <tr>
                     @Html.HiddenFor(d => d.UCid)
+                    @Html.HiddenFor(d => d.ULid)
                     <td> <label for="nombre_del_usuario">Nombre del Usuario </label></td>
                     <td> @Html.TextBoxFor(d => d.UCnombre) </td>
                     <td> <label for="usuario_clave"> Usuario Clave</label></td>
@@ -81,7 +82,7 @@
                 if (data =="1")
                 {
                     alert('Los cambios fueron guardados correctamente')
-                        document.location.href = "@Url.Content("~/ClientesOptions/SeeUsuarios")"
+                        document.location.href = "@Url.Content("~/Clientes/SeeClientes")"
 
                 }
             })
