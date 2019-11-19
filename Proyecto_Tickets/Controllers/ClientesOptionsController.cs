@@ -86,7 +86,7 @@ namespace Proyecto_Tickets.Controllers
             EditClientesViewModel model = new EditClientesViewModel();
             using (var db = new Sistema_TicketsEntities())
             {
-               
+                model.id_c = id;
             }
                 return View();
         }
@@ -99,9 +99,15 @@ namespace Proyecto_Tickets.Controllers
             {
                 return View(model);
             }
+            using (var db = new Sistema_TicketsEntities())
+            {
+                Cliente Ocliente = new Cliente();
+                Ocliente.Nombre_Cliente = model.Nombre_Cliente;
+                Ocliente.Calle = model.Calle;
 
+            }
 
-            return View();
+                return View();
 
         }
 

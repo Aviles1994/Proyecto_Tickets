@@ -11,11 +11,11 @@
           </Key>
           <Property Name="ID_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre_Cliente" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Calle" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Numero" Type="varchar" MaxLength="14" Nullable="false" />
-          <Property Name="Colonia" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Correo_Electronico" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Colonia" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Correo_Electronico" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ID_Entidad_Federativa" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Departamento">
@@ -30,7 +30,7 @@
             <PropertyRef Name="ID_Entidad_Federativa" />
           </Key>
           <Property Name="ID_Entidad_Federativa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre_Entidad_Federativa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre_Entidad_Federativa" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Estado">
           <Key>
@@ -530,7 +530,6 @@
       <Schema Namespace="Sistema_TicketsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Sistema_TicketsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Tipo_Usuarios" EntityType="Sistema_TicketsModel.Tipo_Usuarios" />
-          <EntitySet Name="Cliente" EntityType="Sistema_TicketsModel.Cliente" />
           <EntitySet Name="Departamento" EntityType="Sistema_TicketsModel.Departamento" />
           <EntitySet Name="Estado" EntityType="Sistema_TicketsModel.Estado" />
           <EntitySet Name="Historial_Ticket" EntityType="Sistema_TicketsModel.Historial_Ticket" />
@@ -546,14 +545,6 @@
           <EntitySet Name="Ticket" EntityType="Sistema_TicketsModel.Ticket" />
           <EntitySet Name="Usuario_Cliente" EntityType="Sistema_TicketsModel.Usuario_Cliente" />
           <EntitySet Name="Usuarios_Login" EntityType="Sistema_TicketsModel.Usuarios_Login" />
-          <AssociationSet Name="fk_ID_Cliente_Sistema_Cliente" Association="Sistema_TicketsModel.fk_ID_Cliente_Sistema_Cliente">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Sistema_Cliente" EntitySet="Sistema_Cliente" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ID_Cliente_Usuario_Cliente" Association="Sistema_TicketsModel.fk_ID_Cliente_Usuario_Cliente">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Usuario_Cliente" EntitySet="Usuario_Cliente" />
-          </AssociationSet>
           <AssociationSet Name="fk_ID_Departamento_Personal_Estratei" Association="Sistema_TicketsModel.fk_ID_Departamento_Personal_Estratei">
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
@@ -622,7 +613,16 @@
             <End Role="Usuarios_Login" EntitySet="Usuarios_Login" />
             <End Role="Usuario_Cliente" EntitySet="Usuario_Cliente" />
           </AssociationSet>
+          <EntitySet Name="Cliente" EntityType="Sistema_TicketsModel.Cliente" />
           <EntitySet Name="Entidad_Federativa" EntityType="Sistema_TicketsModel.Entidad_Federativa" />
+          <AssociationSet Name="fk_ID_Cliente_Sistema_Cliente" Association="Sistema_TicketsModel.fk_ID_Cliente_Sistema_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Sistema_Cliente" EntitySet="Sistema_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Cliente_Usuario_Cliente" Association="Sistema_TicketsModel.fk_ID_Cliente_Usuario_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Usuario_Cliente" EntitySet="Usuario_Cliente" />
+          </AssociationSet>
           <AssociationSet Name="fk_ID_Entidad_Federativa_Cliente" Association="Sistema_TicketsModel.fk_ID_Entidad_Federativa_Cliente">
             <End Role="Entidad_Federativa" EntitySet="Entidad_Federativa" />
             <End Role="Cliente" EntitySet="Cliente" />
@@ -635,22 +635,6 @@
           <Property Name="ID_Tipo_Usuarios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Tipo_Usuarios" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Usuarios_Login" Relationship="Sistema_TicketsModel.fk_ID_Tipo_Usuario_Usuarios_Login" FromRole="Tipo_Usuarios" ToRole="Usuarios_Login" />
-        </EntityType>
-        <EntityType Name="Cliente">
-          <Key>
-            <PropertyRef Name="ID_Cliente" />
-          </Key>
-          <Property Name="ID_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre_Cliente" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Calle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Numero" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
-          <Property Name="Colonia" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Correo_Electronico" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_Entidad_Federativa" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Sistema_Cliente" Relationship="Sistema_TicketsModel.fk_ID_Cliente_Sistema_Cliente" FromRole="Cliente" ToRole="Sistema_Cliente" />
-          <NavigationProperty Name="Usuario_Cliente" Relationship="Sistema_TicketsModel.fk_ID_Cliente_Usuario_Cliente" FromRole="Cliente" ToRole="Usuario_Cliente" />
-          <NavigationProperty Name="Entidad_Federativa" Relationship="Sistema_TicketsModel.fk_ID_Entidad_Federativa_Cliente" FromRole="Cliente" ToRole="Entidad_Federativa" />
         </EntityType>
         <EntityType Name="Departamento">
           <Key>
@@ -765,8 +749,8 @@
           <Property Name="Version_Cliente" Type="Double" Nullable="false" />
           <Property Name="Fecha_Contrato" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Vigencia" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Cliente" Relationship="Sistema_TicketsModel.fk_ID_Cliente_Sistema_Cliente" FromRole="Sistema_Cliente" ToRole="Cliente" />
           <NavigationProperty Name="Sistema" Relationship="Sistema_TicketsModel.fk_ID_Sistema_Sistema_Cliente" FromRole="Sistema_Cliente" ToRole="Sistema" />
+          <NavigationProperty Name="Cliente" Relationship="Sistema_TicketsModel.fk_ID_Cliente_Sistema_Cliente" FromRole="Sistema_Cliente" ToRole="Cliente" />
         </EntityType>
         <EntityType Name="Solucion">
           <Key>
@@ -820,9 +804,9 @@
           <Property Name="Extension" Type="Int32" />
           <Property Name="ID_Cliente" Type="Int32" Nullable="false" />
           <Property Name="ID_Usuarios_Login" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cliente" Relationship="Sistema_TicketsModel.fk_ID_Cliente_Usuario_Cliente" FromRole="Usuario_Cliente" ToRole="Cliente" />
           <NavigationProperty Name="Ticket" Relationship="Sistema_TicketsModel.fk_ID_Usuario_Cliente_Ticket" FromRole="Usuario_Cliente" ToRole="Ticket" />
           <NavigationProperty Name="Usuarios_Login" Relationship="Sistema_TicketsModel.fk_ID_Usuarios_Login_Usuario_liente" FromRole="Usuario_Cliente" ToRole="Usuarios_Login" />
+          <NavigationProperty Name="Cliente" Relationship="Sistema_TicketsModel.fk_ID_Cliente_Usuario_Cliente" FromRole="Usuario_Cliente" ToRole="Cliente" />
         </EntityType>
         <EntityType Name="Usuarios_Login">
           <Key>
@@ -839,30 +823,6 @@
           <NavigationProperty Name="Tipo_Usuarios" Relationship="Sistema_TicketsModel.fk_ID_Tipo_Usuario_Usuarios_Login" FromRole="Usuarios_Login" ToRole="Tipo_Usuarios" />
           <NavigationProperty Name="Usuario_Cliente" Relationship="Sistema_TicketsModel.fk_ID_Usuarios_Login_Usuario_liente" FromRole="Usuarios_Login" ToRole="Usuario_Cliente" />
         </EntityType>
-        <Association Name="fk_ID_Cliente_Sistema_Cliente">
-          <End Type="Sistema_TicketsModel.Cliente" Role="Cliente" Multiplicity="1" />
-          <End Type="Sistema_TicketsModel.Sistema_Cliente" Role="Sistema_Cliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cliente">
-              <PropertyRef Name="ID_Cliente" />
-            </Principal>
-            <Dependent Role="Sistema_Cliente">
-              <PropertyRef Name="ID_Cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_ID_Cliente_Usuario_Cliente">
-          <End Type="Sistema_TicketsModel.Cliente" Role="Cliente" Multiplicity="1" />
-          <End Type="Sistema_TicketsModel.Usuario_Cliente" Role="Usuario_Cliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cliente">
-              <PropertyRef Name="ID_Cliente" />
-            </Principal>
-            <Dependent Role="Usuario_Cliente">
-              <PropertyRef Name="ID_Cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_ID_Departamento_Personal_Estratei">
           <End Type="Sistema_TicketsModel.Departamento" Role="Departamento" Multiplicity="1" />
           <End Type="Sistema_TicketsModel.Personal_Estratei" Role="Personal_Estratei" Multiplicity="*" />
@@ -1067,14 +1027,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Cliente" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Calle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Colonia" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Correo_Electronico" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Entidad_Federativa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sistema_Cliente" Relationship="Sistema_TicketsModel.fk_ID_Cliente_Sistema_Cliente" FromRole="Cliente" ToRole="Sistema_Cliente" />
+          <NavigationProperty Name="Usuario_Cliente" Relationship="Sistema_TicketsModel.fk_ID_Cliente_Usuario_Cliente" FromRole="Cliente" ToRole="Usuario_Cliente" />
+          <NavigationProperty Name="Entidad_Federativa" Relationship="Sistema_TicketsModel.fk_ID_Entidad_Federativa_Cliente" FromRole="Cliente" ToRole="Entidad_Federativa" />
+        </EntityType>
         <EntityType Name="Entidad_Federativa">
           <Key>
             <PropertyRef Name="ID_Entidad_Federativa" />
           </Key>
           <Property Name="ID_Entidad_Federativa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre_Entidad_Federativa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Entidad_Federativa" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Cliente" Relationship="Sistema_TicketsModel.fk_ID_Entidad_Federativa_Cliente" FromRole="Entidad_Federativa" ToRole="Cliente" />
         </EntityType>
+        <Association Name="fk_ID_Cliente_Sistema_Cliente">
+          <End Type="Sistema_TicketsModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="Sistema_TicketsModel.Sistema_Cliente" Role="Sistema_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Sistema_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Cliente_Usuario_Cliente">
+          <End Type="Sistema_TicketsModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="Sistema_TicketsModel.Usuario_Cliente" Role="Usuario_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Principal>
+            <Dependent Role="Usuario_Cliente">
+              <PropertyRef Name="ID_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_ID_Entidad_Federativa_Cliente">
           <End Type="Sistema_TicketsModel.Entidad_Federativa" Role="Entidad_Federativa" Multiplicity="1" />
           <End Type="Sistema_TicketsModel.Cliente" Role="Cliente" Multiplicity="*" />
@@ -1098,20 +1098,6 @@
               <MappingFragment StoreEntitySet="Tipo_Usuarios">
                 <ScalarProperty Name="Nombre_Tipo_Usuarios" ColumnName="Nombre_Tipo_Usuarios" />
                 <ScalarProperty Name="ID_Tipo_Usuarios" ColumnName="ID_Tipo_Usuarios" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cliente">
-            <EntityTypeMapping TypeName="Sistema_TicketsModel.Cliente">
-              <MappingFragment StoreEntitySet="Cliente">
-                <ScalarProperty Name="ID_Entidad_Federativa" ColumnName="ID_Entidad_Federativa" />
-                <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
-                <ScalarProperty Name="Numero" ColumnName="Numero" />
-                <ScalarProperty Name="Calle" ColumnName="Calle" />
-                <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
-                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1278,6 +1264,20 @@
                 <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
                 <ScalarProperty Name="Nombre_Usuarios_Login" ColumnName="Nombre_Usuarios_Login" />
                 <ScalarProperty Name="ID_Usuarios_Login" ColumnName="ID_Usuarios_Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="ID_Entidad_Federativa" ColumnName="ID_Entidad_Federativa" />
+                <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

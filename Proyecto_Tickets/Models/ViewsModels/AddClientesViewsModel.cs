@@ -29,7 +29,7 @@ namespace Proyecto_Tickets.Models.ViewsModels
     public class EditClientesViewModel
     {
 
-
+        public int id_c { get; set; }
         public string Nombre_Cliente { get; set; }
         public string Calle { get; set; }
         public string Numero { get; set; }

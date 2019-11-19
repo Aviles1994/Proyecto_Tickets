@@ -20,7 +20,7 @@ namespace Proyecto_Tickets.Models
         public System.DateTime Fecha_Contrato { get; set; }
         public System.DateTime Vigencia { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
         public virtual Sistema Sistema { get; set; }
+        public virtual Cliente Cliente { get; set; }
     }
 }
