@@ -134,6 +134,7 @@
     <Compile Include="Controllers\ProblemasController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UsuariosClienteController.cs" />
+    <Compile Include="Controllers\UsuariosClienteOptionsController.cs" />
     <Compile Include="Firters\VerifySession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -304,6 +305,8 @@
     <Content Include="Views\Clientes\SelecSearchCliente.cshtml" />
     <Content Include="Views\ClientesOptions\SeeUsuario.cshtml" />
     <Content Include="Views\ClientesOptions\AddUsuario.cshtml" />
+    <Content Include="Views\ClientesOptions\EditCliente.cshtml" />
+    <Content Include="Views\UsuariosClienteOptions\EditUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

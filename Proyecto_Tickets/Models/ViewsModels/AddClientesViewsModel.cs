@@ -36,7 +36,9 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string Colonia { get; set; }
         public string Telefono { get; set; }
         public string Correo_Electronico { get; set; }
+        public int ID_EF { get; set; }
 
+        public int ID_Sistema { get; set; }
         public DateTime fecha_contrato { get; set; }
         public float version_sis { get; set; }
         public DateTime vigencia { get; set; }

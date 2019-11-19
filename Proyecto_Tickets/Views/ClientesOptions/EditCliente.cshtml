@@ -1,0 +1,84 @@
+﻿@model Proyecto_Tickets.Models.ViewsModels.EditClientesViewModel
+@{
+    ViewBag.Title = "CrearCliente";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+
+    List<SelectListItem> items_EF = (List<SelectListItem>)ViewBag.items_EF;
+    List<SelectListItem> items_Sis = (List<SelectListItem>)ViewBag.items_Sis;
+
+
+}
+
+<main>
+
+    <div style="height:575px;" class="div_formulario">
+
+        @using (Html.BeginForm("EditCliente", "Clientes", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
+        {
+
+
+
+            <table class="table">
+                <tr>
+                    @Html.HiddenFor(d => d.id_c)
+                    <td> <label for="nombre_del_cliente"> Nombre del Cliente</label></td>
+                    <td> @Html.TextBoxFor(d => d.Nombre_Cliente)</td>
+                    <td> <label for="calle"> Calle</label></td>
+                    <td> @Html.TextBoxFor(d => d.Calle)</td>
+                </tr>
+                <tr>
+                    <td> <label for="correo_electronico">Correo Electronico </label></td>
+                    <td> @Html.TextBoxFor(d => d.Correo_Electronico)</td>
+                    <td> <label for="numero">Numero</label></td>
+                    <td> @Html.TextBoxFor(d => d.Numero)</td>
+                </tr>
+                <tr>
+                    <td> <label for="telefono">Telefono</label></td>
+                    <td> @Html.TextBoxFor(d => d.Telefono)</td>
+                    <td> <label for="colonia"> Colonia</label></td>
+                    <td> @Html.TextBoxFor(d => d.Colonia)</td>
+                </tr>
+                <tr>
+                    <td> <label for="entidad_federativa">Entidad Federativa</label></td>
+                    <td>
+                        @Html.DropDownListFor(c => c.ID_EF, items_EF, "Seleccione una Entidad", new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4"> <button class="button" type="submit" value="Registrar"> Guardar</button></td>
+                </tr>
+            </table>
+        }
+    </div>
+
+</main>
+
+@section scripts
+{
+    <script>
+
+
+    $(document).ready(function ()
+    {
+        $('.sidebar-menu').tree();
+
+        $("#frm").submit(function (e)
+        {
+            e.preventDefault();
+
+            url = "@Url.Content("~/ClientesOptions/EditCliente")"
+            parametros = $(this).serialize();
+
+            $.post(url, parametros, function (data) {
+
+                if (data =="1")
+                {
+                    alert('Los cambios fueron guardados correctamente')
+                        document.location.href = "@Url.Content("~/Clientes/SeeClientes")"
+                    
+                }
+            })
+        })
+    })
+    </script>
+}

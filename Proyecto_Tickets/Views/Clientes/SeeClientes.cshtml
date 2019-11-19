@@ -35,7 +35,7 @@
                         <td>@oElemento.etidad_feerativa</td>
                         <td style="width: 350px">
                             <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/ClientesOptions/AddUsuario?model.idCliente="+ oElemento.idCliente)'"><img src="~/Imagenes/add_user.png"></button>
-                            <button class="btn_Acción" type="submit" onclick="location.href='@Url.Action("updateUsuario", "UsuariosCliente")'"><img src="~/Imagenes/update_user.png" alt=""></button>
+                            <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/ClientesOptions/EditCliente/"+ oElemento.idCliente)'"><img src="~/Imagenes/update_user.png" alt=""></button>
                             <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/ClientesOptions/SeeUsuario?model.idCliente="+ oElemento.idCliente)'"><img src="~/Imagenes/contacts.png" alt=""> </button>
                         </td>
                     </tr>

@@ -1,6 +1,7 @@
 ﻿using Proyecto_Tickets.Models;
 using Proyecto_Tickets.Models.TableViewsModels;
 using Proyecto_Tickets.Models.VariablesGlobalesViewsModels;
+using Proyecto_Tickets.Models.Viewslist;
 using Proyecto_Tickets.Models.ViewsModels;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace Proyecto_Tickets.Controllers
     public class ClientesOptionsController : Controller
     {
         // GET: ClientesOptions
+
         [HttpGet]
         public ActionResult AddUsuario(SeeUsuariosClienteTableViewModel model)
         {
             Clientes.idCliente = model.idCliente;
+            
 
             return View();
 
@@ -80,15 +83,26 @@ namespace Proyecto_Tickets.Controllers
             }
         }
 
-        [HttpGet]
+        
         public ActionResult EditCliente(int id)
         {
+            llenarEntidadFedarativa();
+       
             EditClientesViewModel model = new EditClientesViewModel();
             using (var db = new Sistema_TicketsEntities())
             {
-                model.id_c = id;
+                var oCliente = db.Cliente.Find(id);
+                model.Nombre_Cliente = oCliente.Nombre_Cliente;
+                model.Calle = oCliente.Calle;
+                model.Numero = oCliente.Numero;
+                model.Colonia = oCliente.Colonia;
+                model.Telefono = oCliente.Telefono;
+                model.Correo_Electronico = oCliente.Correo_Electronico;
+                model.ID_EF = oCliente.ID_Entidad_Federativa;
+                model.id_c = oCliente.ID_Cliente;
+
             }
-                return View();
+                return View(model);
         }
 
 
@@ -101,13 +115,20 @@ namespace Proyecto_Tickets.Controllers
             }
             using (var db = new Sistema_TicketsEntities())
             {
-                Cliente Ocliente = new Cliente();
-                Ocliente.Nombre_Cliente = model.Nombre_Cliente;
-                Ocliente.Calle = model.Calle;
-
+                var oCliente = db.Cliente.Find(model.id_c);
+                oCliente.Nombre_Cliente = model.Nombre_Cliente;
+                oCliente.Calle = model.Calle;
+                oCliente.Numero = model.Numero;
+                oCliente.Colonia = model.Colonia;
+                oCliente.Telefono = model.Telefono;
+                oCliente.Correo_Electronico = model.Correo_Electronico;
+                oCliente.ID_Entidad_Federativa = model.ID_EF;
+               
+                db.Entry(oCliente).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
             }
-
-                return View();
+            
+                return Content("1");
 
         }
 
@@ -139,6 +160,57 @@ namespace Proyecto_Tickets.Controllers
             }
             return View(lst);
 
+        }
+        public void llenarEntidadFedarativa()
+        {
+            List<listEntidadFederativa> lst = null;
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                lst =
+                  (from d in db.Entidad_Federativa
+                   select new listEntidadFederativa
+                   {
+                       id_EF = d.ID_Entidad_Federativa,
+                       name_EF = d.Nombre_Entidad_Federativa
+                   }).ToList();
+            }
+            List<SelectListItem> items_EF = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.name_EF.ToString(),
+                    Value = d.id_EF.ToString(),
+                    Selected = false
+                };
+
+            });
+            ViewBag.items_EF = items_EF;
+        }
+
+        public void llenarSistema()
+        {
+            List<lisSistema> lst = null;
+            using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
+            {
+                lst =
+                  (from d in db.Sistema
+                   select new lisSistema
+                   {
+                       id_Sistema = d.ID_Sistema,
+                       name_Sistema = d.Nombre_Sistema
+                   }).ToList();
+            }
+            List<SelectListItem> items_Sis = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.name_Sistema.ToString(),
+                    Value = d.id_Sistema.ToString(),
+                    Selected = false
+                };
+
+            });
+            ViewBag.items_Sis = items_Sis;
         }
 
 

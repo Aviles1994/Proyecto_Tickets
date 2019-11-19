@@ -32,8 +32,8 @@
                     <td>@element.iduser</td>
                     <td style="width:250px;">
                         <button class="btn_Acción" type="submit"><img src="~/Imagenes/view_more.png"></button>
-                        <button class="btn_Acción" type="submit"><img src="~/Imagenes/update_user.png"></button>
-                        <button class="btn_Acción" type="submit"><img src="~/Imagenes/trash.png"></button>
+                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/EditUsuario/"+ element.iduserC)'"><img src="~/Imagenes/update_user.png"></button>
+                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosOptions/DeleteUsuario/"+ element.iduserC)'"><img src="~/Imagenes/trash.png"></button>
                     </td>
                 </tr>
             }
