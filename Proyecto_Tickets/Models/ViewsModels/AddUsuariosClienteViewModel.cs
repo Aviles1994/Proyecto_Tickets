@@ -54,6 +54,7 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string ULnombre { get; set; }
         public string ULcontraseña { get; set; }
         public bool ULestatus { get; set; }
+        public DateTime ULUltimoLogin { get; set; }
         public string ULCcorreo_electronico { get; set; }
 
 

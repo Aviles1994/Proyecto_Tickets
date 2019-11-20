@@ -82,6 +82,23 @@ namespace Proyecto_Tickets.Controllers
                 return Content("1");
         }
 
+        public ActionResult VerMas(int id)
+        {
+            EditUsuariosViewModel model = new EditUsuariosViewModel();
+            using (var db = new Sistema_TicketsEntities())
+            {
+                var User = db.Usuarios_Login.Find(model.ULid);
+                model.ULnombre = User.Nombre_Usuarios_Login;
+                model.ULcontraseña = User.Contraseña;
+                model.ULestatus = User.Estatus;
+                model.ULUltimoLogin = User.Ultimo_Login;
+                model.ULCcorreo_electronico = User.Correo_electronico;
+
+            }
+
+            return View(model);
+        }
+
 
     }
 }
