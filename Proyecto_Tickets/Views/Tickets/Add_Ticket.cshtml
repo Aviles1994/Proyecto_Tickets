@@ -27,14 +27,14 @@
                 </tr>
                 <tr>
                     <td> <label for="nombre_del_Problema"> Nombre del Problema </label> </td>
-                    <td> <input type="text" name="nombre_del_problema"> </td>
+                    <td> @Html.TextBoxFor(d=>d.nombreProblema) </td>
                     <td> <label for="evidencia">Evidencia</label> </td>
                     <td> <button class="btn" type="button" name="button">Agregar imagen </button> </td>
                 </tr>
 
                 <tr>
                     <td> <label for="descripcion_problema">Descripción del Problema</label> </td>
-                    <td colspan="3"> <textarea name="descripcion_problema" rows="8" cols="100">Escriba Aqui </textarea> </td>
+                    <td colspan="3"> @Html.TextAreaFor(d => d.descrpcionProblema, new { @class = "form-control", row="300000", cols = "400000" }) </td>
                 </tr>
 
             <tr>
@@ -59,7 +59,7 @@
 
                 </td>
                 <td> <label for="versión"> Versión</label> </td>
-                <td> <input type="number" name="versión" value=""> </td>
+                <td> @Html.TextBoxFor(d => d.versionUser) </td>
             </tr>
             <tr>
                 <td> <label for="cliente"> Cliente</label> </td>
@@ -75,7 +75,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="4"><button class="button" type="button" name="registrar">Registrar</button></td>
+                <td colspan="4"><button class="button" type="submit" name="registrar">Registrar</button></td>
             </tr>
         </table>
     </div>

@@ -32,33 +32,67 @@ namespace Proyecto_Tickets.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Add_Ticket(AddTicketsViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            using (var db = new Sistema_TicketsEntities())
+            {
+                Ticket oticket = new Ticket();
+                oticket.Fecha_Hora_Inicio = DateTime.Now;
+                oticket.Version_Usuario = 12.1;
+                oticket.Nombre_Problema =model.nombreProblema;
+                oticket.Descripcion_Problema = model.descrpcionProblema;
+                oticket.ID_Pantalla = 1;
+                oticket.ID_Usuario_Cliente =model.ID_cliente;
+                oticket.ID_Medio_de_Contacto = 1;
+                oticket.ID_Servicio =1;
+                oticket.ID_Estado = 1;
+                oticket.ID_Prioridad = 2;
+
+                try
+                {
+                    db.Ticket.Add(oticket);
+                    db.SaveChanges();
+
+                }
+                catch (Exception ex)
+                {
+                    return Content("noo" + ex.InnerException);
+                }
+
+            }
+
+                return Content("1");
+        }
+
+
+
+
         public JsonResult GetCliente(int ID_Cliente)
         {
-
-            List<listUserCliente> lst = null;
+            List<Usuario_Cliente> userlist = null;
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                lst =
-                  (from d in db.Usuario_Cliente
-                   where d.ID_Cliente==ID_Cliente
-                   select new listUserCliente
-                   {
-                       idUserCliente= d.ID_Usuario_Cliente,
-                       nameUserCliente = d.Nombre_UCliente
-                   }).ToList();
+                userlist = db.Usuario_Cliente.Where(x => x.ID_Cliente == ID_Cliente).ToList();
+                
             }
-            List<SelectListItem> items_UC = lst.ConvertAll(d =>
+
+            List<SelectListItem> items_C = userlist.ConvertAll(d =>
             {
                 return new SelectListItem()
                 {
-                    Text = d.nameUserCliente.ToString(),
-                    Value = d.idUserCliente.ToString(),
+                    Text = d.Nombre_UCliente.ToString(),
+                    Value = d.ID_Usuario_Cliente.ToString(),
                     Selected = false
                 };
+            }).ToList();
 
-            });
-            return Json(items_UC, JsonRequestBehavior.AllowGet);
+                return Json(userlist, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetSistema(int ID_Sistema)

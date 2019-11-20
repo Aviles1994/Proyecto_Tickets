@@ -81,5 +81,7 @@ namespace Proyecto_Tickets.Controllers
 
                 return Content("1");
         }
+
+
     }
 }
