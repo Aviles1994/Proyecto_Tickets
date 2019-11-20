@@ -31,7 +31,7 @@
                     <td>@element.idCliente</td>
                     <td>@element.iduser</td>
                     <td style="width:250px;">
-                        <button class="btn_Acción" type="submit"><img src="~/Imagenes/view_more.png"></button>
+                        <button class="btn_Acción" type="submit" data-toggle="modal" data-target="#modalVerMas"><img src="~/Imagenes/view_more.png"></button>
                         <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/EditUsuario/"+ element.iduserC)'"><img src="~/Imagenes/update_user.png"></button>
                         <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosOptions/DeleteUsuario/"+ element.iduserC)'"><img src="~/Imagenes/trash.png"></button>
                     </td>
@@ -41,6 +41,42 @@
 
     </div>
 </main>
+
+<div id="modalVerMas" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background:#0066cc; color:white">
+                
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Ver más</h4>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="box-body">
+                    
+                    <div class="form-group">
+                        <label style="font-weight: bold; margin-right:10px">Usuario Login: </label>
+                        <label>Fulanito</label>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button"  class="btn btn-default pull-left" data-dismiss="modal" > Salir</button>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
 
 @section scripts
 {
