@@ -82,7 +82,7 @@ namespace Proyecto_Tickets.Controllers
             {
                 Solucion oSolucion = new Solucion();
                 oSolucion.Descripcion_en_Pasos = model.Descripcion;
-                oSolucion.Fecha_Solucion = DateTime.Now;
+                oSolucion.Fecha_Solucion = model.fecha;
                 oSolucion.ID_Ticket = TicketsVarViemModel.idTickets;
                 oSolucion.ID_Estratei =UserSession.iduser;
 

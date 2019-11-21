@@ -16,14 +16,8 @@
             </tr>
             <tr>
                 <td> <label for="fecha_solucion"> Fecha </label></td>
-                <td> <input type="date" name="Fecha" placeholder="escribe la fecha" value=""></td>
+                <td> @Html.TextBoxFor(d => d.fecha)</td>
             </tr>
-            <td> <label for="usuario_estratei">Usuario Estratei</label></td>
-            <td>
-                <select class="combo" name="usuario_estratei">
-                    <option value="">Elija un usuario</option>
-                </select>
-            </td>
         </table>
         <table class="table">
             <tr>
