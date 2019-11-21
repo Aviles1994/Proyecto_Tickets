@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="Sistema_TicketsModel.Servicio" Width="1.5" PointX="5.25" PointY="14" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Sistema" Width="1.5" PointX="0.75" PointY="5.25" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Sistema_Cliente" Width="1.5" PointX="3" PointY="5.125" />
-        <EntityTypeShape EntityType="Sistema_TicketsModel.Solucion" Width="1.5" PointX="9.75" PointY="8.25" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Ticket" Width="1.5" PointX="7.5" PointY="6.875" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Usuario_Cliente" Width="1.5" PointX="5.25" PointY="20.375" />
         <EntityTypeShape EntityType="Sistema_TicketsModel.Usuarios_Login" Width="1.5" PointX="3" PointY="20.625" />
@@ -29,12 +28,10 @@
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Modulo_Pantallas" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Sistema_Modulos" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Pantalla_Ticket" />
-        <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Estratei_Solucion" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Usuarios_Login_Personal_Estratei" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Prioridad_Ticket" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Servicio_Ticket" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Sistema_Sistema_Cliente" />
-        <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Ticket_Solucion" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Usuario_Cliente_Ticket" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Tipo_Usuario_Usuarios_Login" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Usuarios_Login_Usuario_liente" />
@@ -43,6 +40,9 @@
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Cliente_Sistema_Cliente" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Cliente_Usuario_Cliente" />
         <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Entidad_Federativa_Cliente" />
+        <EntityTypeShape EntityType="Sistema_TicketsModel.Solucion" Width="1.5" PointX="12.75" PointY="4.25" />
+        <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Estratei_Solucion" />
+        <AssociationConnector Association="Sistema_TicketsModel.fk_ID_Ticket_Solucion" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -32,8 +32,8 @@ namespace Proyecto_Tickets.Models
         public virtual Departamento Departamento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Historial_Ticket> Historial_Ticket { get; set; }
+        public virtual Usuarios_Login Usuarios_Login { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Solucion> Solucion { get; set; }
-        public virtual Usuarios_Login Usuarios_Login { get; set; }
     }
 }

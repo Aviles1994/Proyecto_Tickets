@@ -84,14 +84,16 @@ namespace Proyecto_Tickets.Controllers
                 oSolucion.Descripcion_en_Pasos = model.Descripcion;
                 oSolucion.Fecha_Solucion = model.fecha;
                 oSolucion.ID_Ticket = TicketsVarViemModel.idTickets;
-                oSolucion.ID_Estratei =UserSession.iduser;
+                int id = UserSession.iduser;
+                oSolucion.ID_Estratei = id;
 
                 try
                 {
                     db.Solucion.Add(oSolucion);
                     db.SaveChanges();
 
-                }catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     return Content("nooo"+ ex.InnerException);
                 }

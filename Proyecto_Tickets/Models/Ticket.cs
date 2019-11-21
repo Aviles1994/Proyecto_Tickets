@@ -42,8 +42,8 @@ namespace Proyecto_Tickets.Models
         public virtual Pantallas Pantallas { get; set; }
         public virtual Prioridad Prioridad { get; set; }
         public virtual Servicio Servicio { get; set; }
+        public virtual Usuario_Cliente Usuario_Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Solucion> Solucion { get; set; }
-        public virtual Usuario_Cliente Usuario_Cliente { get; set; }
     }
 }

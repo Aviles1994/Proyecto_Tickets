@@ -37,11 +37,11 @@ namespace Proyecto_Tickets.Models
         public virtual DbSet<Servicio> Servicio { get; set; }
         public virtual DbSet<Sistema> Sistema { get; set; }
         public virtual DbSet<Sistema_Cliente> Sistema_Cliente { get; set; }
-        public virtual DbSet<Solucion> Solucion { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<Usuario_Cliente> Usuario_Cliente { get; set; }
         public virtual DbSet<Usuarios_Login> Usuarios_Login { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Entidad_Federativa> Entidad_Federativa { get; set; }
+        public virtual DbSet<Solucion> Solucion { get; set; }
     }
 }
