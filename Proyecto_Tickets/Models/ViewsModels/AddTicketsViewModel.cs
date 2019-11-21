@@ -7,6 +7,7 @@ namespace Proyecto_Tickets.Models.ViewsModels
 {
     public class AddTicketsViewModel
     {
+        public int idt { get; set; }
         public DateTime fecha_hora_Inicio { get; set; }
         public DateTime duracionInicio { get; set; }
         public float versionUser { get; set; }

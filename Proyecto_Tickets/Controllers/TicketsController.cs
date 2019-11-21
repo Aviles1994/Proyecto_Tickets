@@ -8,6 +8,7 @@ using Proyecto_Tickets.Models.Viewslist;
 using Proyecto_Tickets.Models.ViewsModels;
 using Proyecto_Tickets.Models;
 using System.Collections;
+using Proyecto_Tickets.Models.VariablesGlobalesViewsModels;
 
 namespace Proyecto_Tickets.Controllers
 {
@@ -43,13 +44,13 @@ namespace Proyecto_Tickets.Controllers
             {
                 Ticket oticket = new Ticket();
                 oticket.Fecha_Hora_Inicio = DateTime.Now;
-                oticket.Version_Usuario = 12.1;
+                oticket.Version_Usuario = model.versionUser;
                 oticket.Nombre_Problema =model.nombreProblema;
                 oticket.Descripcion_Problema = model.descrpcionProblema;
-                oticket.ID_Pantalla = 1;
+                oticket.ID_Pantalla = model.ID_Pantalla;
                 oticket.ID_Usuario_Cliente =model.ID_cliente;
-                oticket.ID_Medio_de_Contacto = 1;
-                oticket.ID_Servicio =1;
+                oticket.ID_Medio_de_Contacto = model.ID_MedioContacto;
+                oticket.ID_Servicio =model.ID_Servico;
                 oticket.ID_Estado = 1;
                 oticket.ID_Prioridad = 2;
 
@@ -58,19 +59,45 @@ namespace Proyecto_Tickets.Controllers
                     db.Ticket.Add(oticket);
                     db.SaveChanges();
 
+                    TicketsVarViemModel.idTickets =  oticket.ID_Ticket;
+
                 }
                 catch (Exception ex)
                 {
                     return Content("noo" + ex.InnerException);
                 }
 
-            }
-
                 return Content("1");
+            }
+        }
+        public ActionResult AddSolucion()
+        {
+            return View();
         }
 
+        [HttpPost]
+        public ActionResult AddSolucion(AddSolucionViewModel model)
+        {
+            using (var db = new Sistema_TicketsEntities())
+            {
+                Solucion oSolucion = new Solucion();
+                oSolucion.Descripcion_en_Pasos = model.Descripcion;
+                oSolucion.Fecha_Solucion = DateTime.Now;
+                oSolucion.ID_Ticket = TicketsVarViemModel.idTickets;
+                oSolucion.ID_Estratei =UserSession.iduser;
 
+                try
+                {
+                    db.Solucion.Add(oSolucion);
+                    db.SaveChanges();
 
+                }catch (Exception ex)
+                {
+                    return Content("nooo"+ ex.InnerException);
+                }
+            }
+                return Content("1");
+        }
 
         public JsonResult GetCliente(int ID_Cliente)
         {
@@ -97,26 +124,50 @@ namespace Proyecto_Tickets.Controllers
 
         public JsonResult GetSistema(int ID_Sistema)
         {
-
+            List<Modulos> moduloslist = null;
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                List<Modulos> moduloslist = db.Modulos.Where(x => x.ID_Sistema == ID_Sistema).ToList();
-                return Json(moduloslist, JsonRequestBehavior.AllowGet);
+                moduloslist = db.Modulos.Where(x => x.ID_Sistema == ID_Sistema).ToList();
 
             }
+
+            List<SelectListItem> items_C = moduloslist.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre_Modulo.ToString(),
+                    Value = d.ID_Modulo.ToString(),
+                    Selected = false
+                };
+            }).ToList();
+
+            return Json(moduloslist, JsonRequestBehavior.AllowGet);
         }
+        
 
         public JsonResult GetModulo(int ID_Modulo)
         {
-
+            List<Pantallas> pantallaslist = null;
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                List<Pantallas> pantallalist = db.Pantallas.Where(x => x.ID_Modulo == ID_Modulo).ToList();
-                return Json(pantallalist, JsonRequestBehavior.AllowGet);
+                pantallaslist = db.Pantallas.Where(x => x.ID_Modulo == ID_Modulo).ToList();
 
             }
+
+            List<SelectListItem> items_C = pantallaslist.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Nombre_Pantalla.ToString(),
+                    Value = d.ID_Pantalla.ToString(),
+                    Selected = false
+                };
+            }).ToList();
+
+            return Json(pantallaslist, JsonRequestBehavior.AllowGet);
+            
         }
 
         

@@ -10,7 +10,7 @@
 }
 
 
-@using (Html.BeginForm("Add_Ticket", "Tickets", new { role = "form", Id = "frm", @Class = " form" }))
+@using (Html.BeginForm("Add_Ticket", "Tickets", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
 {
     <main>
         <div class="div_formulario">
@@ -27,97 +27,118 @@
                 </tr>
                 <tr>
                     <td> <label for="nombre_del_Problema"> Nombre del Problema </label> </td>
-                    <td> @Html.TextBoxFor(d=>d.nombreProblema) </td>
+                    <td> @Html.TextBoxFor(d => d.nombreProblema) </td>
                     <td> <label for="evidencia">Evidencia</label> </td>
                     <td> <button class="btn" type="button" name="button">Agregar imagen </button> </td>
                 </tr>
 
                 <tr>
                     <td> <label for="descripcion_problema">Descripción del Problema</label> </td>
-                    <td colspan="3"> @Html.TextAreaFor(d => d.descrpcionProblema, new { @class = "form-control", row="40", style="width:100% !important;" }) </td>
+                    <td colspan="3"> @Html.TextAreaFor(d => d.descrpcionProblema, new { @class = "form-control", row = "40", style = "width:100% !important;" }) </td>
                 </tr>
 
-            <tr>
-                <td> <label for="sistema">Sistema</label> </td>
-                <td>
-                    @if (ViewBag.sistemalist != null)
-                    {
-                        @Html.DropDownListFor(d => d.ID_Sistema, ViewBag.sistemalist as SelectList, "Seleccione un Sistema", new { @class = "form-control" })
-                    }
+                <tr>
+                    <td> <label for="sistema">Sistema</label> </td>
+                    <td>
+                        @if (ViewBag.sistemalist != null)
+                        {
+                            @Html.DropDownListFor(d => d.ID_Sistema, ViewBag.sistemalist as SelectList, "Seleccione un Sistema", new { @class = "form-control" })
+                        }
 
-                </td>
-                <td> <label for="modulo"> Modulo</label> </td>
-                <td>
-                    @Html.DropDownListFor(d => d.ID_Modulo, new SelectList(" "), "Seleccione un Modulo", new { @class = "form-control" })
+                    </td>
+                    <td> <label for="modulo"> Modulo</label> </td>
+                    <td>
+                        @Html.DropDownListFor(d => d.ID_Modulo, new SelectList(" "), "Seleccione un Modulo", new { @class = "form-control" })
 
-                </td>
-            </tr>
-            <tr>
-                <td> <label for="pantalla"> Pantalla </label> </td>
-                <td>
-                    @Html.DropDownListFor(d => d.ID_Pantalla, new SelectList(" "), "Seleccione un Pantalla", new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td> <label for="pantalla"> Pantalla </label> </td>
+                    <td>
+                        @Html.DropDownListFor(d => d.ID_Pantalla, new SelectList(" "), "Seleccione un Pantalla", new { @class = "form-control" })
 
-                </td>
-                <td> <label for="versión"> Versión</label> </td>
-                <td> @Html.TextBoxFor(d => d.versionUser) </td>
-            </tr>
-            <tr>
-                <td> <label for="cliente"> Cliente</label> </td>
-                <td>
-                    @if (ViewBag.items_Cli != null)
-                    {
-                        @Html.DropDownListFor(d=>d.ID_cliente, items_Cli, "Seleccione un cliente", new { @class="form-control"})
-                    }
-                </td>
-                <td> <label for="usuario_cliente">Usuario del Cliente</label> </td>
-                <td>
-                    @Html.DropDownListFor(d => d.ID_usuarioCliente,new SelectList(" "),"Seleccione un usuario", new { @class = "form-control" })
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4"><button class="button" type="submit" name="registrar">Registrar</button></td>
-            </tr>
-        </table>
-    </div>
-</main>
+                    </td>
+                    <td> <label for="versión"> Versión</label> </td>
+                    <td> @Html.TextBoxFor(d => d.versionUser) </td>
+                </tr>
+                <tr>
+                    <td> <label for="cliente"> Cliente</label> </td>
+                    <td>
+                        @if (ViewBag.items_Cli != null)
+                        {
+                            @Html.DropDownListFor(d => d.ID_cliente, items_Cli, "Seleccione un cliente", new { @class = "form-control" })
+                        }
+                    </td>
+                    <td> <label for="usuario_cliente">Usuario del Cliente</label> </td>
+                    <td>
+                        @Html.DropDownListFor(d => d.ID_usuarioCliente, new SelectList(" "), "Seleccione un usuario", new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4"><button class="button" type="submit" name="registrar">Registrar</button></td>
+                </tr>
+            </table>
+        </div>
+    </main>
 }
 
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+@section scripts
+{
     <script>
-        $(document).ready(function ()
-        {
-            $('.sidebar-menu').tree();
-            $("#ID_cliente").change(function ()
-            {
-                $.get("/Tickets/GetCliente", { ID_Cliente: $(ID_cliente).val() }, function (data) {
-                    $("#ID_usuarioCliente").empty();
-                    $.each(data, function (i, item) {
-                        $("#ID_usuarioCliente").append("<option value='" + item.ID_Usuario_Cliente + "'>" + item.Nombre_UCliente + "</option>")
-                    });
-                });
-            });
-        });
+    $(document).ready(function () {
+       $("#frm").submit(function (e) {
+          e.preventDefault();
+            url = "@Url.Content("~/Tickets/Add_Ticket")"
+            parametros = $(this).serialize();
 
-        $(document).ready(function () {
-            $("#ID_Sistema").change(function () {
-                $.get("/Tickets/GetSistema", { ID_Sistema: $(ID_Sistema).val() }, function (data) {
-                    $("#ID_Modulo").empty();
-                    $.each(data, function (index, row) {
-                        $("#ID_Modulo").append("<option value='" + row.ID_Modulo + "'>" + row.Nombre_Modulo + "</option>")
-                    });
-                });
-            });
-        });
+            $.post(url, parametros, function (data) {
 
-        $(document).ready(function () {
-            $("#ID_Modulo").change(function () {
-                $.get("/Tickets/GetModulo", { ID_Modulo: $(ID_Modulo).val() }, function (data) {
-                    $("#ID_Pantalla").empty();
-                    $.each(data, function (index, row) {
-                        $("#ID_Pantalla").append("<option value='" + row.ID_Pantalla + "'>" + row.Nombre_Pantalla + "</option>")
-                    });
-                });
+                if (data == "1") {
+                    if (confirm('Agregar solución')) {
+                        document.location.href = "@Url.Content("~/Tickets/AddSolucion")"
+                    } else {
+                        document.location.href = "@Url.Content("~/Tickets/Add_Tickets")"
+                    }
+                }
             });
-        });
- 
+       });
+    });
     </script>
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.sidebar-menu').tree();
+        $("#ID_cliente").change(function () {
+            $.get("/Tickets/GetCliente", { ID_Cliente: $(ID_cliente).val() }, function (data) {
+                $("#ID_usuarioCliente").empty();
+                $.each(data, function (i, item) {
+                    $("#ID_usuarioCliente").append("<option value='" + item.ID_Usuario_Cliente + "'>" + item.Nombre_UCliente + "</option>")
+                });
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        $("#ID_Sistema").change(function () {
+            $.get("/Tickets/GetSistema", { ID_Sistema: $(ID_Sistema).val() }, function (data) {
+                $("#ID_Modulo").empty();
+                $.each(data, function (index, row) {
+                    $("#ID_Modulo").append("<option value='" + row.ID_Modulo + "'>" + row.Nombre_Modulo + "</option>")
+                });
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        $("#ID_Modulo").change(function () {
+            $.get("/Tickets/GetModulo", { ID_Modulo: $(ID_Modulo).val() }, function (data) {
+                $("#ID_Pantalla").empty();
+                $.each(data, function (index, row) {
+                    $("#ID_Pantalla").append("<option value='" + row.ID_Pantalla + "'>" + row.Nombre_Pantalla + "</option>")
+                });
+            });
+        });
+    });
+</script>
+

@@ -1,0 +1,35 @@
+﻿@model Proyecto_Tickets.Models.ViewsModels.AddSolucionViewModel
+@{
+    ViewBag.Title = "AddSolucion";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+}
+
+
+<main>
+
+    @using (Html.BeginForm("AddSolucion", "Tickets", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" })) {
+    <div class="div_formulario" style="width: 850px;">
+        <table class="table">
+            <tr>
+                <td> <label for="descripción_en_pasos"> Descripción en Pasos</label></td>
+                <td> @Html.TextAreaFor(d=>d.Descripcion)</td>
+            </tr>
+            <tr>
+                <td> <label for="fecha_solucion"> Fecha </label></td>
+                <td> <input type="date" name="Fecha" placeholder="escribe la fecha" value=""></td>
+            </tr>
+            <td> <label for="usuario_estratei">Usuario Estratei</label></td>
+            <td>
+                <select class="combo" name="usuario_estratei">
+                    <option value="">Elija un usuario</option>
+                </select>
+            </td>
+        </table>
+        <table class="table">
+            <tr>
+                <td><button class="button" type="submit" name="button"> Guardar</button></td>
+            </tr>
+        </table>
+    </div>
+    }
+</main>

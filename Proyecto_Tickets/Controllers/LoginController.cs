@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Proyecto_Tickets.Models;
 using Proyecto_Tickets.Models.TableViewsModels;
+using Proyecto_Tickets.Models.VariablesGlobalesViewsModels;
 
 namespace Proyecto_Tickets.Controllers
 {
@@ -29,6 +30,7 @@ namespace Proyecto_Tickets.Controllers
                     {
                         Usuarios_Login oUser = lst.First();
                         Session["user"] = oUser;
+                        UserSession.iduser = oUser.ID_Usuarios_Login;
                         UserSession.nombre_user = oUser.Nombre_Usuarios_Login;
                         ViewData["nombre_user"] = UserSession.nombre_user; 
                         return Content("1");

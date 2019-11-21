@@ -197,6 +197,7 @@
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TableViewsModels\SearchClienteTableViewModel.cs" />
+    <Compile Include="Models\TableViewsModels\Search_UsuariosLoginVerMasTableViemModel.cs" />
     <Compile Include="Models\TableViewsModels\SeeClientesTableViewModel.cs" />
     <Compile Include="Models\TableViewsModels\SeeUsuariosClienteTableViewModel.cs" />
     <Compile Include="Models\Ticket.cs">
@@ -213,14 +214,17 @@
     </Compile>
     <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVariablesGlobalesViewModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\ClientesVarViewsModel.cs" />
+    <Compile Include="Models\VariablesGlobalesViewsModels\TicketsVarViemModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\UserLoginVariablesGlobalesViewsModel.cs" />
     <Compile Include="Models\VariablesGlobalesViewsModels\UserSessionVariablesGlobalesViewModel.cs" />
+    <Compile Include="Models\VariablesGlobalesViewsModels\UsuarioSesionVGViewModel.cs" />
     <Compile Include="Models\Viewslist\lisMedioContacto.cs" />
     <Compile Include="Models\Viewslist\lisSistema.cs" />
     <Compile Include="Models\Viewslist\listCliente.cs" />
     <Compile Include="Models\Viewslist\listEntidadFederativa.cs" />
     <Compile Include="Models\Viewslist\listServico.cs" />
     <Compile Include="Models\Viewslist\listUserCliente.cs" />
+    <Compile Include="Models\ViewsModels\AddSolucionViewModel.cs" />
     <Compile Include="Models\ViewsModels\AddTicketsViewModel.cs" />
     <Compile Include="Models\ViewsModels\AddClientesViewsModel.cs" />
     <Compile Include="Models\ViewsModels\AddUsuariosClienteViewModel.cs" />
@@ -307,6 +311,7 @@
     <Content Include="Views\ClientesOptions\AddUsuario.cshtml" />
     <Content Include="Views\ClientesOptions\EditCliente.cshtml" />
     <Content Include="Views\UsuariosClienteOptions\EditUsuario.cshtml" />
+    <Content Include="Views\Tickets\AddSolucion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

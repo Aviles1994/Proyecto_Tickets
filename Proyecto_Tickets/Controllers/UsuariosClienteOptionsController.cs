@@ -1,4 +1,5 @@
 ﻿using Proyecto_Tickets.Models;
+using Proyecto_Tickets.Models.TableViewsModels;
 using Proyecto_Tickets.Models.ViewsModels;
 using System;
 using System.Collections.Generic;
@@ -87,17 +88,43 @@ namespace Proyecto_Tickets.Controllers
             EditUsuariosViewModel model = new EditUsuariosViewModel();
             using (var db = new Sistema_TicketsEntities())
             {
-                var User = db.Usuarios_Login.Find(model.ULid);
-                model.ULnombre = User.Nombre_Usuarios_Login;
-                model.ULcontraseña = User.Contraseña;
-                model.ULestatus = User.Estatus;
-                model.ULUltimoLogin = User.Ultimo_Login;
-                model.ULCcorreo_electronico = User.Correo_electronico;
-
+                var ouserC = db.Usuario_Cliente.Find(id);
+                model.ULid = ouserC.ID_Usuarios_Login;
+                var oUser = db.Usuarios_Login.Find(id);
+                model.ULnombre = oUser.Nombre_Usuarios_Login;
+                model.ULcontraseña = oUser.Contraseña;
+                model.ULestatus = oUser.Estatus;
+                model.ULUltimoLogin = oUser.Ultimo_Login;
+                model.ULCcorreo_electronico = oUser.Correo_electronico;
+                
             }
 
             return View(model);
         }
+
+        //[HttpGet]
+        //public ActionResult VerMas(VerMas model)
+        //{
+        //    List<VerMas> lst = null;
+        //    using (var dbc = new Sistema_TicketsEntities())
+        //    {
+        //        lst = (from d in dbc.Usuarios_Login
+        //               where d.ID_Usuarios_Login== model.idl
+
+        //               select new VerMas
+        //               {
+        //                   idl = d.ID_Usuarios_Login,
+        //                   nameL  = d.Nombre_Usuarios_Login,
+        //                   estatus = d.Estatus,
+        //                   correo = d.Correo_electronico,
+        //                   ultimoLogin = d.Ultimo_Login,
+        //                   contraseña = d.Contraseña
+        //               }).ToList();
+
+        //    }
+        //    return View(lst);
+
+        //}
 
 
     }
