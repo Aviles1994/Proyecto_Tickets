@@ -101,6 +101,38 @@ namespace Proyecto_Tickets.Controllers
                 return Content("1");
         }
 
+        public ActionResult SeeTicketsCliente(AddTicketsViewModel model)
+        {
+            ViewData["nombre_user"] = UserSession.nombre_user;
+
+            List<See_TicketsClienteTableViewModel> lst;
+            using (var dbs = new Sistema_TicketsEntities())
+            {
+                ClientesVarViewsModel elegido = new ClientesVarViewsModel();
+                lst = (from d in dbs.Ticket
+                       where d.ID_Usuario_Cliente == model.ID_usuarioCliente
+
+                       select new See_TicketsClienteTableViewModel
+                       {
+                           idTicket = d.ID_Ticket,
+                           fecha_inicio = d.Fecha_Hora_Inicio,
+                           version_usurio = (float)d.Version_Usuario,
+                           nombre_problema = d.Nombre_Problema,
+                           descripción_problema = d.Descripcion_Problema,
+                           fecha_fin = (DateTime)d.Fecha_Hora_Fin,
+                           idpantalla = d.ID_Pantalla,
+                           idusuario = d.ID_Usuario_Cliente,
+                           idmedio_contacto = d.ID_Medio_de_Contacto,
+                           idprioridad = d.ID_Prioridad,
+                           idestado=d.ID_Estado,
+                           idservicio=d.ID_Servicio
+                       }).ToList();
+
+                return View(lst);
+            }
+
+        }
+
         public JsonResult GetCliente(int ID_Cliente)
         {
             List<Usuario_Cliente> userlist = null;
@@ -177,6 +209,7 @@ namespace Proyecto_Tickets.Controllers
         public ActionResult SearchTickets()
         {
             ViewData["nombre_user"] = UserSession.nombre_user;
+            llenarCliente();
             return View();
         }
 

@@ -1,0 +1,43 @@
+﻿@model List<Proyecto_Tickets.Models.TableViewsModels.See_TicketsClienteTableViewModel>
+@{
+    ViewBag.Title = "SeeTicketsCliente";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+}
+
+<main>
+    <div class="div_formulario">
+        <table class="table_busqueda">
+            <tr>
+                <th>Número ticket</th>
+                <th>Medio de contacto</th>
+                <th>Estado</th>
+                <th>Prioridad</th>
+                <th>Servicio</th>
+                <th>Usuario</th>
+                <th>Nombre Problema</th>
+                <th>Descripción Problema</th>
+                <th>Acción</th>
+            </tr>
+            @foreach (var oticket in Model) {
+            <tr>
+                <td>@oticket.idTicket</td>
+                <td>@oticket.idmedio_contacto</td>
+                <td>@oticket.idestado</td>
+                <td>@oticket.idprioridad</td>
+                <td>@oticket.idservicio</td>
+                <td>@oticket.idusuario</td>
+                <td>@oticket.nombre_problema</td>
+                <td>@oticket.descripción_problema</td>
+                <td style="width:550px">
+                    <button class="btn_Acción" type="submit" name="button"> <img src="~/Imagenes/view_more.png" alt=""> </button>
+                    <button class="btn_Acción" type="submit" name="button"> <img src="~/Imagenes/update_user.png" alt=""></button>
+                    <button class="btn_Acción" type="submit" name="button"> <img src="~/Imagenes/update_status.png" alt=""></button>
+                    <button class="btn_Acción" type="submit" name="button"> <img src="~/Imagenes/add_solution.png" alt=""></button>
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+</main>
+
+
