@@ -141,7 +141,10 @@ namespace Proyecto_Tickets.Controllers
             using (var dbc = new Sistema_TicketsEntities())
             {
                 lst = (from d in dbc.Usuario_Cliente
+                       join b in dbc.Usuarios_Login
+                       on d.ID_Usuarios_Login equals b.ID_Usuarios_Login
                        where d.ID_Cliente == model.idCliente
+
 
                        select new SeeUsuariosClienteTableViewModel
                        {
@@ -154,13 +157,23 @@ namespace Proyecto_Tickets.Controllers
                            TelOfi = d.Telefono_Oficina,
                            Extencion = (int) d.Extension,
                            idCliente = d.ID_Cliente,
-                           iduser = d.ID_Usuarios_Login
+                           iduser = d.ID_Usuarios_Login,
+
+                           ULid = b.ID_Usuarios_Login,
+                           ULnombre = b.Nombre_Usuarios_Login,
+                           ULcontraseña = b.Contraseña,
+                           ULestatus = b.Estatus,
+                           ULUltimoLogin = b.Ultimo_Login,
+                           ULCcorreo_electronico = b.Correo_electronico,
+                           ULTipoUsuario = b.ID_Tipo_Usuario
                        }).ToList();
 
             }
+
             return View(lst);
 
         }
+
         public void llenarEntidadFedarativa()
         {
             List<listEntidadFederativa> lst = null;
