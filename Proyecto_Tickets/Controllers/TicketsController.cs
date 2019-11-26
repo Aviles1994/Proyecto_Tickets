@@ -67,25 +67,40 @@ namespace Proyecto_Tickets.Controllers
                     return Content("noo" + ex.InnerException);
                 }
 
-                return Content("1");
+              
             }
+
+            using ( var db= new Sistema_TicketsEntities())
+            {
+                Historial_Ticket ohistorial_ticket = new Historial_Ticket();
+                ohistorial_ticket.Accion_Realizada = "Se registro";
+                ohistorial_ticket.ID_Estado = 1;
+                ohistorial_ticket.Fecha_Hora_Modificacion = DateTime.Now;
+                ohistorial_ticket.ID_Estratei = UserSession.iduser;
+                ohistorial_ticket.ID_Ticket = TicketsVarViemModel.idTickets;
+
+                db.Historial_Ticket.Add(ohistorial_ticket);
+                db.SaveChanges();
+            }
+                return Content("1");
         }
         public ActionResult AddSolucion()
         {
+            ViewData["nombre_user"] = UserSession.nombre_user;
             return View();
         }
 
         [HttpPost]
         public ActionResult AddSolucion(AddSolucionViewModel model)
         {
+            
             using (var db = new Sistema_TicketsEntities())
             {
                 Solucion oSolucion = new Solucion();
                 oSolucion.Descripcion_en_Pasos = model.Descripcion;
                 oSolucion.Fecha_Solucion = model.fecha;
                 oSolucion.ID_Ticket = TicketsVarViemModel.idTickets;
-                int id = UserSession.iduser;
-                oSolucion.ID_Estratei = id;
+                oSolucion.ID_Estratei = UserSession.iduser; 
 
                 try
                 {

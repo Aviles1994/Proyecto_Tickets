@@ -28,7 +28,6 @@ namespace Proyecto_Tickets.Models
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Entidad_Federativa> Entidad_Federativa { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
-        public virtual DbSet<Historial_Ticket> Historial_Ticket { get; set; }
         public virtual DbSet<Medio_de_Contacto> Medio_de_Contacto { get; set; }
         public virtual DbSet<Modulos> Modulos { get; set; }
         public virtual DbSet<Pantallas> Pantallas { get; set; }
@@ -42,5 +41,6 @@ namespace Proyecto_Tickets.Models
         public virtual DbSet<Tipo_Usuarios> Tipo_Usuarios { get; set; }
         public virtual DbSet<Usuario_Cliente> Usuario_Cliente { get; set; }
         public virtual DbSet<Usuarios_Login> Usuarios_Login { get; set; }
+        public virtual DbSet<Historial_Ticket> Historial_Ticket { get; set; }
     }
 }

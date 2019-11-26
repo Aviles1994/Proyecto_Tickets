@@ -7,7 +7,7 @@
 
 <main>
 
-    @using (Html.BeginForm("AddSolucion", "Tickets", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
+    @using (Html.BeginForm("AddSolucion", "TicketsOptions", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
     {
         <div class="div_formulario" style="width: 850px;">
             <table class="table">
@@ -43,7 +43,7 @@
         {
             e.preventDefault();
 
-            url = "@Url.Content("~/Tickets/AddSolucion")"
+            url = "@Url.Content("~/TicketsOptions/AddSolucion")"
             parametros = $(this).serialize();
 
             $.post(url, parametros, function (data) {

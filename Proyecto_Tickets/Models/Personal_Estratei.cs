@@ -17,8 +17,8 @@ namespace Proyecto_Tickets.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Personal_Estratei()
         {
-            this.Historial_Ticket = new HashSet<Historial_Ticket>();
             this.Solucion = new HashSet<Solucion>();
+            this.Historial_Ticket = new HashSet<Historial_Ticket>();
         }
     
         public int ID_Estratei { get; set; }
@@ -30,9 +30,9 @@ namespace Proyecto_Tickets.Models
         public int ID_Usuarios_Login { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Historial_Ticket> Historial_Ticket { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Solucion> Solucion { get; set; }
         public virtual Usuarios_Login Usuarios_Login { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Historial_Ticket> Historial_Ticket { get; set; }
     }
 }

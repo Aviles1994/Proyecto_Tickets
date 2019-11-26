@@ -18,6 +18,7 @@ namespace Proyecto_Tickets.Models
         public Estado()
         {
             this.Ticket = new HashSet<Ticket>();
+            this.Historial_Ticket = new HashSet<Historial_Ticket>();
         }
     
         public int ID_Estado { get; set; }
@@ -25,5 +26,7 @@ namespace Proyecto_Tickets.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Ticket { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Historial_Ticket> Historial_Ticket { get; set; }
     }
 }

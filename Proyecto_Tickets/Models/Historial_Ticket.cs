@@ -15,12 +15,13 @@ namespace Proyecto_Tickets.Models
     public partial class Historial_Ticket
     {
         public int ID_Historial { get; set; }
-        public string Estado { get; set; }
         public string Accion_Realizada { get; set; }
         public System.DateTime Fecha_Hora_Modificacion { get; set; }
         public int ID_Estratei { get; set; }
         public int ID_Ticket { get; set; }
+        public int ID_Estado { get; set; }
     
+        public virtual Estado Estado { get; set; }
         public virtual Personal_Estratei Personal_Estratei { get; set; }
         public virtual Ticket Ticket { get; set; }
     }

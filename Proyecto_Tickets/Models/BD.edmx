@@ -37,11 +37,11 @@
             <PropertyRef Name="ID_Historial" />
           </Key>
           <Property Name="ID_Historial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Estado" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Accion_Realizada" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Fecha_Hora_Modificacion" Type="datetime" Nullable="false" />
           <Property Name="ID_Estratei" Type="int" Nullable="false" />
           <Property Name="ID_Ticket" Type="int" Nullable="false" />
+          <Property Name="ID_Estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Medio_de_Contacto">
           <Key>
@@ -209,6 +209,18 @@
             </Principal>
             <Dependent Role="Cliente">
               <PropertyRef Name="ID_Entidad_Federativa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Estado_Historial_Ticket">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Historial_Ticket" Type="Self.Historial_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="ID_Estado" />
+            </Principal>
+            <Dependent Role="Historial_Ticket">
+              <PropertyRef Name="ID_Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -434,6 +446,10 @@
             <End Role="Entidad_Federativa" EntitySet="Entidad_Federativa" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
+          <AssociationSet Name="fk_ID_Estado_Historial_Ticket" Association="Self.fk_ID_Estado_Historial_Ticket">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Historial_Ticket" EntitySet="Historial_Ticket" />
+          </AssociationSet>
           <AssociationSet Name="fk_ID_Estado_Ticket" Association="Self.fk_ID_Estado_Ticket">
             <End Role="Estado" EntitySet="Estado" />
             <End Role="Ticket" EntitySet="Ticket" />
@@ -507,7 +523,6 @@
           <EntitySet Name="Cliente" EntityType="Sistema_TicketsModel.Cliente" />
           <EntitySet Name="Entidad_Federativa" EntityType="Sistema_TicketsModel.Entidad_Federativa" />
           <EntitySet Name="Estado" EntityType="Sistema_TicketsModel.Estado" />
-          <EntitySet Name="Historial_Ticket" EntityType="Sistema_TicketsModel.Historial_Ticket" />
           <EntitySet Name="Medio_de_Contacto" EntityType="Sistema_TicketsModel.Medio_de_Contacto" />
           <EntitySet Name="Modulos" EntityType="Sistema_TicketsModel.Modulos" />
           <EntitySet Name="Pantallas" EntityType="Sistema_TicketsModel.Pantallas" />
@@ -536,14 +551,6 @@
           <AssociationSet Name="fk_ID_Estado_Ticket" Association="Sistema_TicketsModel.fk_ID_Estado_Ticket">
             <End Role="Estado" EntitySet="Estado" />
             <End Role="Ticket" EntitySet="Ticket" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ID_Estratei_Historial_Ticket" Association="Sistema_TicketsModel.fk_ID_Estratei_Historial_Ticket">
-            <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
-            <End Role="Historial_Ticket" EntitySet="Historial_Ticket" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ID_Ticket_Historial_Ticket" Association="Sistema_TicketsModel.fk_ID_Ticket_Historial_Ticket">
-            <End Role="Ticket" EntitySet="Ticket" />
-            <End Role="Historial_Ticket" EntitySet="Historial_Ticket" />
           </AssociationSet>
           <AssociationSet Name="fk_ID_Medio_de_Contacto_Ticket" Association="Sistema_TicketsModel.fk_ID_Medio_de_Contacto_Ticket">
             <End Role="Medio_de_Contacto" EntitySet="Medio_de_Contacto" />
@@ -597,6 +604,19 @@
             <End Role="Usuarios_Login" EntitySet="Usuarios_Login" />
             <End Role="Usuario_Cliente" EntitySet="Usuario_Cliente" />
           </AssociationSet>
+          <EntitySet Name="Historial_Ticket" EntityType="Sistema_TicketsModel.Historial_Ticket" />
+          <AssociationSet Name="fk_ID_Estado_Historial_Ticket" Association="Sistema_TicketsModel.fk_ID_Estado_Historial_Ticket">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Historial_Ticket" EntitySet="Historial_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Estratei_Historial_Ticket" Association="Sistema_TicketsModel.fk_ID_Estratei_Historial_Ticket">
+            <End Role="Personal_Estratei" EntitySet="Personal_Estratei" />
+            <End Role="Historial_Ticket" EntitySet="Historial_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_Ticket_Historial_Ticket" Association="Sistema_TicketsModel.fk_ID_Ticket_Historial_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="Historial_Ticket" EntitySet="Historial_Ticket" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cliente">
           <Key>
@@ -629,19 +649,7 @@
           <Property Name="ID_Estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Estado" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Ticket" Relationship="Sistema_TicketsModel.fk_ID_Estado_Ticket" FromRole="Estado" ToRole="Ticket" />
-        </EntityType>
-        <EntityType Name="Historial_Ticket">
-          <Key>
-            <PropertyRef Name="ID_Historial" />
-          </Key>
-          <Property Name="ID_Historial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Estado" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Accion_Realizada" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Fecha_Hora_Modificacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ID_Estratei" Type="Int32" Nullable="false" />
-          <Property Name="ID_Ticket" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Personal_Estratei" Relationship="Sistema_TicketsModel.fk_ID_Estratei_Historial_Ticket" FromRole="Historial_Ticket" ToRole="Personal_Estratei" />
-          <NavigationProperty Name="Ticket" Relationship="Sistema_TicketsModel.fk_ID_Ticket_Historial_Ticket" FromRole="Historial_Ticket" ToRole="Ticket" />
+          <NavigationProperty Name="Historial_Ticket" Relationship="Sistema_TicketsModel.fk_ID_Estado_Historial_Ticket" FromRole="Estado" ToRole="Historial_Ticket" />
         </EntityType>
         <EntityType Name="Medio_de_Contacto">
           <Key>
@@ -684,9 +692,9 @@
           <Property Name="Celular" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="Puesto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="ID_Usuarios_Login" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Historial_Ticket" Relationship="Sistema_TicketsModel.fk_ID_Estratei_Historial_Ticket" FromRole="Personal_Estratei" ToRole="Historial_Ticket" />
           <NavigationProperty Name="Solucion" Relationship="Sistema_TicketsModel.fk_ID_Estratei_Solucion" FromRole="Personal_Estratei" ToRole="Solucion" />
           <NavigationProperty Name="Usuarios_Login" Relationship="Sistema_TicketsModel.fk_ID_Usuarios_Login_Personal_Estratei" FromRole="Personal_Estratei" ToRole="Usuarios_Login" />
+          <NavigationProperty Name="Historial_Ticket" Relationship="Sistema_TicketsModel.fk_ID_Estratei_Historial_Ticket" FromRole="Personal_Estratei" ToRole="Historial_Ticket" />
         </EntityType>
         <EntityType Name="Prioridad">
           <Key>
@@ -758,13 +766,13 @@
           <Property Name="ID_Estado" Type="Int32" Nullable="false" />
           <Property Name="ID_Prioridad" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Estado" Relationship="Sistema_TicketsModel.fk_ID_Estado_Ticket" FromRole="Ticket" ToRole="Estado" />
-          <NavigationProperty Name="Historial_Ticket" Relationship="Sistema_TicketsModel.fk_ID_Ticket_Historial_Ticket" FromRole="Ticket" ToRole="Historial_Ticket" />
           <NavigationProperty Name="Medio_de_Contacto" Relationship="Sistema_TicketsModel.fk_ID_Medio_de_Contacto_Ticket" FromRole="Ticket" ToRole="Medio_de_Contacto" />
           <NavigationProperty Name="Pantallas" Relationship="Sistema_TicketsModel.fk_ID_Pantalla_Ticket" FromRole="Ticket" ToRole="Pantallas" />
           <NavigationProperty Name="Prioridad" Relationship="Sistema_TicketsModel.fk_ID_Prioridad_Ticket" FromRole="Ticket" ToRole="Prioridad" />
           <NavigationProperty Name="Servicio" Relationship="Sistema_TicketsModel.fk_ID_Servicio_Ticket" FromRole="Ticket" ToRole="Servicio" />
           <NavigationProperty Name="Solucion" Relationship="Sistema_TicketsModel.fk_ID_Ticket_Solucion" FromRole="Ticket" ToRole="Solucion" />
           <NavigationProperty Name="Usuario_Cliente" Relationship="Sistema_TicketsModel.fk_ID_Usuario_Cliente_Ticket" FromRole="Ticket" ToRole="Usuario_Cliente" />
+          <NavigationProperty Name="Historial_Ticket" Relationship="Sistema_TicketsModel.fk_ID_Ticket_Historial_Ticket" FromRole="Ticket" ToRole="Historial_Ticket" />
         </EntityType>
         <EntityType Name="Tipo_Usuarios">
           <Key>
@@ -852,30 +860,6 @@
             </Principal>
             <Dependent Role="Ticket">
               <PropertyRef Name="ID_Estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_ID_Estratei_Historial_Ticket">
-          <End Type="Sistema_TicketsModel.Personal_Estratei" Role="Personal_Estratei" Multiplicity="1" />
-          <End Type="Sistema_TicketsModel.Historial_Ticket" Role="Historial_Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personal_Estratei">
-              <PropertyRef Name="ID_Estratei" />
-            </Principal>
-            <Dependent Role="Historial_Ticket">
-              <PropertyRef Name="ID_Estratei" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_ID_Ticket_Historial_Ticket">
-          <End Type="Sistema_TicketsModel.Ticket" Role="Ticket" Multiplicity="1" />
-          <End Type="Sistema_TicketsModel.Historial_Ticket" Role="Historial_Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ticket">
-              <PropertyRef Name="ID_Ticket" />
-            </Principal>
-            <Dependent Role="Historial_Ticket">
-              <PropertyRef Name="ID_Ticket" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1035,6 +1019,56 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Historial_Ticket">
+          <Key>
+            <PropertyRef Name="ID_Historial" />
+          </Key>
+          <Property Name="ID_Historial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Accion_Realizada" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Hora_Modificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_Estratei" Type="Int32" Nullable="false" />
+          <Property Name="ID_Ticket" Type="Int32" Nullable="false" />
+          <Property Name="ID_Estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Estado" Relationship="Sistema_TicketsModel.fk_ID_Estado_Historial_Ticket" FromRole="Historial_Ticket" ToRole="Estado" />
+          <NavigationProperty Name="Personal_Estratei" Relationship="Sistema_TicketsModel.fk_ID_Estratei_Historial_Ticket" FromRole="Historial_Ticket" ToRole="Personal_Estratei" />
+          <NavigationProperty Name="Ticket" Relationship="Sistema_TicketsModel.fk_ID_Ticket_Historial_Ticket" FromRole="Historial_Ticket" ToRole="Ticket" />
+        </EntityType>
+        <Association Name="fk_ID_Estado_Historial_Ticket">
+          <End Type="Sistema_TicketsModel.Estado" Role="Estado" Multiplicity="1" />
+          <End Type="Sistema_TicketsModel.Historial_Ticket" Role="Historial_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="ID_Estado" />
+            </Principal>
+            <Dependent Role="Historial_Ticket">
+              <PropertyRef Name="ID_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Estratei_Historial_Ticket">
+          <End Type="Sistema_TicketsModel.Personal_Estratei" Role="Personal_Estratei" Multiplicity="1" />
+          <End Type="Sistema_TicketsModel.Historial_Ticket" Role="Historial_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_Estratei">
+              <PropertyRef Name="ID_Estratei" />
+            </Principal>
+            <Dependent Role="Historial_Ticket">
+              <PropertyRef Name="ID_Estratei" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_Ticket_Historial_Ticket">
+          <End Type="Sistema_TicketsModel.Ticket" Role="Ticket" Multiplicity="1" />
+          <End Type="Sistema_TicketsModel.Historial_Ticket" Role="Historial_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ID_Ticket" />
+            </Principal>
+            <Dependent Role="Historial_Ticket">
+              <PropertyRef Name="ID_Ticket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1068,18 +1102,6 @@
               <MappingFragment StoreEntitySet="Estado">
                 <ScalarProperty Name="Nombre_Estado" ColumnName="Nombre_Estado" />
                 <ScalarProperty Name="ID_Estado" ColumnName="ID_Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Historial_Ticket">
-            <EntityTypeMapping TypeName="Sistema_TicketsModel.Historial_Ticket">
-              <MappingFragment StoreEntitySet="Historial_Ticket">
-                <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
-                <ScalarProperty Name="ID_Estratei" ColumnName="ID_Estratei" />
-                <ScalarProperty Name="Fecha_Hora_Modificacion" ColumnName="Fecha_Hora_Modificacion" />
-                <ScalarProperty Name="Accion_Realizada" ColumnName="Accion_Realizada" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="ID_Historial" ColumnName="ID_Historial" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1225,6 +1247,18 @@
                 <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
                 <ScalarProperty Name="Nombre_Usuarios_Login" ColumnName="Nombre_Usuarios_Login" />
                 <ScalarProperty Name="ID_Usuarios_Login" ColumnName="ID_Usuarios_Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Historial_Ticket">
+            <EntityTypeMapping TypeName="Sistema_TicketsModel.Historial_Ticket">
+              <MappingFragment StoreEntitySet="Historial_Ticket">
+                <ScalarProperty Name="ID_Estado" ColumnName="ID_Estado" />
+                <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+                <ScalarProperty Name="ID_Estratei" ColumnName="ID_Estratei" />
+                <ScalarProperty Name="Fecha_Hora_Modificacion" ColumnName="Fecha_Hora_Modificacion" />
+                <ScalarProperty Name="Accion_Realizada" ColumnName="Accion_Realizada" />
+                <ScalarProperty Name="ID_Historial" ColumnName="ID_Historial" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

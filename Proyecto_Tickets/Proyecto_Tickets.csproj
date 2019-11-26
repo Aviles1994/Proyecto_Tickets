@@ -133,6 +133,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProblemasController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
+    <Compile Include="Controllers\TicketsOptionsController.cs" />
     <Compile Include="Controllers\UsuariosClienteController.cs" />
     <Compile Include="Controllers\UsuariosClienteOptionsController.cs" />
     <Compile Include="Firters\VerifySession.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Models\ViewsModels\AddTicketsViewModel.cs" />
     <Compile Include="Models\ViewsModels\AddClientesViewsModel.cs" />
     <Compile Include="Models\ViewsModels\AddUsuariosClienteViewModel.cs" />
+    <Compile Include="Models\ViewsModels\Historial_TicketViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +315,7 @@
     <Content Include="Views\Tickets\SeeTicketsCliente.cshtml" />
     <Content Include="Views\Tickets\SeeTicketsPendientes.cshtml" />
     <Content Include="Views\Tickets\SeeTicketsNumero.cshtml" />
+    <Content Include="Views\TicketsOptions\AddSolucion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
