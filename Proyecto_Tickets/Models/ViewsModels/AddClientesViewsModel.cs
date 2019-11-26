@@ -20,7 +20,7 @@ namespace Proyecto_Tickets.Models.ViewsModels
 
         public int ID_Sistema { get; set; }
         public DateTime fecha_contrato { get; set; }
-        public float version_sis { get; set; }
+        public string version_sis { get; set; }
         public DateTime  vigencia { get; set; }
 
     }
@@ -40,7 +40,7 @@ namespace Proyecto_Tickets.Models.ViewsModels
 
         public int ID_Sistema { get; set; }
         public DateTime fecha_contrato { get; set; }
-        public float version_sis { get; set; }
+        public string version_sis { get; set; }
         public DateTime vigencia { get; set; }
 
     }

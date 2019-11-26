@@ -48,7 +48,7 @@ namespace Proyecto_Tickets.Controllers
                 oticket.Nombre_Problema =model.nombreProblema;
                 oticket.Descripcion_Problema = model.descrpcionProblema;
                 oticket.ID_Pantalla = model.ID_Pantalla;
-                oticket.ID_Usuario_Cliente =model.ID_cliente;
+                oticket.ID_Usuario_Cliente =model.ID_usuarioCliente;
                 oticket.ID_Medio_de_Contacto = model.ID_MedioContacto;
                 oticket.ID_Servicio =model.ID_Servico;
                 oticket.ID_Estado = 1;
@@ -101,38 +101,96 @@ namespace Proyecto_Tickets.Controllers
                 return Content("1");
         }
 
-        public ActionResult SeeTicketsCliente(AddTicketsViewModel model)
+
+        public ActionResult SeeTicketsCliente(ElegidoTickets model)
         {
             ViewData["nombre_user"] = UserSession.nombre_user;
 
-            List<See_TicketsClienteTableViewModel> lst;
-            using (var dbs = new Sistema_TicketsEntities())
+            List<SeeTicketsUsuarios> lst = null;
+            using ( var db = new Sistema_TicketsEntities())
             {
-                ClientesVarViewsModel elegido = new ClientesVarViewsModel();
-                lst = (from d in dbs.Ticket
+                lst = (from d in db.Ticket
                        where d.ID_Usuario_Cliente == model.ID_usuarioCliente
 
-                       select new See_TicketsClienteTableViewModel
+                       select new SeeTicketsUsuarios
                        {
                            idTicket = d.ID_Ticket,
                            fecha_inicio = d.Fecha_Hora_Inicio,
-                           version_usurio = (float)d.Version_Usuario,
+                           version_usuario = d.Version_Usuario,
                            nombre_problema = d.Nombre_Problema,
                            descripción_problema = d.Descripcion_Problema,
-                           fecha_fin = (DateTime)d.Fecha_Hora_Fin,
-                           idpantalla = d.ID_Pantalla,
-                           idusuario = d.ID_Usuario_Cliente,
-                           idmedio_contacto = d.ID_Medio_de_Contacto,
-                           idprioridad = d.ID_Prioridad,
+                           idpantalla=d.ID_Pantalla,
+                           idmedio_contacto=d.ID_Medio_de_Contacto,
                            idestado=d.ID_Estado,
-                           idservicio=d.ID_Servicio
+                           idprioridad=d.ID_Prioridad,
+                           idservicio=d.ID_Servicio,
+
                        }).ToList();
+            }
 
                 return View(lst);
-            }
+            
 
         }
 
+        public ActionResult SeeTicketsPendientes()
+        {
+            ViewData["nombre_user"] = UserSession.nombre_user;
+
+            List<SeeTicketsPendientes> lst = null;
+            using (var db = new Sistema_TicketsEntities())
+            {
+                lst = (from d in db.Ticket
+                       where d.ID_Estado != 3 
+
+                       select new SeeTicketsPendientes
+                       {
+                           idTicket = d.ID_Ticket,
+                           fecha_inicio = d.Fecha_Hora_Inicio,
+                           version_usuario = d.Version_Usuario,
+                           nombre_problema = d.Nombre_Problema,
+                           descripción_problema = d.Descripcion_Problema,
+                           idpantalla = d.ID_Pantalla,
+                           idmedio_contacto = d.ID_Medio_de_Contacto,
+                           idestado = d.ID_Estado,
+                           idprioridad = d.ID_Prioridad,
+                           idservicio = d.ID_Servicio,
+
+                       }).ToList();
+            }
+
+            return View(lst);
+            
+        }
+        public ActionResult SeeTicketsNumero(ElegidoTickets model)
+        {
+            ViewData["nombre_user"] = UserSession.nombre_user;
+
+            List<SeeTicketsNumero> lst = null;
+            using (var db = new Sistema_TicketsEntities())
+            {
+                lst = (from d in db.Ticket
+                       where d.ID_Ticket ==model.ID_Ticket
+
+                       select new SeeTicketsNumero
+                       {
+                           idTicket = d.ID_Ticket,
+                           fecha_inicio = d.Fecha_Hora_Inicio,
+                           version_usuario = d.Version_Usuario,
+                           nombre_problema = d.Nombre_Problema,
+                           descripción_problema = d.Descripcion_Problema,
+                           idpantalla = d.ID_Pantalla,
+                           idmedio_contacto = d.ID_Medio_de_Contacto,
+                           idestado = d.ID_Estado,
+                           idprioridad = d.ID_Prioridad,
+                           idservicio = d.ID_Servicio,
+
+                       }).ToList();
+            }
+
+            return View(lst);
+
+        }
         public JsonResult GetCliente(int ID_Cliente)
         {
             List<Usuario_Cliente> userlist = null;
@@ -250,7 +308,7 @@ namespace Proyecto_Tickets.Controllers
                    select new listMedioContacto
                    {
                        idmedio = d.ID_Medio_de_Contacto,
-                       namemedio = d.Nombre_MedioC
+                       namemedio = d.Nombre_Medio_de_Contacto
                    }).ToList();
             }
             List<SelectListItem> items_MC = lst.ConvertAll(d =>

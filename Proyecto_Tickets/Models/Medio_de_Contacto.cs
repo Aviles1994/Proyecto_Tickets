@@ -21,7 +21,7 @@ namespace Proyecto_Tickets.Models
         }
     
         public int ID_Medio_de_Contacto { get; set; }
-        public string Nombre_MedioC { get; set; }
+        public string Nombre_Medio_de_Contacto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Ticket { get; set; }

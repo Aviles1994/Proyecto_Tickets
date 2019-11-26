@@ -24,7 +24,7 @@ namespace Proyecto_Tickets.Models
         public int ID_Sistema { get; set; }
         public string Nombre_Sistema { get; set; }
         public string Descripcion_Sistema { get; set; }
-        public double Version_Sistema { get; set; }
+        public string Version_Sistema { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Modulos> Modulos { get; set; }

@@ -10,7 +10,7 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public int idt { get; set; }
         public DateTime fecha_hora_Inicio { get; set; }
         public DateTime duracionInicio { get; set; }
-        public float versionUser { get; set; }
+        public string versionUser { get; set; }
         public string nombreProblema { get; set; }
         public string descrpcionProblema { get; set; }
         public string imagen { get; set; }

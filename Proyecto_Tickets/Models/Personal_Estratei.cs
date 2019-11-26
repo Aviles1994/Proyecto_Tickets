@@ -26,14 +26,13 @@ namespace Proyecto_Tickets.Models
         public string Apellido_PaternoPEstratei { get; set; }
         public string Apellido_MaternoPEstratei { get; set; }
         public string Celular { get; set; }
-        public int ID_Departamento { get; set; }
+        public string Puesto { get; set; }
         public int ID_Usuarios_Login { get; set; }
     
-        public virtual Departamento Departamento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Historial_Ticket> Historial_Ticket { get; set; }
-        public virtual Usuarios_Login Usuarios_Login { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Solucion> Solucion { get; set; }
+        public virtual Usuarios_Login Usuarios_Login { get; set; }
     }
 }

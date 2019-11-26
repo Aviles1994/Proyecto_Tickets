@@ -103,7 +103,7 @@ namespace Proyecto_Tickets.Controllers
             List<SearchClienteTableViewModel> lst;
             using (var dbs = new Sistema_TicketsEntities())
             {
-                ClientesVarViewsModel elegido = new ClientesVarViewsModel();
+                
                 lst = (from d in dbs.Cliente
                        where d.ID_Cliente == model.idcliente
 

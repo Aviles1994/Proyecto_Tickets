@@ -94,7 +94,7 @@
             $.post(url, parametros, function (data) {
 
                 if (data == "1") {
-                    if (confirm('Agregar solución')) {
+                    if (confirm('Agregar solución' @ViewData["idTickets"])) {
                         document.location.href = "@Url.Content("~/Tickets/AddSolucion")"
                     } else {
                         document.location.href = "@Url.Content("~/Tickets/Add_Tickets")"

@@ -1,72 +1,67 @@
-﻿@model Proyecto_Tickets.Models.ViewsModels.AddTicketsViewModel
+﻿@model Proyecto_Tickets.Models.VariablesGlobalesViewsModels.ElegidoTickets
 @{
     ViewBag.Title = "SearchTickets";
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
     List<SelectListItem> items_Cli = (List<SelectListItem>)ViewBag.items_Cli;
 }
 
-@using (Html.BeginForm("SeeTicketsCliente", "Tickets", new { role = "form", Id = "frm", @Class = " form" }))
-{
     <main>
         <div class="div_formulario">
 
             <!-- aqui esta el primer slector de busqueda-->
-            <div class="div_borde">
-                <table class="table">
-                    <tr>
-                        <td><label for="cliente"> Clientes   </label></td>
-                        <td>
-                            @if (ViewBag.items_Cli != null)
-                            {
-                                @Html.DropDownListFor(d => d.ID_cliente, items_Cli, "Seleccione un cliente", new { @class = "form-control" })
-                            }
-                        </td>
-                        <td><label for="usuario_cliente"> Usuarios del Cliente</label></td>
-                        <td>
-                            @Html.DropDownListFor(d => d.ID_usuarioCliente, new SelectList(" "), "Seleccione un usuario", new { @class = "form-control" })
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5"><button class="button" type="submit"> Buscar</button></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="div_borde">
-                <table class="table">
-                    <tr>
-                        <td><label for="numero_seguimiento"> Numero del ticket </label> </td>
-                        <td><input type="number" name="numero_seguimiento" placeholder=" numero de seguimiento"></td>
-                    </tr>
+            @using (Html.BeginForm("SeeTicketsCliente", "Tickets", new { role = "form", Id = "frm", @Class = " form" }))
+            {
+                <div class="div_borde">
                     <table class="table">
                         <tr>
-                            <td colspan="4"><button class="button" type="button" name="button"> Buscar </button></td>
+                            <td><label for="cliente"> Clientes   </label></td>
+                            <td>
+                                @if (ViewBag.items_Cli != null)
+                                {
+                                    @Html.DropDownListFor(d => d.ID_cliente, items_Cli, "Seleccione un cliente", new { @class = "form-control" })
+                                }
+                            </td>
+                            <td><label for="usuario_cliente"> Usuarios del Cliente</label></td>
+                            <td>
+                                @Html.DropDownListFor(d => d.ID_usuarioCliente, new SelectList(" "), "Seleccione un usuario", new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><button class="button" type="submit"> Buscar</button></td>
                         </tr>
                     </table>
-                </table>
+                </div>
+            }
+            @using (Html.BeginForm("SeeTicketsNumero", "Tickets", new { role = "form", Id = "frm", @Class = " form" }))
+            {
+                <div class="div_borde">
+                    <table class="table">
+                        <tr>
+                            <td><label for="numero_seguimiento"> Numero del ticket </label> </td>
+                            <td>@Html.TextBoxFor(d => d.ID_Ticket)
+                            </td>
+                        </tr>
+                        <table class="table">
+                            <tr>
+                                <td colspan="4"><button class="button" type="submit"> Buscar </button></td>
+                            </tr>
+                        </table>
+                    </table>
+                </div>
+            }
+            @using (Html.BeginForm("SeeTicketsPendientes", "Tickets", new { role = "form", Id = "frm", @Class = " form" }))
+            {
+                <div class="div_borde">
+                    <table class="table">
+                        <tr>
+                            <td><label for="mtpendientes"> Mostrar Tickets Pendientes</label></td>
+                        <tr>
+                            <td colspan="5"><button class="button" type="submit"> Mostrar</button></td>
+                        </tr>
+                    </table>
+                </div>
+            }
             </div>
-
-            <div class="div_borde">
-                <table class="table">
-                    <tr>
-                        <td><label for="mtpendientes"> Mostrar Tickets Pendientes</label></td>
-                    <tr>
-                        <td colspan="5"><button class="button" type="button" name="button"> Mostrar</button></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="div_borde">
-                <table class="table">
-                    <tr>
-                        <td><label for="mtsinsolución"> Mostrar Tickets sin Solución</label></td>
-                    <tr>
-                        <td colspan="5"><button class="button" type="button" name="button"> Mostrar</button></td>
-                    </tr>
-                </table>
-            </div>
-
-        </div>
     </main>
 
 

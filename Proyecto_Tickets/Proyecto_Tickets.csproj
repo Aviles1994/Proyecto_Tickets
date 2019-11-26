@@ -157,9 +157,6 @@
     <Compile Include="Models\Cliente.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Departamento.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entidad_Federativa.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
@@ -200,7 +197,7 @@
     <Compile Include="Models\TableViewsModels\Search_UsuariosLoginVerMasTableViemModel.cs" />
     <Compile Include="Models\TableViewsModels\SeeClientesTableViewModel.cs" />
     <Compile Include="Models\TableViewsModels\SeeUsuariosClienteTableViewModel.cs" />
-    <Compile Include="Models\TableViewsModels\See_TicketsClienteTableViewModel.cs" />
+    <Compile Include="Models\TableViewsModels\Tickets.cs" />
     <Compile Include="Models\Ticket.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
@@ -314,6 +311,8 @@
     <Content Include="Views\UsuariosClienteOptions\EditUsuario.cshtml" />
     <Content Include="Views\Tickets\AddSolucion.cshtml" />
     <Content Include="Views\Tickets\SeeTicketsCliente.cshtml" />
+    <Content Include="Views\Tickets\SeeTicketsPendientes.cshtml" />
+    <Content Include="Views\Tickets\SeeTicketsNumero.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
