@@ -31,7 +31,7 @@
                     <td>@oticket.nombre_problema</td>
                     <td>@oticket.descripción_problema</td>
                     <td style="width:550px">
-                        <button class="btn_Acción" type="submit" name="button"> <img src="~/Imagenes/view_more.png" alt=""> </button>
+                        <button class="btn_Acción" type="submit" data-toggle="modal" data-target="#modalVerMas" name="button"> <img src="~/Imagenes/view_more.png" alt=""> </button>
                         <button class="btn_Acción" type="submit" name="button"> <img src="~/Imagenes/update_user.png" alt=""></button>
                         <button class="btn_Acción" type="submit" name="button"> <img src="~/Imagenes/update_status.png" alt=""></button>
                         <button class="btn_Acción" type="submit" name="button"> <img src="~/Imagenes/add_solution.png" alt=""></button>
@@ -42,6 +42,67 @@
     </div>
 </main>
 
+<div id="modalVerMas" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background:#0066cc; color:white">
+
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Ver más</h4>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="box-body">
+                    @foreach (var ele in Model)
+                    {
+                        <div class="form-group">
+                            <label style="font-weight: bold; margin-right:10px">Pantalla: </label>
+                            @ele.Nombre_Pantalla
+                        </div>
+
+                        <div class="form-group">
+                            <label style="font-weight: bold; margin-right:10px">Usuario Cliente: </label>
+                            @ele.Nombre_Usuario_Cliente
+                        </div>
+
+                        <div class="form-group">
+                            <label style="font-weight: bold; margin-right:10px">Medio de Contacto: </label>
+                            @ele.Nombre_Medio_Contacto
+                        </div>
+
+                        <div class="form-group">
+                            <label style="font-weight: bold; margin-right:10px">Servicio: </label>
+                            @ele.Nombre_Servicio
+                        </div>
+
+                        <div class="form-group">
+                            <label style="font-weight: bold; margin-right:10px">Estado: </label>
+                            @ele.Nombre_Estado
+                        </div>
+
+                        <div class="form-group">
+                            <label style="font-weight: bold; margin-right:10px">Prioridad: </label>
+                            @ele.Nombre_Prioridad
+                        </div>
+                    }
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal"> Salir</button>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
 
 @section scripts
 {
