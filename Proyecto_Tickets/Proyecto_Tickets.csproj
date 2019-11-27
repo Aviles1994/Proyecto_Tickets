@@ -221,6 +221,7 @@
     <Compile Include="Models\Viewslist\lisSistema.cs" />
     <Compile Include="Models\Viewslist\listCliente.cs" />
     <Compile Include="Models\Viewslist\listEntidadFederativa.cs" />
+    <Compile Include="Models\Viewslist\ListEstado.cs" />
     <Compile Include="Models\Viewslist\listServico.cs" />
     <Compile Include="Models\Viewslist\listUserCliente.cs" />
     <Compile Include="Models\ViewsModels\AddSolucionViewModel.cs" />
@@ -316,6 +317,7 @@
     <Content Include="Views\Tickets\SeeTicketsPendientes.cshtml" />
     <Content Include="Views\Tickets\SeeTicketsNumero.cshtml" />
     <Content Include="Views\TicketsOptions\AddSolucion.cshtml" />
+    <Content Include="Views\TicketsOptions\EditEstado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

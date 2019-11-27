@@ -21,4 +21,9 @@ namespace Proyecto_Tickets.Models.VariablesGlobalesViewsModels
         public int ID_usuarioCliente { get; set; }
     }
 
+    public class cambioEstado
+    {
+        public static int idEstado { get; set; }
+        public static string nombre { get; set; }
+    }
 }

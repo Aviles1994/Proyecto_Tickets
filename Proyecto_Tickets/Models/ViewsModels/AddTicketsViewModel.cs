@@ -28,4 +28,14 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public int ID_Estado { get; set; }
         public int ID_Prioridad { get; set; }
     }
+
+
+    public class EditEstado
+    {
+        public int idTicket { get; set; }
+        public string nombreProblema { get; set; }
+        public string descrpcionProblema { get; set; }
+        public int idEstado { get; set; }
+        public DateTime fecha_hora_fin { get; set; }
+    }
 }

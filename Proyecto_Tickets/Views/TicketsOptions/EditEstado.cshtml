@@ -1,0 +1,66 @@
+﻿@model Proyecto_Tickets.Models.ViewsModels.EditEstado
+
+@{
+    ViewBag.Title = "EditEstado";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+
+    List<SelectListItem> items_estado = (List<SelectListItem>)ViewBag.items_estado;
+}
+
+
+@using (Html.BeginForm("EditEstado", "TicketsOptions", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
+{
+    <main>
+        <div class="div_formulario">
+            <table class="table">
+
+                <tr>
+                    @Html.HiddenFor(d => d.idTicket)
+                    <td> <label for="nombre_del_Problema"> Nombre del Problema </label> </td>
+                    <td> @Html.TextBoxFor(d => d.nombreProblema) </td>
+                    <td> <label for="estado">Estado</label> </td>
+                    <td> @Html.DropDownListFor(d => d.idEstado, items_estado, "Selecciona el Estado", new { @class = "form-control" })</td>
+                </tr>
+
+                <tr>
+                    <td> <label for="descripcion_problema">Descripción del Problema</label> </td>
+                    <td colspan="3"> @Html.TextAreaFor(d => d.descrpcionProblema, new { @class = "form-control", row = "40", style = "width:100% !important;" }) </td>
+                </tr>
+
+                <tr>
+                    <td colspan="4"><button class="button" type="submit">Guardar</button></td>
+                </tr>
+            </table>
+        </div>
+    </main>
+}
+
+@section scripts
+{
+    <script>
+
+
+    $(document).ready(function ()
+    {
+        $('.sidebar-menu').tree();
+
+        $("#frm").submit(function (e)
+        {
+            e.preventDefault();
+
+            url = "@Url.Content("~/TicketsOptions/EditEstado")"
+            parametros = $(this).serialize();
+
+            $.post(url, parametros, function (data) {
+
+                if (data =="1")
+                {
+                    alert('Se cambio el estado correctamente')
+                        document.location.href = "@Url.Content("~/Tickets/SearchTickets")"
+
+                }
+            })
+        })
+    })
+    </script>
+}
