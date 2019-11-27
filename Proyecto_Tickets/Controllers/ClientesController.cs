@@ -132,6 +132,8 @@ namespace Proyecto_Tickets.Controllers
             using (var dbc = new Sistema_TicketsEntities())
             {
                 lst = (from d in dbc.Cliente
+                       join b in dbc.Entidad_Federativa
+                       on d.ID_Entidad_Federativa equals b.ID_Entidad_Federativa
                        orderby d.ID_Cliente
                        select new SeeClientesTableViewModel
                        {
@@ -142,7 +144,8 @@ namespace Proyecto_Tickets.Controllers
                            colonia = d.Colonia,
                            telefono = d.Telefono,
                            correo_electronico = d.Correo_Electronico,
-                           etidad_feerativa = d.ID_Entidad_Federativa
+                           etidad_feerativa = d.ID_Entidad_Federativa,
+                           Nombre_EF=b.Nombre_Entidad_Federativa
                        }).ToList();
 
             }

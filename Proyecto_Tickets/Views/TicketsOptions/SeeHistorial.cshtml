@@ -1,0 +1,41 @@
+﻿@model  List<Proyecto_Tickets.Models.TableViewsModels.SeeHistorial>
+
+@{
+    ViewBag.Title = "SeeHistorial";
+    Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
+}
+
+<main>
+    <div class="div_formulario">
+        <table class="table_busqueda">
+            <tr>
+                <th>Número  de Historial</th>
+                <th>Acción Realizada</th>
+                <th>Fecha de Modificación</th>
+                <th>Estratei</th>
+                <th>Estado</th>
+                <th> Número de Ticket</th>
+            </tr>
+            @foreach (var oHistorial in Model)
+            {
+                <tr>
+                    <td>@oHistorial.ID_Historial</td>
+                    <td>@oHistorial.Accion_Realizada</td>
+                    <td>@oHistorial.Fecha_Hora_Modificacion</td>
+                    <td>@oHistorial.Nombre_Personal</td>
+                    <td>@oHistorial.Nombre_Estado</td>
+                    <td>@oHistorial.ID_Ticket</td>
+                </tr>
+            }
+        </table>
+    </div>
+</main>
+
+
+    <script>
+    $(document).ready(function ()
+    {
+        $('.sidebar-menu').tree();
+
+    })
+    </script>

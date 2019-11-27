@@ -15,6 +15,7 @@ namespace Proyecto_Tickets.Models.TableViewsModels
         public string telefono { get; set; }
         public string correo_electronico { get; set; }
         public int etidad_feerativa { get; set; }
+        public string Nombre_EF { get; set; }
 
     }
 }

@@ -194,6 +194,7 @@
     <Compile Include="Models\Solucion.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TableViewsModels\Historial_Tickets.cs" />
     <Compile Include="Models\TableViewsModels\SearchClienteTableViewModel.cs" />
     <Compile Include="Models\TableViewsModels\Search_UsuariosLoginVerMasTableViemModel.cs" />
     <Compile Include="Models\TableViewsModels\SeeClientesTableViewModel.cs" />
@@ -318,6 +319,7 @@
     <Content Include="Views\Tickets\SeeTicketsNumero.cshtml" />
     <Content Include="Views\TicketsOptions\AddSolucion.cshtml" />
     <Content Include="Views\TicketsOptions\EditEstado.cshtml" />
+    <Content Include="Views\TicketsOptions\SeeHistorial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

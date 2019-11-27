@@ -4,7 +4,7 @@
     ViewBag.Title = "EditEstado";
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
 
-    List<SelectListItem> items_estado = (List<SelectListItem>)ViewBag.items_estado;
+    List<SelectListItem> items_EDO = (List<SelectListItem>)ViewBag.items_EDO;
 }
 
 
@@ -19,7 +19,7 @@
                     <td> <label for="nombre_del_Problema"> Nombre del Problema </label> </td>
                     <td> @Html.TextBoxFor(d => d.nombreProblema) </td>
                     <td> <label for="estado">Estado</label> </td>
-                    <td> @Html.DropDownListFor(d => d.idEstado, items_estado, "Selecciona el Estado", new { @class = "form-control" })</td>
+                    <td> @Html.DropDownListFor(d => d.idEstado, items_EDO, "Selecciona el Estado", new { @class = "form-control" })</td>
                 </tr>
 
                 <tr>
@@ -53,12 +53,18 @@
 
             $.post(url, parametros, function (data) {
 
-                if (data =="1")
-                {
+                if (data == "1") {
                     alert('Se cambio el estado correctamente')
-                        document.location.href = "@Url.Content("~/Tickets/SearchTickets")"
+                    document.location.href = "@Url.Content("~/Tickets/SearchTickets")"
 
                 }
+                else if (data == "2") {
+                    alert('No se puede regresar el ticket a pendiente')
+                } else if(data=='3')
+                {
+                    alert('Seleccione un estado diferente al actual')
+                }
+
             })
         })
     })

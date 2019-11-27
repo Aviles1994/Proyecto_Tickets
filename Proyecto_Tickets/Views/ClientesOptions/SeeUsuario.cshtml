@@ -15,7 +15,6 @@
                 <th>Celular</th>
                 <th>Telefono Oficina</th>
                 <th>Extención</th>
-                <th>Cliente</th>
                 <th>Usuario Login</th>
                 <th>Acción</th>
             </tr>
@@ -29,8 +28,7 @@
                     <td>@element.Celular</td>
                     <td>@element.TelOfi</td>
                     <td>@element.Extencion</td>
-                    <td>@element.idCliente</td>
-                    <td>@element.iduser</td>
+                    <td>@element.ULnombre</td>
                     <td style="width:250px;">
                         <button class="btn_Acción" type="submit" data-toggle="modal" data-target="#modalVerMas"><img src="~/Imagenes/view_more.png"></button>
                         <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/EditUsuario/" + element.iduserC)'"><img src="~/Imagenes/update_user.png"></button>
