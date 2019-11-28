@@ -26,7 +26,7 @@ namespace Proyecto_Tickets.Firters
             {
                 if (filterContext.Controller is LoginController == true)
                 {
-                    filterContext.HttpContext.Response.Redirect("~/Clientes/CrearCliente");
+                    filterContext.HttpContext.Response.Redirect("~/Tickets/Add_Ticket");
                 }
             }
 

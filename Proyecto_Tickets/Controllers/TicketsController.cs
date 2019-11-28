@@ -113,7 +113,27 @@ namespace Proyecto_Tickets.Controllers
                     return Content("nooo"+ ex.InnerException);
                 }
             }
-                return Content("1");
+            using (var db = new Sistema_TicketsEntities())
+            {
+                Historial_Ticket ohistorial_ticket = new Historial_Ticket();
+                ohistorial_ticket.Accion_Realizada = "Se agrego solución";
+                ohistorial_ticket.ID_Estado = 3;
+                ohistorial_ticket.Fecha_Hora_Modificacion = DateTime.Now;
+                ohistorial_ticket.ID_Estratei = UserSession.iduser;
+                ohistorial_ticket.ID_Ticket = TicketsVarViemModel.idTickets;
+
+                db.Historial_Ticket.Add(ohistorial_ticket);
+                db.SaveChanges();
+
+
+                var oticket = db.Ticket.Find(TicketsVarViemModel.idTickets);
+                oticket.ID_Estado = 3;
+                oticket.Fecha_Hora_Fin = DateTime.Now;
+                db.Entry(oticket).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+            }
+            return Content("1");
         }
 
 
