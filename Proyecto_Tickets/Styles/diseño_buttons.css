@@ -8,14 +8,10 @@ margin-left: 700px;
 border-radius: 4px;
 }
 
-.btn_logoff {
-    float: left;
-    margin-left: 0px;
-    background-color: #008CBA;
-    border-radius: 4px;
-    width: 50px;
-    height: 45px;
-    border-color: #008CBA;
+.btn_logoff{
+color: black;
+background-color: #0066cc;
+border-radius: 4px;
 }
 
 .btn_busqueda{
