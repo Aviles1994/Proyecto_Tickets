@@ -20,6 +20,7 @@ figure,
 footer,
 header,
 hgroup,
+nav,
 main,
 menu,
 section,
@@ -1185,7 +1186,7 @@ h6,
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
-  color: inherit;
+  color: black;
 }
 h1 small,
 h2 small,
@@ -3977,17 +3978,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav > li {
   position: relative;
-  display: block;
 }
 .nav > li > a {
   position: relative;
   padding: 10px 15px;
 }
-
+.nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
   background-color: #eee;
-}
+ }
 .nav > li.disabled > a {
   color: #777;
 }

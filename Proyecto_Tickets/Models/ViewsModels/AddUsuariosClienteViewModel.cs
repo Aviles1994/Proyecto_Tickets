@@ -43,7 +43,7 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public bool UcusuarioClave { get; set; }
         public string UCcelular { get; set; }
         public string UctelOf { get; set; }
-        public int  UCext { get; set; }
+        public int UCext { get; set; }
         public int ID_Cliente { get; set; }
         public int ID_Usurios_Login { get; set; }
     }
@@ -67,6 +67,12 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string UctelOf { get; set; }
         public int UCext { get; set; }
 
+    }
+
+    public class deleteUsuario
+    {
+        public int idUser { get; set; }
+        public int nombre { get; set; }
     }
 
 }

@@ -246,6 +246,7 @@
     <Content Include="Imagenes\add_user.png" />
     <Content Include="Imagenes\contacts.png" />
     <Content Include="Imagenes\escudo1.png" />
+    <Content Include="Imagenes\Estratei.png" />
     <Content Include="Imagenes\search.png" />
     <Content Include="Imagenes\trash.png" />
     <Content Include="Imagenes\update_status.png" />

@@ -13,6 +13,21 @@ namespace Proyecto_Tickets.Controllers
     {
         // GET: UsuariosClienteOptions
 
+        [HttpPost]
+        public ActionResult DeleteUsuario(int id)
+        {
+            deleteUsuario model = new deleteUsuario();
+            using (var db = new Sistema_TicketsEntities())
+            {
+                var oUserC = db.Usuario_Cliente.Find(id);
+                model.idUser = oUserC.ID_Usuarios_Login;
+
+                
+       
+            }
+                return View();
+        }
+
         public ActionResult EditUsuario(int id)
         {
             EditUsuariosViewModel model = new EditUsuariosViewModel();
@@ -37,6 +52,7 @@ namespace Proyecto_Tickets.Controllers
                 model.UCid = oUserC.ID_Usuario_Cliente;
                 model.ULid = oUserL.ID_Usuarios_Login;
                 
+
             }
 
             return View(model);
@@ -82,7 +98,6 @@ namespace Proyecto_Tickets.Controllers
 
                 return Content("1");
         }
-
 
     }
 }

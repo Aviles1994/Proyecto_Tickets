@@ -62,4 +62,14 @@ namespace Proyecto_Tickets.Models.TableViewsModels
         public int idprioridad { get; set; }
 
     }
+
+    public class SeeProblema
+    {
+        public int idTicket { get; set; }
+        public string nombre_problema { get; set; }
+        public string descripción_problema { get; set; }
+        public string descrpcion_solucion { get; set; }
+        public int idpantalla { get; set; }
+
+    }
 }

@@ -8,6 +8,16 @@ margin-left: 700px;
 border-radius: 4px;
 }
 
+.btn_logoff {
+    float: left;
+    margin-left: 0px;
+    background-color: #008CBA;
+    border-radius: 4px;
+    width: 50px;
+    height: 45px;
+    border-color: #008CBA;
+}
+
 .btn_busqueda{
   float: left;
   margin-left: 0px;
@@ -20,7 +30,7 @@ border-radius: 4px;
 
 .btn_Acción{
   width: 50px;
-  height: 40;
+  height: 40px;
   background-color: #008CBA;
   border-radius: 4px;
   border-color: #008CBA;

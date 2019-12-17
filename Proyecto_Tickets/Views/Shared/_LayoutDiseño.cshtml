@@ -12,15 +12,15 @@
     <link href="~/Styles/diseño_formularios.css" rel="stylesheet" />
     <link href="~/Styles/diseño_login.css" rel="stylesheet" />
 </head>
-<body>
+<body class="body">
     <div>
         <nav class="nav_horizontal">
             <div class="div_horizontal">
-                <ul style="display:run-in" class="nav_horizontal">
-                    <li><img class="imagen" src="~/Imagenes/escudo1.png" alt=""></li>
-                    <li><a>ESTRATEI Sistemas de informacion</a></li>
-                    <li style="float:right">@Html.ActionLink("Cerrar Sesión", "logoff", "CerrarSesion")</li>
-                    <li style="float:right"><a>@ViewData["nombre_user"]</a></li>
+                <ul class="nav_horizontal">
+                    <li><img class="imagen" src="~/Imagenes/Estratei.png" alt=""></li>
+                    <li><h3> Estratei Sistemas de la información S.A. de C.V.</h3></li>
+                    <li style="float:right"> <button class="btn_busqueda" type="submit"onclick="location.href='@Url.Content("~/CerrarSesion/logoff/")'"> Cerrar Sesión</button></li>
+                    <li style="float:right"><h3>@ViewData["nombre_user"]</h3></li>
                 </ul>
             </div>
         </nav>

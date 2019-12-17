@@ -1,4 +1,5 @@
-﻿
+﻿@model List<Proyecto_Tickets.Models.TableViewsModels.SeeProblema>
+
 @{
     ViewBag.Title = "SearchProblemas";
     Layout = "~/Views/Shared/_LayoutDiseño.cshtml";
@@ -6,34 +7,32 @@
 
 <main>
     <div class="div_formulario">
-        <table class="table">
-            <tr>
-                <td colspan="2"><input type="text" name="problema" placeholder="Escribe el  nombre problema" value=""></td>
-                <td><button class="btn_busqueda" type="submit" name="button"> <img src="../Imagenes/search.png" alt=""></button></td>
-            </tr>
-        </table>
-        <table class="table_busqueda">
-            <tr>
-                <th> Nombre de problema</th>
-                <th> Descripción del problema</th>
-                <th> Descripción de solución</th>
-                <th> Evidencia</th>
-                <th> Nombre de la pantalla</th>
-            </tr>
-            <tr>
-                <td> Corregir polizas</td>
-                <td> El usuario no puede guardar las polizas al momento de modoficar x cuestiones del tipo de peso</td>
-                <td>
-                    1. Se verifica que el usuario cuente con la ultima versión 9.2.1.4
-                    2. Se pasa al usuario la ultima versióna
-                    3. Se hacen pruebas
-                </td>
-                <td> problema.png</td>
-                <td> Polizas modificar</td>
-            </tr>
+        @foreach (var oproblemas in Model)
+        {
 
-        </table>
+            <table class="table">
+                <tr>
+                    <td colspan="2"> @Html.TextBox(@oproblemas.nombre_problema) </td>
+                    <td><button class="btn_busqueda" type="submit" name="button"> <img src="~/Imagenes/search.png" alt=""></button></td>
+                </tr>
+            </table>
 
-    </div>
+            <table class="table_busqueda">
+                <tr>
+                    <th> Nombre de problema</th>
+                    <th> Descripción del problema</th>
+                    <th> Descripción de solución</th>
+                    <th> Nombre de la pantalla</th>
+                </tr>
+                <tr>
+                    <td> @oproblemas.nombre_problema</td>
+                    <td> @oproblemas.descripción_problema/td>
+                    <td> @oproblemas.descrpcion_solucion/td>
+                    <td> @oproblemas.idpantalla</td>
+                </tr>
+                
+            </table>
+        }
+        </div>
 </main>
 
