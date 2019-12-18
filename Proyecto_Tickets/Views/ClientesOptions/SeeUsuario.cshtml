@@ -6,39 +6,40 @@
 }
 <main>
     <div class="div_formulario">
-        <table class="table_busqueda">
-            <tr>
-                <th>Nombre de Usuario</th>
-                <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
-                <th>Usuario Clave</th>
-                <th>Celular</th>
-                <th>Telefono Oficina</th>
-                <th>Extención</th>
-                <th>Usuario Login</th>
-                <th>Acción</th>
-            </tr>
-            @foreach (var element in Model)
-            {
+       
+            <table class="table_busqueda">
                 <tr>
-                    <td>@element.NombreC</td>
-                    <td>@element.ApellidoP</td>
-                    <td>@element.ApellidoM</td>
-                    <td>@element.UseClave</td>
-                    <td>@element.Celular</td>
-                    <td>@element.TelOfi</td>
-                    <td>@element.Extencion</td>
-                    <td>@element.ULnombre</td>
-                    <td style="width:250px;">
-                        <button class="btn_Acción" type="submit" data-toggle="modal" data-target="#modalVerMas"><img src="~/Imagenes/view_more.png"></button>
-                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/EditUsuario/" + element.iduserC)'"><img src="~/Imagenes/update_user.png"></button>
-                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosOptions/DeleteUsuario/" + element.iduserC)'"><img src="~/Imagenes/trash.png"></button>
-                    </td>
+                    <th>Nombre de Usuario</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Usuario Clave</th>
+                    <th>Celular</th>
+                    <th>Telefono Oficina</th>
+                    <th>Extención</th>
+                    <th>Usuario Login</th>
+                    <th>Acción</th>
                 </tr>
-            }
-        </table>
+                @foreach (var element in Model)
+                {
+                    <tr>
+                        <td>@element.NombreC</td>
+                        <td>@element.ApellidoP</td>
+                        <td>@element.ApellidoM</td>
+                        <td>@element.UseClave</td>
+                        <td>@element.Celular</td>
+                        <td>@element.TelOfi</td>
+                        <td>@element.Extencion</td>
+                        <td>@element.ULnombre</td>
+                        <td style="width:250px;">
+                            <button class="btn_Acción" type="submit" data-toggle="modal" data-target="#modalVerMas"><img src="~/Imagenes/view_more.png"></button>
+                            <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/EditUsuario/" + element.iduserC)'"><img src="~/Imagenes/update_user.png"></button>
+                            <button class="btn_Acción" id="frm" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/DeleteUsuario/" + element.iduserC)'"><img src="~/Imagenes/trash.png"></button>
+                        </td>
+                    </tr>
+                }
+            </table>
 
-    </div>
+        </div>
 </main>
 
 <div id="modalVerMas" class="modal fade" role="dialog">
@@ -100,9 +101,29 @@
 @section scripts
 {
     <script>
-        $(document).ready(function () {
-            $('.sidebar-menu').tree();
+        $(document).ready(function ()
+    {
+        $('.sidebar-menu').tree();
 
+        $("#frm").submit(function (e)
+        {
+            e.preventDefault();
+
+            url = "@Url.Content("~/UsuariosClienteOptions/DeleteUsuario")"
+            parametros = $(this).serialize();
+
+            $.post(url, parametros, function (data) {
+
+                if (data =="1")
+                {
+                    if (confirm('Esta seguro de eliminar al usuario')) {
+                        document.location.href = "@Url.Content("~/UsuariosClienteOptions/DeleteUsuario")"
+                    } else {
+                        document.location.href = "@Url.Content("~/Clientes/SeeClientes")"
+                    }
+                }
+            })
         })
+    })
     </script>
 }

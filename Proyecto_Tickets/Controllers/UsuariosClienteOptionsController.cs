@@ -4,6 +4,7 @@ using Proyecto_Tickets.Models.ViewsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,21 +14,35 @@ namespace Proyecto_Tickets.Controllers
     {
         // GET: UsuariosClienteOptions
 
+        [HttpGet]
+        public ActionResult DeleteUsuario(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            
+            var db = new Sistema_TicketsEntities();
+            Usuario_Cliente oUserC = db.Usuario_Cliente.Find(id);
+
+            if (oUserC==null)
+            {
+                return HttpNotFound();
+            }
+
+            return Content("1");
+
+        }
+
         [HttpPost]
         public ActionResult DeleteUsuario(int id)
         {
-            deleteUsuario model = new deleteUsuario();
-            using (var db = new Sistema_TicketsEntities())
-            {
-                var oUserC = db.Usuario_Cliente.Find(id);
-                model.idUser = oUserC.ID_Usuarios_Login;
-
-                
-       
-            }
-                return View();
+            var db = new Sistema_TicketsEntities();
+            Usuario_Cliente oUserC = db.Usuario_Cliente.Find(id);
+            db.Usuario_Cliente.Remove(oUserC);
+            db.SaveChanges();
+            return RedirectToAction("SeeClientes");
         }
-
         public ActionResult EditUsuario(int id)
         {
             EditUsuariosViewModel model = new EditUsuariosViewModel();
