@@ -44,4 +44,13 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public DateTime vigencia { get; set; }
 
     }
+
+
+    public class delete
+    {
+        public int id_c { get; set; }
+        public string Nombre_Cliente { get; set; }
+
+
+    }
 }

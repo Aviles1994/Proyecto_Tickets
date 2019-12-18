@@ -21,16 +21,29 @@ namespace Proyecto_Tickets.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
             var db = new Sistema_TicketsEntities();
-            Usuario_Cliente oUserC = db.Usuario_Cliente.Find(id);
+            delete odelete = new delete();
+            var ouserc = db.Usuario_Cliente.Find(id);
+            odelete.id_c = ouserc.ID_Cliente;
 
-            if (oUserC==null)
+            if (ouserc == null)
             {
                 return HttpNotFound();
             }
 
-            return Content("1");
+            try
+            {
+                db.Usuario_Cliente.Remove(ouserc);
+                db.SaveChanges();
+                return RedirectToAction("SeeClientes");
+            }
+            catch (Exception ex)
+            {
+                return Content("no" + ex);
+            }
+          
+
+            
 
         }
 
