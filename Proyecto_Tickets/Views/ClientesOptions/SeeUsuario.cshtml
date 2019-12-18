@@ -31,7 +31,7 @@
                         <td>@element.Extencion</td>
                         <td>@element.ULnombre</td>
                         <td style="width:250px;">
-                            <button class="btn_Acción" type="submit" data-toggle="modal" data-target="#modalVerMas"><img src="~/Imagenes/view_more.png"></button>
+                            <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/VerMas/" + element.iduserC)'" data-toggle="modal" data-target="#modalVerMas"><img src="~/Imagenes/view_more.png"></button>
                             <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/EditUsuario/" + element.iduserC)'"><img src="~/Imagenes/update_user.png"></button>
                             <button class="btn_Acción" id="frm" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/DeleteUsuario/" + element.iduserC)'"><img src="~/Imagenes/trash.png"></button>
                         </td>
@@ -41,6 +41,7 @@
 
         </div>
 </main>
+
 
 <div id="modalVerMas" class="modal fade" role="dialog">
 
