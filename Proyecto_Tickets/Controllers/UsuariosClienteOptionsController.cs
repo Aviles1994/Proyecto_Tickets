@@ -86,7 +86,38 @@ namespace Proyecto_Tickets.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult VerMas(int id)
+        {
+             
+            List<SeeUsuariosClienteTableViewModel> lst = null;
+            using (var abc = new Sistema_TicketsEntities())
+            {
+                var oUserL = abc.Usuarios_Login.Find(id);
+                if (oUserL != null)
+                {
 
+                    lst = (from d in abc.Usuarios_Login
+                           where d.ID_Usuarios_Login == oUserL.ID_Usuarios_Login
+
+                           select new SeeUsuariosClienteTableViewModel
+                           {
+                               ULid = d.ID_Usuarios_Login,
+                               ULnombre = d.Nombre_Usuarios_Login,
+                               ULcontraseña = d.Contraseña,
+                               ULestatus = d.Estatus,
+                               ULUltimoLogin = d.Ultimo_Login,
+                               ULCcorreo_electronico = d.Correo_electronico,
+                               ULTipoUsuario = d.ID_Tipo_Usuario
+                           }).ToList();
+                    return View(lst);
+                }
+                
+
+            }
+            return View();
+
+        }
      
 
         [HttpPost]
