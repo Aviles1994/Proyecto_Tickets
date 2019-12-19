@@ -1,0 +1,99 @@
+﻿@model Proyecto_Tickets.Models.ViewsModels.DeleteUsuarioCliente
+
+<main>
+    <div class="div_formulario">
+        <div class="form-group">
+            <label style="font-weight: bold; color:red; text-align:center; font-size:30px; margin-right:10px">Esta seguro de eliminar este usuario </label>
+            
+        </div>
+
+        @using (Html.BeginForm("DeleteUsuario", "UsuariosClienteOptions", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
+        {
+
+            @Html.HiddenFor(d => d.UCid)
+            @Html.HiddenFor(d => d.ULid)
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Nombre Usuario: </label>
+                @Html.DisplayFor(d => d.UCnombre)
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Apellido Paterno: </label>
+                @Html.DisplayFor(d => d.UCapellidoP)
+            </div>
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Apellido Materno: </label>
+                @Html.DisplayFor(d => d.UCapellidoM)
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Telefono Oficina: </label>
+                @Html.DisplayFor(d => d.UctelOf)
+            </div>
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Extención: </label>
+                @Html.DisplayFor(d => d.UCext)
+            </div>
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Celular: </label>
+                @Html.DisplayFor(d => d.UCcelular)
+            </div>
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Usuario Login: </label>
+                @Html.DisplayFor(d => d.ULnombre)
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Contraseña: </label>
+                @Html.DisplayFor(d => d.ULcontraseña)
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Estatus: </label>
+                @Html.DisplayFor(d => d.ULestatus)
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Ultimo Login: </label>
+                @Html.DisplayFor(d => d.ULUltimoLogin)
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Correo Electronico: </label>
+                @Html.DisplayFor(d => d.ULCcorreo_electronico)
+            </div>
+
+            <button class="button" type="submit"> Eliminar</button>
+
+
+        }
+    </div>
+</main>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.sidebar-menu').tree();
+
+            $("#frm").submit(function (e) {
+                e.preventDefault();
+
+                url = "@Url.Content("~/UsuariosClienteOptions/DeleteUsuario")"
+                parametros = $(this).serialize();
+
+                $.post(url, parametros, function (data) {
+                    if (data == '1')
+                    {
+                            alert("Se elimino al usuario correctamente")
+                            document.location.href = "@Url.Content("~/Clientes/SeeClientes")"
+                        
+                    }
+                }
+
+            });
+        });
+   
+    </script>
+}
+

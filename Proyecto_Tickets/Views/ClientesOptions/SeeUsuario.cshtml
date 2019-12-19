@@ -30,15 +30,15 @@
                         <td>@element.TelOfi</td>
                         <td>@element.Extencion</td>
                         <td>@element.ULnombre</td>
-                        <td style="width:250px;">
-                            <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/VerMas/" + element.iduserC)'" data-toggle="modal" data-target="#modalVerMas"><img src="~/Imagenes/view_more.png"></button>
-                            <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/EditUsuario/" + element.iduserC)'"><img src="~/Imagenes/update_user.png"></button>
-                            <button class="btn_Acción" id="frm" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/DeleteUsuario/" + element.iduserC)'"><img src="~/Imagenes/trash.png"></button>
-                        </td>
+                            <td style="width:250px;">
+                                <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/VerMas/" + element.iduserC)'" data-toggle="modal" data-target="#modalVerMas"><img src="~/Imagenes/view_more.png"></button>
+                                <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/EditUsuario/" + element.iduserC)'"><img src="~/Imagenes/update_user.png"></button>
+                                <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/UsuariosClienteOptions/DeleteUsuario/" + element.iduserC)'"><img src="~/Imagenes/trash.png"></button>
+                            </td>
+                     
                     </tr>
                 }
             </table>
-
         </div>
 </main>
 
@@ -119,6 +119,7 @@
                 {
                     if (confirm('Esta seguro de eliminar al usuario')) {
                         document.location.href = "@Url.Content("~/UsuariosClienteOptions/DeleteUsuario")"
+                        alert("Se elimino al usuario correctamente")
                     } else {
                         document.location.href = "@Url.Content("~/Clientes/SeeClientes")"
                     }

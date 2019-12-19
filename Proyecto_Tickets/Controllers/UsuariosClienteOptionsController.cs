@@ -22,38 +22,43 @@ namespace Proyecto_Tickets.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var db = new Sistema_TicketsEntities();
-            delete odelete = new delete();
-            var ouserc = db.Usuario_Cliente.Find(id);
-            odelete.id_c = ouserc.ID_Cliente;
+            DeleteUsuarioCliente odelete = new DeleteUsuarioCliente();
+            var ouserC = db.Usuario_Cliente.Find(id);
+            odelete.UCid = ouserC.ID_Cliente;
+            odelete.UCnombre = ouserC.Nombre_UCliente;
+            odelete.UCapellidoP = ouserC.Apellido_PaternoUCliente;
+            odelete.UCapellidoM = ouserC.Apellido_MaternoUCliente;
+            odelete.UCcelular= ouserC.Celular;
+            odelete.UctelOf = ouserC.Telefono_Oficina;
+            odelete.UCext = (int)ouserC.Extension;
 
-            if (ouserc == null)
+
+            var ouserL = db.Usuarios_Login.Find(ouserC.ID_Usuarios_Login);
+            odelete.ULCcorreo_electronico = ouserL.Correo_electronico;
+            odelete.ULnombre = ouserL.Nombre_Usuarios_Login;
+            odelete.ULUltimoLogin = ouserL.Ultimo_Login;
+            odelete.ULcontraseña = ouserL.Contraseña;
+            odelete.ULestatus = ouserL.Estatus;
+
+            if (ouserL == null)
             {
                 return HttpNotFound();
             }
 
-            try
-            {
-                db.Usuario_Cliente.Remove(ouserc);
-                db.SaveChanges();
-                return RedirectToAction("SeeClientes");
-            }
-            catch (Exception ex)
-            {
-                return Content("no" + ex);
-            }
-          
-
-            
-
+            return View(odelete);
         }
 
         [HttpPost]
-        public ActionResult DeleteUsuario(int id)
+        public ActionResult DeleteUsuario(DeleteUsuarioCliente model)
         {
             var db = new Sistema_TicketsEntities();
-            Usuario_Cliente oUserC = db.Usuario_Cliente.Find(id);
+            var oUserC = db.Usuario_Cliente.Find(model.UCid);
+            var oUserL = db.Usuarios_Login.Find(oUserC.ID_Usuarios_Login);
             db.Usuario_Cliente.Remove(oUserC);
             db.SaveChanges();
+            db.Usuarios_Login.Remove(oUserL);
+            db.SaveChanges();
+
             return RedirectToAction("SeeClientes");
         }
         public ActionResult EditUsuario(int id)
