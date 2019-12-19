@@ -18,7 +18,6 @@ namespace Proyecto_Tickets.Models
         public Usuarios_Login()
         {
             this.Personal_Estratei = new HashSet<Personal_Estratei>();
-            this.Usuario_Cliente = new HashSet<Usuario_Cliente>();
         }
     
         public int ID_Usuarios_Login { get; set; }
@@ -32,7 +31,5 @@ namespace Proyecto_Tickets.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Personal_Estratei> Personal_Estratei { get; set; }
         public virtual Tipo_Usuarios Tipo_Usuarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario_Cliente> Usuario_Cliente { get; set; }
     }
 }

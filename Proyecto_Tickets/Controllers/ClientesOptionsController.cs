@@ -63,6 +63,7 @@ namespace Proyecto_Tickets.Controllers
                 UC.Apellido_MaternoUCliente = model.UCapellidoM;
                 UC.Usuario_Clave = model.UcusuarioClave;
                 UC.Celular = model.UCcelular;
+                UC.Estatus = true;
                 UC.Telefono_Oficina = model.UctelOf;
                 UC.Extension = model.UCext;
                 UC.ID_Cliente = Clientes.idCliente;
@@ -141,7 +142,7 @@ namespace Proyecto_Tickets.Controllers
             using (var dbc = new Sistema_TicketsEntities())
             {
                 lst = (from d in dbc.Usuario_Cliente
-                       where d.ID_Cliente == model.idCliente
+                       where d.ID_Cliente == model.idCliente & d.Estatus==true 
 
 
                        select new SeeUsuariosClienteTableViewModel

@@ -39,8 +39,8 @@ namespace Proyecto_Tickets.Models
         public virtual DbSet<Solucion> Solucion { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<Tipo_Usuarios> Tipo_Usuarios { get; set; }
-        public virtual DbSet<Usuario_Cliente> Usuario_Cliente { get; set; }
         public virtual DbSet<Usuarios_Login> Usuarios_Login { get; set; }
         public virtual DbSet<Historial_Ticket> Historial_Ticket { get; set; }
+        public virtual DbSet<Usuario_Cliente> Usuario_Cliente { get; set; }
     }
 }

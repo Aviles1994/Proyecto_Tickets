@@ -4,7 +4,7 @@
     <div class="div_formulario">
         <div class="form-group">
             <label style="font-weight: bold; color:red; text-align:center; font-size:30px; margin-right:10px">Esta seguro de eliminar este usuario </label>
-            
+
         </div>
 
         @using (Html.BeginForm("DeleteUsuario", "UsuariosClienteOptions", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
@@ -63,7 +63,17 @@
                 @Html.DisplayFor(d => d.ULCcorreo_electronico)
             </div>
 
-            <button class="button" type="submit"> Eliminar</button>
+            <div class="form-group">
+
+                <table class="table">
+                    <tr style="float:right; margin-left:700px;">
+                    <button style="background-color: #008CBA; border-color: #008CBA; color: white; font-size: 14px; ">
+                        <a style="width: 100%; height:100%; text-decoration:none; color: white;" href="javascript:window.history.back();">Volver atrás</a></button>
+                    
+                    <button class="btn-danger" type="submit"> Eliminar</button></tr>
+                </table>
+
+            </div>
 
 
         }
@@ -73,27 +83,27 @@
 @section scripts
 {
     <script>
-        $(document).ready(function () {
-            $('.sidebar-menu').tree();
 
-            $("#frm").submit(function (e) {
-                e.preventDefault();
+    $(document).ready(function ()
+    {
+        $("#frm").submit(function (e)
+        {
+            e.preventDefault();
 
-                url = "@Url.Content("~/UsuariosClienteOptions/DeleteUsuario")"
-                parametros = $(this).serialize();
+            url = "@Url.Content("~/UsuariosClienteOptions/DeleteUsuario")"
+            parametros = $(this).serialize();
 
-                $.post(url, parametros, function (data) {
-                    if (data == '1')
-                    {
-                            alert("Se elimino al usuario correctamente")
-                            document.location.href = "@Url.Content("~/Clientes/SeeClientes")"
-                        
-                    }
+            $.post(url, parametros, function (data) {
+
+                if (data =="1")
+                {
+                    alert('El usuario se elimino correctamente')
+                        document.location.href = "@Url.Content("~/Clientes/SeeClientes")"
+
                 }
-
-            });
-        });
-   
+            })
+        })
+    })
     </script>
 }
 

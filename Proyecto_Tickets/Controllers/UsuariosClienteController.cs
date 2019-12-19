@@ -57,6 +57,7 @@ namespace Proyecto_Tickets.Controllers
                 UC.Apellido_PaternoUCliente = model.UCapellidoP;
                 UC.Apellido_MaternoUCliente = model.UCapellidoM;
                 UC.Usuario_Clave = model.UcusuarioClave;
+                UC.Estatus = true;
                 UC.Celular = model.UCcelular;
                 UC.Telefono_Oficina = model.UctelOf;
                 UC.Extension = model.UCext;

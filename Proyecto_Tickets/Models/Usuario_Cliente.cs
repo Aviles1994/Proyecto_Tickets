@@ -25,6 +25,7 @@ namespace Proyecto_Tickets.Models
         public string Apellido_PaternoUCliente { get; set; }
         public string Apellido_MaternoUCliente { get; set; }
         public bool Usuario_Clave { get; set; }
+        public bool Estatus { get; set; }
         public string Celular { get; set; }
         public string Telefono_Oficina { get; set; }
         public Nullable<int> Extension { get; set; }
@@ -34,6 +35,5 @@ namespace Proyecto_Tickets.Models
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Ticket { get; set; }
-        public virtual Usuarios_Login Usuarios_Login { get; set; }
     }
 }

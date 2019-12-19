@@ -229,7 +229,7 @@
     <Compile Include="Models\ViewsModels\AddSolucionViewModel.cs" />
     <Compile Include="Models\ViewsModels\AddTicketsViewModel.cs" />
     <Compile Include="Models\ViewsModels\AddClientesViewsModel.cs" />
-    <Compile Include="Models\ViewsModels\AddUsuariosClienteViewModel.cs" />
+    <Compile Include="Models\ViewsModels\Usuarios_Cliente.cs" />
     <Compile Include="Models\ViewsModels\Historial_TicketViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

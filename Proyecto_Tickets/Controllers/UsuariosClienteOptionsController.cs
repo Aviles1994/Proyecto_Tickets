@@ -51,16 +51,23 @@ namespace Proyecto_Tickets.Controllers
         [HttpPost]
         public ActionResult DeleteUsuario(DeleteUsuarioCliente model)
         {
-            var db = new Sistema_TicketsEntities();
-            var oUserC = db.Usuario_Cliente.Find(model.UCid);
-            var oUserL = db.Usuarios_Login.Find(oUserC.ID_Usuarios_Login);
-            db.Usuario_Cliente.Remove(oUserC);
-            db.SaveChanges();
-            db.Usuarios_Login.Remove(oUserL);
-            db.SaveChanges();
 
-            return RedirectToAction("SeeClientes");
+            using (var db = new Sistema_TicketsEntities())
+            {
+                var oUserC = db.Usuario_Cliente.Find(model.UCid);
+                var oUserL = db.Usuarios_Login.Find(oUserC.ID_Usuarios_Login);
+
+                oUserC.Estatus = false;
+                oUserL.Estatus = false;
+
+                db.Entry(oUserC).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                db.Entry(oUserL).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            return Content("1");
         }
+
         public ActionResult EditUsuario(int id)
         {
             EditUsuariosViewModel model = new EditUsuariosViewModel();
@@ -89,31 +96,6 @@ namespace Proyecto_Tickets.Controllers
             }
 
             return View(model);
-        }
-
-        [HttpGet]
-        public ActionResult VerMas(int? id)
-        {
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var db = new Sistema_TicketsEntities();
-            VerMasUsuarioCliente oVerMas = new VerMasUsuarioCliente();
-
-            var ouserL = db.Usuarios_Login.Find(id);
-            oVerMas.ULCcorreo_electronico = ouserL.Correo_electronico;
-            oVerMas.ULnombre = ouserL.Nombre_Usuarios_Login;
-            oVerMas.ULUltimoLogin = ouserL.Ultimo_Login;
-            oVerMas.ULcontraseña = ouserL.Contraseña;
-            oVerMas.ULestatus = ouserL.Estatus;
-            if (ouserL == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(oVerMas);
         }
      
 
@@ -153,6 +135,31 @@ namespace Proyecto_Tickets.Controllers
             }
 
                 return Content("1");
+        }
+
+        [HttpGet]
+        public ActionResult VerMas(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var db = new Sistema_TicketsEntities();
+            VerMasUsuarioCliente oVerMas = new VerMasUsuarioCliente();
+
+            var ouserL = db.Usuarios_Login.Find(id);
+            oVerMas.ULCcorreo_electronico = ouserL.Correo_electronico;
+            oVerMas.ULnombre = ouserL.Nombre_Usuarios_Login;
+            oVerMas.ULUltimoLogin = ouserL.Ultimo_Login;
+            oVerMas.ULcontraseña = ouserL.Contraseña;
+            oVerMas.ULestatus = ouserL.Estatus;
+            if (ouserL == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(oVerMas);
         }
 
     }
