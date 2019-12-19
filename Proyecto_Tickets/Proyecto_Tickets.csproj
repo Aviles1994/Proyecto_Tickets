@@ -323,6 +323,7 @@
     <Content Include="Views\TicketsOptions\EditEstado.cshtml" />
     <Content Include="Views\TicketsOptions\SeeHistorial.cshtml" />
     <Content Include="Views\UsuariosClienteOptions\DeleteUsuario.cshtml" />
+    <Content Include="Views\UsuariosClienteOptions\VerMas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

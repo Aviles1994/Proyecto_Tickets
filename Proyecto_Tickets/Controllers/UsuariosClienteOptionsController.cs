@@ -92,36 +92,29 @@ namespace Proyecto_Tickets.Controllers
         }
 
         [HttpGet]
-        public ActionResult VerMas(int id)
+        public ActionResult VerMas(int? id)
         {
-             
-            List<SeeUsuariosClienteTableViewModel> lst = null;
-            using (var abc = new Sistema_TicketsEntities())
+
+            if (id == null)
             {
-                var oUserL = abc.Usuarios_Login.Find(id);
-                if (oUserL != null)
-                {
-
-                    lst = (from d in abc.Usuarios_Login
-                           where d.ID_Usuarios_Login == oUserL.ID_Usuarios_Login
-
-                           select new SeeUsuariosClienteTableViewModel
-                           {
-                               ULid = d.ID_Usuarios_Login,
-                               ULnombre = d.Nombre_Usuarios_Login,
-                               ULcontraseña = d.Contraseña,
-                               ULestatus = d.Estatus,
-                               ULUltimoLogin = d.Ultimo_Login,
-                               ULCcorreo_electronico = d.Correo_electronico,
-                               ULTipoUsuario = d.ID_Tipo_Usuario
-                           }).ToList();
-                    return View(lst);
-                }
-                
-
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View();
+            var db = new Sistema_TicketsEntities();
+            VerMasUsuarioCliente oVerMas = new VerMasUsuarioCliente();
 
+            var ouserL = db.Usuarios_Login.Find(id);
+            oVerMas.ULCcorreo_electronico = ouserL.Correo_electronico;
+            oVerMas.ULnombre = ouserL.Nombre_Usuarios_Login;
+            oVerMas.ULUltimoLogin = ouserL.Ultimo_Login;
+            oVerMas.ULcontraseña = ouserL.Contraseña;
+            oVerMas.ULestatus = ouserL.Estatus;
+
+            if (ouserL == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(oVerMas);
         }
      
 

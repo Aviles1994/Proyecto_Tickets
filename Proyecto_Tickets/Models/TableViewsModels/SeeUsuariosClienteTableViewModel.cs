@@ -18,13 +18,7 @@ namespace Proyecto_Tickets.Models.TableViewsModels
         public int iduser{ get; set; }
         public int idCliente { get; set; }
 
-        public int ULid { get; set; }
-        public string ULnombre { get; set; }
-        public string ULcontraseña { get; set; }
-        public bool ULestatus { get; set; }
-        public DateTime ULUltimoLogin { get; set; }
-        public string ULCcorreo_electronico { get; set; }
-        public int ULTipoUsuario { get; set; }
+
 
 
 

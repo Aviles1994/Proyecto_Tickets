@@ -1,0 +1,54 @@
+﻿@model Proyecto_Tickets.Models.ViewsModels.VerMasUsuarioCliente
+
+<main>
+    <div class="div_formulario">
+        <div class="form-group">
+            <label style="font-weight: bold; color:red; text-align:center; font-size:30px; margin-right:10px">Ver Mas </label>
+
+        </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Usuario Login: </label>
+                @Html.DisplayFor(d => d.ULnombre)
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Contraseña: </label>
+                @Html.DisplayFor(d => d.ULcontraseña)
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Estatus: </label>
+                @Html.DisplayFor(d => d.ULestatus)
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Ultimo Login: </label>
+                @Html.DisplayFor(d => d.ULUltimoLogin)
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Correo Electronico: </label>
+                @Html.DisplayFor(d => d.ULCcorreo_electronico)
+            </div>
+
+
+
+
+        
+    </div>
+</main>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.sidebar-menu').tree();
+
+
+        });
+
+    </script>
+}
+
+

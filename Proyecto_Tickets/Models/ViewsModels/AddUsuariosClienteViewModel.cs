@@ -90,4 +90,16 @@ namespace Proyecto_Tickets.Models.ViewsModels
 
     }
 
+    public class VerMasUsuarioCliente
+    {
+        public int ULid { get; set; }
+        public string ULnombre { get; set; }
+        public string ULcontraseña { get; set; }
+        public bool ULestatus { get; set; }
+        public DateTime ULUltimoLogin { get; set; }
+        public string ULCcorreo_electronico { get; set; }
+
+
+
+    }
 }
