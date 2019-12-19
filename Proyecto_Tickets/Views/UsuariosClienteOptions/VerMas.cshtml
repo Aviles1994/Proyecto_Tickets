@@ -3,39 +3,37 @@
 <main>
     <div class="div_formulario">
         <div class="form-group">
-            <label style="font-weight: bold; color:red; text-align:center; font-size:30px; margin-right:10px">Ver Mas </label>
+            <label style="font-weight: bold; color:red; text-align:center; font-size:30px; margin-right:10px">Ver Más </label>
 
         </div>
 
-            <div class="form-group">
-                <label style="font-weight: bold; margin-right:10px">Usuario Login: </label>
-                @Html.DisplayFor(d => d.ULnombre)
-            </div>
 
-            <div class="form-group">
-                <label style="font-weight: bold; margin-right:10px">Contraseña: </label>
-                @Html.DisplayFor(d => d.ULcontraseña)
-            </div>
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Usuario Login: </label>
+            @Html.DisplayFor(d => d.ULnombre)
+        </div>
 
-            <div class="form-group">
-                <label style="font-weight: bold; margin-right:10px">Estatus: </label>
-                @Html.DisplayFor(d => d.ULestatus)
-            </div>
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Contraseña: </label>
+            @Html.DisplayFor(d => d.ULcontraseña)
+        </div>
 
-            <div class="form-group">
-                <label style="font-weight: bold; margin-right:10px">Ultimo Login: </label>
-                @Html.DisplayFor(d => d.ULUltimoLogin)
-            </div>
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Estatus: </label>
+            @Html.DisplayFor(d => d.ULestatus)
+        </div>
 
-            <div class="form-group">
-                <label style="font-weight: bold; margin-right:10px">Correo Electronico: </label>
-                @Html.DisplayFor(d => d.ULCcorreo_electronico)
-            </div>
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Ultimo Login: </label>
+            @Html.DisplayFor(d => d.ULUltimoLogin)
+        </div>
 
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Correo Electronico: </label>
+            @Html.DisplayFor(d => d.ULCcorreo_electronico)
+        </div>
 
-
-
-        
+        <button class="button" ><a style="width: 100%; height:100%; text-decoration:none; color: white;" href="javascript:window.history.back();">Volver atrás</a></button>
     </div>
 </main>
 
@@ -44,8 +42,6 @@
     <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree();
-
-
         });
 
     </script>

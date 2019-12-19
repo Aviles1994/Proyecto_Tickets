@@ -31,7 +31,7 @@
                     <td>@oticket.nombre_problema</td>
                     <td>@oticket.descripción_problema</td>
                     <td style="width:550px">
-                        <button class="btn_Acción" type="submit"> <img src="~/Imagenes/view_more.png" alt=""> </button>
+                        <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/TicketsOptions/VerMas/" + oticket.idTicket)'"><img src="~/Imagenes/view_more.png"></button>
                         <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/TicketsOptions/SeeHistorial?model.idTicket="+oticket.idTicket)'" > <img src="~/Imagenes/update_user.png" alt=""></button>
                         <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/TicketsOptions/EditEstado/"+oticket.idTicket)'"> <img src="~/Imagenes/update_status.png" alt=""></button>
                         <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/TicketsOptions/AddSolucion?model.idTicket="+oticket.idTicket)'"> <img src="~/Imagenes/add_solution.png" alt=""></button>

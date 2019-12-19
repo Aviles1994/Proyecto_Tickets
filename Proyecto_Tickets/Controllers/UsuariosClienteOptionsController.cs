@@ -108,7 +108,6 @@ namespace Proyecto_Tickets.Controllers
             oVerMas.ULUltimoLogin = ouserL.Ultimo_Login;
             oVerMas.ULcontraseña = ouserL.Contraseña;
             oVerMas.ULestatus = ouserL.Estatus;
-
             if (ouserL == null)
             {
                 return HttpNotFound();

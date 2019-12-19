@@ -1,0 +1,56 @@
+﻿@model Proyecto_Tickets.Models.ViewsModels.VerMasTicket
+
+<main>
+    <div class="div_formulario">
+        <div class="form-group">
+            <label style="font-weight: bold; color:red; text-align:center; font-size:30px; margin-right:10px">Ver Más </label>
+
+        </div>
+
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Pantalla: </label>
+            @Html.DisplayFor(d => d.Nombre_Pantalla)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Usuario del Cliente: </label>
+            @Html.DisplayFor(d => d.Nombre_Usuario_Cliente)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Medio de Contactp: </label>
+            @Html.DisplayFor(d => d.Nombre_Medio_Contacto)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Servicio: </label>
+            @Html.DisplayFor(d => d.Nombre_Servicio)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Estado: </label>
+            @Html.DisplayFor(d => d.Nombre_Estado)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Prioridad: </label>
+            @Html.DisplayFor(d => d.Nombre_Prioridad)
+        </div>
+
+        <button class="button"><a style="width: 100%; height:100%; text-decoration:none; color: white;" href="javascript:window.history.back();">Volver atrás</a></button>
+    </div>
+</main>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.sidebar-menu').tree();
+        });
+
+    </script>
+}
+
+
+

@@ -176,18 +176,6 @@ namespace Proyecto_Tickets.Controllers
             using (var db = new Sistema_TicketsEntities())
             {
                 lst = (from d in db.Ticket
-                       join u in db.Pantallas
-                       on d.ID_Pantalla equals u.ID_Pantalla
-                       join v in db.Usuario_Cliente
-                       on d.ID_Usuario_Cliente equals v.ID_Usuario_Cliente
-                       join w in db.Medio_de_Contacto
-                       on d.ID_Medio_de_Contacto equals w.ID_Medio_de_Contacto
-                       join x in db.Servicio
-                       on d.ID_Servicio equals x.ID_Servicio
-                       join y in db.Estado
-                       on d.ID_Estado equals y.ID_Estado
-                       join z in db.Prioridad
-                       on d.ID_Prioridad equals z.ID_Prioridad
                        where d.ID_Estado != 3 
 
                        select new SeeTicketsPendientes
@@ -201,13 +189,7 @@ namespace Proyecto_Tickets.Controllers
                            idmedio_contacto = d.ID_Medio_de_Contacto,
                            idestado = d.ID_Estado,
                            idprioridad = d.ID_Prioridad,
-                           idservicio = d.ID_Servicio,
-                           Nombre_Pantalla = u.Nombre_Pantalla,
-                           Nombre_Usuario_Cliente = v.Nombre_UCliente,
-                           Nombre_Medio_Contacto = w.Nombre_Medio_de_Contacto,
-                           Nombre_Servicio = x.Nombre_Servicio,
-                           Nombre_Estado = y.Nombre_Estado,
-                           Nombre_Prioridad = z.Nombre_Prioridad,
+                           idservicio = d.ID_Servicio
 
                        }).ToList();
             }

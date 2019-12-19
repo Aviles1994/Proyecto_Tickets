@@ -37,12 +37,7 @@ namespace Proyecto_Tickets.Models.TableViewsModels
         public int idestado { get; set; }
         public int idprioridad { get; set; }
 
-        public string Nombre_Pantalla { get; set; }
-        public string Nombre_Usuario_Cliente { get; set; }
-        public string Nombre_Medio_Contacto { get; set; }
-        public string Nombre_Servicio { get; set; }
-        public string Nombre_Estado { get; set; }
-        public string Nombre_Prioridad { get; set; }
+
 
     }
 
