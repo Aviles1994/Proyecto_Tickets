@@ -145,7 +145,7 @@ namespace Proyecto_Tickets.Controllers
             using ( var db = new Sistema_TicketsEntities())
             {
                 lst = (from d in db.Ticket
-                       where d.ID_Usuario_Cliente == model.ID_usuarioCliente
+                       where d.ID_Usuario_Cliente == model.ID_usuarioCliente 
 
                        select new SeeTicketsUsuarios
                        {
@@ -232,7 +232,7 @@ namespace Proyecto_Tickets.Controllers
             using (Sistema_TicketsEntities db = new Sistema_TicketsEntities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                userlist = db.Usuario_Cliente.Where(x => x.ID_Cliente == ID_Cliente).ToList();
+                userlist = db.Usuario_Cliente.Where(x => x.ID_Cliente == ID_Cliente & x.Estatus==true).ToList();
                 
             }
 
