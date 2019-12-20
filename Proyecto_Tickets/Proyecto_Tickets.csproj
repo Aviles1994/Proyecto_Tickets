@@ -328,10 +328,10 @@
     <Content Include="Views\TicketsOptions\VerMas.cshtml" />
     <Content Include="Views\Problemas\SeeProblemas.cshtml" />
     <Content Include="Views\Problemas\Especifico.cshtml" />
+    <Content Include="Views\TicketsOptions\VerMas2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CerrarSesion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

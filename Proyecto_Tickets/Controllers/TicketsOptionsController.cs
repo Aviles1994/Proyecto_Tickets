@@ -218,9 +218,56 @@ namespace Proyecto_Tickets.Controllers
             VerMasTicket oVerMas = new VerMasTicket();
 
             var ticket = db.Ticket.Find(id);
+            oVerMas.fecha_hora_Inicio = ticket.Fecha_Hora_Inicio;
+            oVerMas.versionUser = ticket.Version_Usuario;
+            oVerMas.nombreProblema = ticket.Nombre_Problema;
+            oVerMas.descrpcionProblema = ticket.Descripcion_Problema;
+            oVerMas.fecha_hora_fin = (DateTime)ticket.Fecha_Hora_Fin;
 
             var ticketPantalla = db.Pantallas.Find(ticket.ID_Pantalla);
             oVerMas.Nombre_Pantalla= ticketPantalla.Nombre_Pantalla;
+
+            var ticketNombreUsuarioCliente = db.Usuario_Cliente.Find(ticket.ID_Usuario_Cliente);
+            oVerMas.Nombre_Usuario_Cliente = ticketNombreUsuarioCliente.Nombre_UCliente;
+
+            var ticketMedioContacto = db.Medio_de_Contacto.Find(ticket.ID_Medio_de_Contacto);
+            oVerMas.Nombre_Medio_Contacto = ticketMedioContacto.Nombre_Medio_de_Contacto;
+
+            var ticketServicio = db.Servicio.Find(ticket.ID_Servicio);
+            oVerMas.Nombre_Servicio = ticketServicio.Nombre_Servicio;
+
+            var ticketEstado = db.Estado.Find(ticket.ID_Estado);
+            oVerMas.Nombre_Estado = ticketEstado.Nombre_Estado;
+
+            var ticketPrioridad = db.Prioridad.Find(ticket.ID_Prioridad);
+            oVerMas.Nombre_Prioridad = ticketPrioridad.Nombre_Prioridad;
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(oVerMas);
+        }
+
+        [HttpGet]
+        public ActionResult VerMas2(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var db = new Sistema_TicketsEntities();
+            VerMasTicket oVerMas = new VerMasTicket();
+
+            var ticket = db.Ticket.Find(id);
+            oVerMas.fecha_hora_Inicio = ticket.Fecha_Hora_Inicio;
+            oVerMas.versionUser = ticket.Version_Usuario;
+            oVerMas.nombreProblema = ticket.Nombre_Problema;
+            oVerMas.descrpcionProblema = ticket.Descripcion_Problema;
+
+            var ticketPantalla = db.Pantallas.Find(ticket.ID_Pantalla);
+            oVerMas.Nombre_Pantalla = ticketPantalla.Nombre_Pantalla;
 
             var ticketNombreUsuarioCliente = db.Usuario_Cliente.Find(ticket.ID_Usuario_Cliente);
             oVerMas.Nombre_Usuario_Cliente = ticketNombreUsuarioCliente.Nombre_UCliente;

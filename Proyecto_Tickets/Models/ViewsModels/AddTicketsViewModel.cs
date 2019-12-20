@@ -48,6 +48,13 @@ namespace Proyecto_Tickets.Models.ViewsModels
 
     public class VerMasTicket
     {
+        public DateTime fecha_hora_Inicio { get; set; }
+        public string versionUser { get; set; }
+        public string nombreProblema { get; set; }
+        public string descrpcionProblema { get; set; }
+        public string imagen { get; set; }
+        public DateTime fecha_hora_fin { get; set; }
+
         public string Nombre_Pantalla { get; set; }
         public string Nombre_Usuario_Cliente { get; set; }
         public string Nombre_Medio_Contacto { get; set; }
