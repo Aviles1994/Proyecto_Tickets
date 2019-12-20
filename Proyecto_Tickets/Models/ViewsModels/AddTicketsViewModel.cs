@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,10 +9,16 @@ namespace Proyecto_Tickets.Models.ViewsModels
     public class AddTicketsViewModel
     {
         public int idt { get; set; }
+
         public DateTime fecha_hora_Inicio { get; set; }
         public DateTime duracionInicio { get; set; }
+        [Required]
         public string versionUser { get; set; }
+        [Required]
+        [DataType(DataType.Text)]
         public string nombreProblema { get; set; }
+        [Required]
+        [DataType(DataType.Text)]
         public string descrpcionProblema { get; set; }
         public string imagen { get; set; }
         public DateTime fecha_hora_fin { get; set; }

@@ -15,6 +15,8 @@
     <main>
         <div class="div_formulario">
             <table class="table">
+                @Html.AntiForgeryToken()
+                @Html.ValidationMessage("error", new {@class="text-danger"})
                 <tr>
                     <td> <label for="medio_de_contacto"> Medio de Contacto</label> </td>
                     <td>
@@ -27,14 +29,14 @@
                 </tr>
                 <tr>
                     <td> <label for="nombre_del_Problema"> Nombre del Problema </label> </td>
-                    <td> @Html.TextBoxFor(d => d.nombreProblema) </td>
+                    <td> @Html.TextBoxFor(d => d.nombreProblema, new {placeholder="Escribe el nombre del problema"}) </td>
                     <td> <label for="evidencia">Evidencia</label> </td>
                     <td> <button class="btn" type="button" name="button">Agregar imagen </button> </td>
                 </tr>
 
                 <tr>
                     <td> <label for="descripcion_problema">Descripción del Problema</label> </td>
-                    <td colspan="3"> @Html.TextAreaFor(d => d.descrpcionProblema, new { @class = "form-control"}) </td>
+                    <td colspan="3"> @Html.TextAreaFor(d => d.descrpcionProblema, new {@class="text ", placeholder = "Escribe la descripción"}) </td>
                 </tr>
 
                 <tr>
