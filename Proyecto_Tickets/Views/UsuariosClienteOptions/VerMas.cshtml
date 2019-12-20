@@ -3,10 +3,32 @@
 <main>
     <div class="div_formulario">
         <div class="form-group">
-            <label style="font-weight: bold; color:red; text-align:center; font-size:30px; margin-right:10px">Ver Más </label>
+            <label style="font-weight: bold; color:green; text-align:center; font-size:30px; margin-right:10px">Ver Más </label>
 
         </div>
 
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Nombre Usuario: </label>
+            @Html.DisplayFor(d => d.UCnombre)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Apellido Paterno: </label>
+            @Html.DisplayFor(d => d.UCapellidoP)
+        </div>
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Apellido Materno: </label>
+            @Html.DisplayFor(d => d.UCapellidoM)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Telefono Oficina: </label>
+            @Html.DisplayFor(d => d.UctelOf)
+        </div>
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Extención: </label>
+            @Html.DisplayFor(d => d.UCext)
+        </div>
 
         <div class="form-group">
             <label style="font-weight: bold; margin-right:10px">Usuario Login: </label>
@@ -33,7 +55,7 @@
             @Html.DisplayFor(d => d.ULCcorreo_electronico)
         </div>
 
-        <button class="button" ><a style="width: 100%; height:100%; text-decoration:none; color: white;" href="javascript:window.history.back();">Volver atrás</a></button>
+        <button class="button"><a style="width: 100%; height:100%; text-decoration:none; color: white;" href="javascript:window.history.back();">Volver atrás</a></button>
     </div>
 </main>
 

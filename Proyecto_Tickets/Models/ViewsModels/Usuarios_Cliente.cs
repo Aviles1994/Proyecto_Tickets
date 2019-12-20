@@ -100,7 +100,14 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public DateTime ULUltimoLogin { get; set; }
         public string ULCcorreo_electronico { get; set; }
 
-
+        public int UCid { get; set; }
+        public string UCnombre { get; set; }
+        public string UCapellidoP { get; set; }
+        public string UCapellidoM { get; set; }
+        public bool UcusuarioClave { get; set; }
+        public string UCcelular { get; set; }
+        public string UctelOf { get; set; }
+        public int UCext { get; set; }
 
     }
 }

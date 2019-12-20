@@ -148,12 +148,23 @@ namespace Proyecto_Tickets.Controllers
             var db = new Sistema_TicketsEntities();
             VerMasUsuarioCliente oVerMas = new VerMasUsuarioCliente();
 
-            var ouserL = db.Usuarios_Login.Find(id);
+            var ouserC = db.Usuario_Cliente.Find(id);
+            oVerMas.UCid = ouserC.ID_Cliente;
+            oVerMas.UCnombre = ouserC.Nombre_UCliente;
+            oVerMas.UCapellidoP = ouserC.Apellido_PaternoUCliente;
+            oVerMas.UCapellidoM = ouserC.Apellido_MaternoUCliente;
+            oVerMas.UCcelular = ouserC.Celular;
+            oVerMas.UctelOf = ouserC.Telefono_Oficina;
+            oVerMas.UCext = (int)ouserC.Extension;
+
+            var ouserL = db.Usuarios_Login.Find(ouserC.ID_Usuarios_Login);
             oVerMas.ULCcorreo_electronico = ouserL.Correo_electronico;
             oVerMas.ULnombre = ouserL.Nombre_Usuarios_Login;
             oVerMas.ULUltimoLogin = ouserL.Ultimo_Login;
             oVerMas.ULcontraseña = ouserL.Contraseña;
             oVerMas.ULestatus = ouserL.Estatus;
+
+
             if (ouserL == null)
             {
                 return HttpNotFound();
