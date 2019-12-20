@@ -17,6 +17,7 @@ namespace Proyecto_Tickets.Models.TableViewsModels
         public int Extencion { get; set; }
         public int iduser{ get; set; }
         public int idCliente { get; set; }
+        public string Nombre_UL { get; set; }
 
 
 
