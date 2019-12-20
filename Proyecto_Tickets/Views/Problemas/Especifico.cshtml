@@ -1,0 +1,32 @@
+﻿@model  List<Proyecto_Tickets.Models.TableViewsModels.Especifico>
+<main>
+    <div class="div_formulario">
+
+        @foreach (var opro in Model)
+        {
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Nombre del Problema </label>
+                @opro.Nombre_Problema
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Descripcion del Problema</label>
+                @opro.descripción_problema
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Descrpción de la solución </label>
+                @opro.descrpcion_solucion
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; margin-right:10px">Nombre Pantalla </label>
+                @opro.nombre_pantalla
+            </div>
+            <button class="button"><a style="width: 100%; height:100%; text-decoration:none; color: white;" href="javascript:window.history.back();">Volver atrás</a></button>
+
+        }
+    </div>
+    </main>
+

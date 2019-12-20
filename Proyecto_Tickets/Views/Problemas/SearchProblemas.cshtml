@@ -1,4 +1,4 @@
-﻿@model List<Proyecto_Tickets.Models.TableViewsModels.SeeProblema>
+﻿@model Proyecto_Tickets.Models.TableViewsModels.Buscar
 
 @{
     ViewBag.Title = "SearchProblemas";
@@ -7,32 +7,46 @@
 
 <main>
     <div class="div_formulario">
-        @foreach (var oproblemas in Model)
-        {
 
-            <table class="table">
-                <tr>
-                    <td colspan="2"> @Html.TextBox(@oproblemas.nombre_problema) </td>
-                    <td><button class="btn_busqueda" type="submit" name="button"> <img src="~/Imagenes/search.png" alt=""></button></td>
-                </tr>
-            </table>
 
-            <table class="table_busqueda">
+        <table class="table">
+            @using (Html.BeginForm("Especifico", "Problemas", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
+            {
                 <tr>
-                    <th> Nombre de problema</th>
-                    <th> Descripción del problema</th>
-                    <th> Descripción de solución</th>
-                    <th> Nombre de la pantalla</th>
+                   
+                   
+                    @Html.AntiForgeryToken() 
+                    @Html.ValidationMessage("error", new { @class="text-danger"})
+                    <td> @Html.TextBoxFor(d => d.Nombre_Problema, new { placeholder = "Escribe el nombre del problema" })</td>
+                    <td>
+                        <button type="submit" style="background-color: #008CBA; border-radius:4px; font-size:20px; border-color:#008CBA;"> <img src="~/Imagenes/search.png" alt=""></button>
+                    </td>
+
+
                 </tr>
+            }
+
                 <tr>
-                    <td> @oproblemas.nombre_problema</td>
-                    <td> @oproblemas.descripción_problema/td>
-                    <td> @oproblemas.descrpcion_solucion/td>
-                    <td> @oproblemas.idpantalla</td>
+                    <td>
+                        <button style="background-color: #008CBA; border-color: #008CBA; color: white; font-size: 20px; border-radius: 4px;"
+                                onclick="location.href='@Url.Content("~/Problemas/SeeProblemas/")'">
+                            Ver Todos
+                        </button>
+                    </td>
                 </tr>
-                
-            </table>
-        }
-        </div>
+</table>
+        
+    </div>
 </main>
 
+@section scripts
+{
+    <script>
+
+      $(document).ready(function ()
+      {
+        $('.sidebar-menu').tree();
+     
+    })
+    </script>
+}

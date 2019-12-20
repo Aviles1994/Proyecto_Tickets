@@ -17,7 +17,7 @@ border-radius: 4px;
 .btn_busqueda{
   float: left;
   margin-left: 0px;
-  background-color: #008CBA;
+  background-color: none;
   border-radius: 4px;
   width: 50px;
   height: 45px;

@@ -196,6 +196,7 @@
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TableViewsModels\Historial_Tickets.cs" />
+    <Compile Include="Models\TableViewsModels\ProblemasTableViewModel.cs" />
     <Compile Include="Models\TableViewsModels\SearchClienteTableViewModel.cs" />
     <Compile Include="Models\TableViewsModels\Search_UsuariosLoginVerMasTableViemModel.cs" />
     <Compile Include="Models\TableViewsModels\SeeClientesTableViewModel.cs" />
@@ -325,6 +326,8 @@
     <Content Include="Views\UsuariosClienteOptions\DeleteUsuario.cshtml" />
     <Content Include="Views\UsuariosClienteOptions\VerMas.cshtml" />
     <Content Include="Views\TicketsOptions\VerMas.cshtml" />
+    <Content Include="Views\Problemas\SeeProblemas.cshtml" />
+    <Content Include="Views\Problemas\Especifico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
