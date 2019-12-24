@@ -31,7 +31,7 @@
                     <td> <label for="nombre_del_Problema"> Nombre del Problema </label> </td>
                     <td> @Html.TextBoxFor(d => d.nombreProblema, new {placeholder="Escribe el nombre del problema"}) </td>
                     <td> <label for="evidencia">Evidencia</label> </td>
-                    <td> @Html.TextBoxFor(d=>d.Imagen, new { type = "file", accept=".jpg"}) </td>
+                    <td> @Html.TextBoxFor(d=>d.Evidencia, new { type = "file", accept=".jpg"}) </td>
                 </tr>
 
                 <tr>
@@ -83,26 +83,32 @@
         </div>
     </main>
 }
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @section scripts
 {
     <script>
     $(document).ready(function () {
        $("#frm").submit(function (e) {
-          e.preventDefault();
-            url = "@Url.Content("~/Tickets/Add_Ticket")"
-            parametros = $(this).serialize();
-
-            $.post(url, parametros, function (data) {
-
-                if (data == "1") {
+           e.preventDefault();
+           $.ajax({
+               type: 'POST',
+               url: "@Url.Content("~/Tickets/Add_Ticket")",
+               data: new FormData(this),
+               contentType: false,
+               cache: false,
+               processData: false,
+               success: function (data)
+               {
+                   if (data == "1") {
                     if (confirm('Agregar solución' @ViewData["idTickets"])) {
                         document.location.href = "@Url.Content("~/Tickets/AddSolucion")"
                     } else {
                         document.location.href = "@Url.Content("~/Tickets/Add_Ticket")"
                     }
                 }
-            });
+               }
+
+           });
        });
     });
     </script>

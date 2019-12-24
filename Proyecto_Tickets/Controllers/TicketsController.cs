@@ -61,7 +61,7 @@ namespace Proyecto_Tickets.Controllers
 
                 try
                 {
-                    model.Imagen.SaveAs(PathImagen);
+                    model.Evidencia.SaveAs(PathImagen);
                     db.Ticket.Add(oticket);
                     db.SaveChanges();
 
@@ -75,6 +75,7 @@ namespace Proyecto_Tickets.Controllers
 
               
             }
+            
 
             using ( var db= new Sistema_TicketsEntities())
             {
@@ -88,7 +89,7 @@ namespace Proyecto_Tickets.Controllers
                 db.Historial_Ticket.Add(ohistorial_ticket);
                 db.SaveChanges();
             }
-                return Content("1");
+            return Content("1");
         }
         public ActionResult AddSolucion()
         {
