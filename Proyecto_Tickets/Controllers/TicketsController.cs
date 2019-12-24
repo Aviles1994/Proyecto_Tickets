@@ -9,6 +9,7 @@ using Proyecto_Tickets.Models.ViewsModels;
 using Proyecto_Tickets.Models;
 using System.Collections;
 using Proyecto_Tickets.Models.VariablesGlobalesViewsModels;
+using System.IO;
 
 namespace Proyecto_Tickets.Controllers
 {
@@ -36,6 +37,8 @@ namespace Proyecto_Tickets.Controllers
         [HttpPost]
         public ActionResult Add_Ticket(AddTicketsViewModel model)
         {
+            string Ruta = Server.MapPath("~/");
+            string PathImagen = Path.Combine(Ruta + "/Evidencias/imagen.jpg");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -54,8 +57,11 @@ namespace Proyecto_Tickets.Controllers
                 oticket.ID_Estado = 1;
                 oticket.ID_Prioridad = 2;
 
+                oticket.Imagen = PathImagen;
+
                 try
                 {
+                    model.Imagen.SaveAs(PathImagen);
                     db.Ticket.Add(oticket);
                     db.SaveChanges();
 

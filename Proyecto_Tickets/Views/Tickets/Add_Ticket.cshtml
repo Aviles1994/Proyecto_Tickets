@@ -9,8 +9,8 @@
     List<SelectListItem> items_UC = (List<SelectListItem>)ViewBag.items_UC;
 }
 
-
-@using (Html.BeginForm("Add_Ticket", "Tickets", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
+<form ></form>
+@using (Html.BeginForm("Add_Ticket", "Tickets", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form", enctype = "multipart/form-data" }))
 {
     <main>
         <div class="div_formulario">
@@ -31,7 +31,7 @@
                     <td> <label for="nombre_del_Problema"> Nombre del Problema </label> </td>
                     <td> @Html.TextBoxFor(d => d.nombreProblema, new {placeholder="Escribe el nombre del problema"}) </td>
                     <td> <label for="evidencia">Evidencia</label> </td>
-                    <td> <button class="btn" type="button" name="button">Agregar imagen </button> </td>
+                    <td> @Html.TextBoxFor(d=>d.Imagen, new { type = "file", accept=".jpg"}) </td>
                 </tr>
 
                 <tr>

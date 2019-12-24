@@ -23,6 +23,8 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string imagen { get; set; }
         public DateTime fecha_hora_fin { get; set; }
         
+        public HttpPostedFileBase Imagen { get; set; }
+
         public int ID_Sistema{ get; set; }
         public int ID_Modulo { get; set; }
         public int ID_Pantalla { get; set; }
