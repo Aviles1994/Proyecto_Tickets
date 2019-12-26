@@ -223,6 +223,7 @@ namespace Proyecto_Tickets.Controllers
             oVerMas.nombreProblema = ticket.Nombre_Problema;
             oVerMas.descrpcionProblema = ticket.Descripcion_Problema;
             oVerMas.fecha_hora_fin = (DateTime)ticket.Fecha_Hora_Fin;
+            oVerMas.imagen = ticket.Imagen;
 
             var ticketPantalla = db.Pantallas.Find(ticket.ID_Pantalla);
             oVerMas.Nombre_Pantalla= ticketPantalla.Nombre_Pantalla;
@@ -265,6 +266,7 @@ namespace Proyecto_Tickets.Controllers
             oVerMas.versionUser = ticket.Version_Usuario;
             oVerMas.nombreProblema = ticket.Nombre_Problema;
             oVerMas.descrpcionProblema = ticket.Descripcion_Problema;
+            oVerMas.imagen = ticket.Imagen;
 
             var ticketPantalla = db.Pantallas.Find(ticket.ID_Pantalla);
             oVerMas.Nombre_Pantalla = ticketPantalla.Nombre_Pantalla;

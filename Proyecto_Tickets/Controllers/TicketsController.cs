@@ -37,14 +37,15 @@ namespace Proyecto_Tickets.Controllers
         [HttpPost]
         public ActionResult Add_Ticket(AddTicketsViewModel model)
         {
-            string Ruta = Server.MapPath("~/");
-            string PathImagen = Path.Combine(Ruta + "/Evidencias/imagen.jpg");
+            
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
             using (var db = new Sistema_TicketsEntities())
             {
+                string Ruta = Server.MapPath("~/");
+                string PathImagen = Path.Combine(Ruta + "/Evidencias/"+model.Evidencia.FileName);
                 Ticket oticket = new Ticket();
                 oticket.Fecha_Hora_Inicio = DateTime.Now;
                 oticket.Version_Usuario = model.versionUser;
