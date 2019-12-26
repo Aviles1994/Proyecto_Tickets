@@ -14,41 +14,41 @@
             <table class="table">
                 <tr>
                     <td> <label for="nombre_del_usuario">Nombre del Usuario </label></td>
-                    <td> @Html.TextBoxFor(d => d.UCnombre) </td>
+                    <td> @Html.TextBoxFor(d => d.UCnombre, new { placeholder = "Escribe el nombre del usuario" }) </td>
                     <td> <label for="usuario_clave"> Usuario Clave</label></td>
                     <th> @Html.CheckBoxFor(d => d.UcusuarioClave) Si</th>
                 </tr>
                 <tr>
                     <td> <label for="apellido_paterno"> Apellido Paterno</label></td>
-                    <td> @Html.TextBoxFor(d => d.UCapellidoP)</td>
+                    <td> @Html.TextBoxFor(d => d.UCapellidoP, new { placeholder = "Escribe el Apellido Paterno" })</td>
                     <td> <label for="estatus"> Estatus</label> </td>
                     <th> @Html.CheckBoxFor(d => d.ULestatus) Activo</th>
                 </tr>
                 <tr>
                     <td> <label for="apellido_materno"> Apellido Materno</label></td>
-                    <td> @Html.TextBoxFor(d => d.UCapellidoM)</td>
+                    <td> @Html.TextBoxFor(d => d.UCapellidoM, new { placeholder = "Escribe el Apellido Materno" })</td>
                     <td> <label for="contraseña"> Contraseña</label></td>
                     <td> @Html.TextBoxFor(d => d.ULcontraseña)</td>
                 </tr>
                 <tr>
                     <td> <label for="nombre_de_login"> Nombre de Login</label></td>
-                    <td> @Html.TextBoxFor(d => d.ULnombre) </td>
+                    <td> @Html.TextBoxFor(d => d.ULnombre, new { placeholder = "Ejemplo: Juan1" }) </td>
                     <td> <label for="correo_electronico"> Correo Eléctronico</label></td>
-                    <td> @Html.TextBoxFor(d => d.ULCcorreo_electronico)</td>
+                    <td> @Html.TextBoxFor(d => d.ULCcorreo_electronico, new { placeholder = "Ejemplo: Juan1@gmail.com" })</td>
 
                 </tr>
                 <tr>
                     <td> <label for="celular"> Celular</label></td>
-                    <td> @Html.TextBoxFor(d => d.UCcelular)</td>
+                    <td> @Html.TextBoxFor(d => d.UCcelular, new { placeholder = "Ejemplo: 3510000000" })</td>
 
                 </tr>
                 <tr>
                     <td> <label for="telefono_oficina"> Teléfono de Oficina </label></td>
-                    <td> @Html.TextBoxFor(d => d.UctelOf)</td>
+                    <td> @Html.TextBoxFor(d => d.UctelOf, new { placeholder = "Ejemplo: 5100000" })</td>
                 </tr>
                 <tr>
                     <td> <label for="extención"> Extención </label></td>
-                    <td> @Html.TextBoxFor(d => d.UCext) </td>
+                    <td> @Html.TextBoxFor(d => d.UCext, new { placeholder = "Ejemplo: 123" }) </td>
                 </tr>
                 <tr>
                     <td colspan="4"> <button class="button" type="submit" name="button"> Registrar </button></td>

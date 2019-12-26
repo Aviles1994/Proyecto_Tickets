@@ -9,15 +9,14 @@
 
     @using (Html.BeginForm("AddSolucion", "Tickets", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
     {
-        <div class="div_formulario" style="width: 850px;">
+        <div class="div_formulario">
             <table class="table">
                 <tr>
                     <td> <label for="descripción_en_pasos"> Descripción en Pasos</label></td>
-                    <td> @Html.TextAreaFor(d => d.Descripcion)</td>
-                </tr>
-                <tr>
+                    <td> @Html.TextAreaFor(d => d.Descripcion, new { placeholder = "Escribe aqui la solución", cols = "200", rows = "10" })</td>
+
                     <td> <label for="fecha_solucion"> Fecha </label></td>
-                    <td> @Html.TextBoxFor(d => d.fecha)</td>
+                    <td> @Html.TextBoxFor(d => d.fecha, new { placeholder = "ejemplo 01/12/2019" })</td>
                 </tr>
             </table>
             <table class="table">

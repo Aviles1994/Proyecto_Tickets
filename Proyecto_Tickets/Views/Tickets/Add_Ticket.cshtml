@@ -36,7 +36,7 @@
 
                 <tr>
                     <td> <label for="descripcion_problema">Descripción del Problema</label> </td>
-                    <td colspan="3"> @Html.TextAreaFor(d => d.descrpcionProblema, new {@class="text ", placeholder = "Escribe la descripción"}) </td>
+                    <td colspan="2"> @Html.TextAreaFor(d => d.descrpcionProblema, new {cols = "max",rows = "10", placeholder = "Escribe la descripción"}) </td>
                 </tr>
 
                 <tr>
@@ -61,7 +61,7 @@
 
                     </td>
                     <td> <label for="versión"> Versión</label> </td>
-                    <td> @Html.TextBoxFor(d => d.versionUser) </td>
+                    <td> @Html.TextBoxFor(d => d.versionUser, new { placeholder="Ejemplo 1.1.1"}) </td>
                 </tr>
                 <tr>
                     <td> <label for="cliente"> Cliente</label> </td>

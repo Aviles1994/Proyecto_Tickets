@@ -21,21 +21,21 @@
         <table class="table">
             <tr>
                 <td> <label for="nombre_del_cliente"> Nombre del Cliente</label></td>
-                <td> @Html.TextBoxFor(d => d.Nombre_Cliente)</td>
+                <td> @Html.TextBoxFor(d => d.Nombre_Cliente, new { placeholder = "Escribe el nombre del cliente" })</td>
                 <td> <label for="calle"> Calle</label></td>
-                <td> @Html.TextBoxFor(d => d.Calle)</td>
+                <td> @Html.TextBoxFor(d => d.Calle, new { placeholder = "Escribe la calle" })</td>
             </tr>
             <tr>
                 <td> <label for="correo_electronico">Correo Electronico </label></td>
-                <td> @Html.TextBoxFor(d => d.Correo_Electronico)</td>
+                <td> @Html.TextBoxFor(d => d.Correo_Electronico, new { placeholder = "Ejemplo: Estratei@gmail.com" })</td>
                 <td> <label for="numero">Numero</label></td>
-                <td> @Html.TextBoxFor(d => d.Numero)</td>
+                <td> @Html.TextBoxFor(d => d.Numero, new { placeholder = "Ejemplo: 1939" })</td>
             </tr>
             <tr>
                 <td> <label for="telefono">Telefono</label></td>
-                <td> @Html.TextBoxFor(d => d.Telefono)</td>
+                <td> @Html.TextBoxFor(d => d.Telefono, new { placeholder = "Ejemplo: 3510000000" })</td>
                 <td> <label for="colonia"> Colonia</label></td>
-                <td> @Html.TextBoxFor(d => d.Colonia)</td>
+                <td> @Html.TextBoxFor(d => d.Colonia, new { placeholder = "Escribe la colonia" })</td>
             </tr>
             <tr>
                 <td> <label for="entidad_federativa">Entidad Federativa</label></td>
@@ -50,13 +50,13 @@
             </tr>
             <tr>
                 <td> <label for="version_Cliente">Version Cliente</label></td>
-                <td> @Html.TextBoxFor(d => d.version_sis)</td>
+                <td> @Html.TextBoxFor(d => d.version_sis, new { placeholder = "Ejemplo: 1.1.1" })</td>
                 <td> <label for="date">Fecha Contrato</label></td>
-                <td> @Html.TextBoxFor(d => d.fecha_contrato)</td>
+                <td> @Html.TextBoxFor(d => d.fecha_contrato, new { placeholder = "Ejemplo: 01/02/2019" })</td>
             </tr>
             <tr>
                 <td> <label for="vigecia">Vigencia</label></td>
-                <td> @Html.TextBoxFor(d => d.vigencia)</td>
+                <td> @Html.TextBoxFor(d => d.vigencia, new { placeholder = "Ejemplo: 01/02/2019" })</td>
             </tr>
             <tr>
                 <td colspan="4"> <button class="button" type="submit" value="Registrar"> Registrar</button></td>
