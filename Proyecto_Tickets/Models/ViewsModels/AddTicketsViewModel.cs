@@ -63,5 +63,8 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string Nombre_Servicio { get; set; }
         public string Nombre_Estado { get; set; }
         public string Nombre_Prioridad { get; set; }
+
+        public string Solución { get; set; }
+        public DateTime Fecha_Solución { get; set; }
     }
 }

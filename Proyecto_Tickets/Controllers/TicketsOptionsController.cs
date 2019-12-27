@@ -216,6 +216,18 @@ namespace Proyecto_Tickets.Controllers
             }
             var db = new Sistema_TicketsEntities();
             VerMasTicket oVerMas = new VerMasTicket();
+            List<VerMasTicket> lst = null;
+            using (var dbc = new Sistema_TicketsEntities())
+            {
+                lst = (from a in dbc.Solucion
+                       where a.ID_Ticket == id
+
+                       select new VerMasTicket
+                       {
+                           Solución = a.Descripcion_en_Pasos,
+                           Fecha_Solución = a.Fecha_Solucion
+                       }).ToList();
+            }
 
             var ticket = db.Ticket.Find(id);
             oVerMas.fecha_hora_Inicio = ticket.Fecha_Hora_Inicio;
