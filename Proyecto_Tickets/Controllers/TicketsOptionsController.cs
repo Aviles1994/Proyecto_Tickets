@@ -237,6 +237,9 @@ namespace Proyecto_Tickets.Controllers
             oVerMas.fecha_hora_fin = (DateTime)ticket.Fecha_Hora_Fin;
             oVerMas.imagen = ticket.Imagen;
 
+            oVerMas.Solución = lst[0].Solución;
+            oVerMas.Fecha_Solución = lst[0].Fecha_Solución;
+
             var ticketPantalla = db.Pantallas.Find(ticket.ID_Pantalla);
             oVerMas.Nombre_Pantalla= ticketPantalla.Nombre_Pantalla;
 
