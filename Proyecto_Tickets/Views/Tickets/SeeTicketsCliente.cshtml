@@ -14,7 +14,7 @@
                 <th>Estado</th>
                 <th>Prioridad</th>
                 <th>Servicio</th>
-                <th>Fecha Inicio</th>
+                <th>Pantalla</th>
                 <th>Nombre Problema</th>
                 <th>Descripción Problema</th>
                 <th>Acción</th>
@@ -23,14 +23,14 @@
             {
                 <tr>
                     <td>@oticket.idTicket</td>
-                    <td>@oticket.idmedio_contacto</td>
-                    <td>@oticket.idestado</td>
-                    <td>@oticket.idprioridad</td>
-                    <td>@oticket.idservicio</td>
-                    <td>@oticket.fecha_inicio</td>
+                    <td>@oticket.Nombre_MedioContacto</td>
+                    <td>@oticket.Nombre_Estado</td>
+                    <td>@oticket.Nombre_Prioridad</td>
+                    <td>@oticket.Nombre_Servicio</td>
+                    <td>@oticket.Nombre_Pantalla</td>
                     <td>@oticket.nombre_problema</td>
                     <td>@oticket.descripción_problema</td>
-                    <td style="width:550px">
+                    <td style="width:200px">
                         <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/TicketsOptions/VerMas/" + oticket.idTicket)'"><img src="~/Imagenes/view_more.png"></button>
                         <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/TicketsOptions/SeeHistorial?model.idTicket="+oticket.idTicket)'" > <img src="~/Imagenes/update_user.png" alt=""></button>
                         <button class="btn_Acción" type="submit" onclick="location.href='@Url.Content("~/TicketsOptions/EditEstado/"+oticket.idTicket)'"> <img src="~/Imagenes/update_status.png" alt=""></button>

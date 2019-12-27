@@ -1,32 +1,31 @@
 ﻿@model  List<Proyecto_Tickets.Models.TableViewsModels.Especifico>
+
 <main>
     <div class="div_formulario">
+        <table class="table_busqueda">
+            <tr>
+                <th>Nombre del Problema</th>
+                <th>Descripción Problema</th>
+                <th>Descripción Solución</th>
+                <th>Nombre Pantalla</th>
+                <th>Acción</th>
+            </tr>
 
-        @foreach (var opro in Model)
-        {
-
-            <div class="form-group">
-                <label style="font-weight: bold; margin-right:10px">Nombre del Problema </label>
-                @opro.Nombre_Problema
-            </div>
-
-            <div class="form-group">
-                <label style="font-weight: bold; margin-right:10px">Descripcion del Problema</label>
-                @opro.descripción_problema
-            </div>
-
-            <div class="form-group">
-                <label style="font-weight: bold; margin-right:10px">Descrpción de la solución </label>
-                @opro.descrpcion_solucion
-            </div>
-
-            <div class="form-group">
-                <label style="font-weight: bold; margin-right:10px">Nombre Pantalla </label>
-                @opro.nombre_pantalla
-            </div>
-            <button class="button"><a style="width: 100%; height:100%; text-decoration:none; color: white;" href="javascript:window.history.back();">Volver atrás</a></button>
-
-        }
+            @foreach (var oElemento in Model) 
+            {
+                <tr>
+                    <td>@oElemento.Nombre_Problema</td>
+                    <td>@oElemento.descripción_problema</td>
+                    <td>@oElemento.descrpcion_solucion</td>
+                    <td>@oElemento.nombre_pantalla</td>
+                    <td>
+                    <button class="btn_Acción" onclick="location.href='@Url.Content("~/TicketsOptions/VerMas/" + oElemento.idTicket)'"><img src="~/Imagenes/view_more.png"></button>
+                    </td>
+                </tr>
+            }
+        </table>
+        <button class="button"><a style="width: 100%; height:100%; text-decoration:none; color: white;" href="javascript:window.history.back();">Volver atrás</a></button>
     </div>
-    </main>
+
+</main>
 

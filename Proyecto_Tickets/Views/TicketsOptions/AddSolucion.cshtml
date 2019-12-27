@@ -47,11 +47,13 @@
 
             $.post(url, parametros, function (data) {
 
-                if (data =="1")
-                {
+                if (data == "1") {
                     alert('La solución se guardo exitosamente')
-                        document.location.href = "@Url.Content("~/Tickets/Add_Ticket")"
+                    document.location.href = "@Url.Content("~/Tickets/Add_Ticket")"
 
+                } else
+                {
+                    alert('Este Tickets ya tiene solución')
                 }
             })
         })

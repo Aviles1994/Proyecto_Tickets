@@ -37,8 +37,8 @@
                 <div class="div_borde">
                     <table class="table">
                         <tr>
-                            <td><label for="numero_seguimiento"> Numero del ticket </label> </td>
-                            <td>@Html.TextBoxFor(d => d.ID_Ticket)
+                            <td style="float:left"><label for="numero_seguimiento"> Numero del ticket </label> </td>
+                            <td style="float:left">@Html.TextBoxFor(d => d.ID_Ticket, new {placeholder="Ingresa un Numero", style= "width:250px;" })
                             </td>
                         </tr>
                         <table class="table">

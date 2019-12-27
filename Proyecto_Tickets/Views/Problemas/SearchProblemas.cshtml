@@ -17,7 +17,7 @@
                    
                     @Html.AntiForgeryToken() 
                     @Html.ValidationMessage("error", new { @class="text-danger"})
-                    <td> @Html.TextBoxFor(d => d.Nombre_Problema, new { placeholder = "Escribe el nombre del problema" })</td>
+                    <td colspan="2"> @Html.TextBoxFor(d => d.Nombre_Problema, new { placeholder = "Escribe el nombre del problema", style= "weight:200px" })</td>
                     <td>
                         <button type="submit" style="background-color: #008CBA; border-radius:4px; font-size:20px; border-color:#008CBA;"> <img src="~/Imagenes/search.png" alt=""></button>
                     </td>

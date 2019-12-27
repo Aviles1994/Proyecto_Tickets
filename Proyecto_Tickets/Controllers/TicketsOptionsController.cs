@@ -139,6 +139,12 @@ namespace Proyecto_Tickets.Controllers
 
             using (var db = new Sistema_TicketsEntities())
             {
+                var osolucion= db.Solucion.Find(TicketsVarViemModel.idTickets);
+                if (osolucion.ID_Ticket == TicketsVarViemModel.idTickets)
+                {
+                    return Content("2");
+                }
+
                 Solucion oSolucion = new Solucion();
                 oSolucion.Descripcion_en_Pasos = model.Descripcion;
                 oSolucion.Fecha_Solucion = model.fecha;
