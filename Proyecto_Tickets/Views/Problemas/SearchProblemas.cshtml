@@ -12,18 +12,18 @@
         <table class="table">
             @using (Html.BeginForm("Especifico", "Problemas", FormMethod.Post, new { role = "form", Id = "frm", @Class = " form" }))
             {
-                <tr>
-                   
-                   
-                    @Html.AntiForgeryToken() 
-                    @Html.ValidationMessage("error", new { @class="text-danger"})
-                    <td colspan="2"> @Html.TextBoxFor(d => d.Nombre_Problema, new { placeholder = "Escribe el nombre del problema", style= "weight:200px" })</td>
-                    <td>
-                        <button type="submit" style="background-color: #008CBA; border-radius:4px; font-size:20px; border-color:#008CBA;"> <img src="~/Imagenes/search.png" alt=""></button>
-                    </td>
+            <tr>
 
 
-                </tr>
+                @Html.AntiForgeryToken()
+                @Html.ValidationMessage("error", new { @class = "text-danger" })
+                <td style="width:600px"> @Html.TextBoxFor(d => d.Nombre_Problema, new { placeholder = "Escribe un problema", })</td>
+                <td style="width:20px">
+                <input type="submit" class="btn-success" value="Buscar" style="background-color: #008CBA; float:left; border-radius:10px; border-color:#008CBA;">
+                </td>
+
+
+            </tr>
             }
 
                 <tr>

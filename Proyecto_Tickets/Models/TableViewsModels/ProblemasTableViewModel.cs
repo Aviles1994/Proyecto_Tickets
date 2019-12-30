@@ -18,6 +18,7 @@ namespace Proyecto_Tickets.Models.TableViewsModels
     }
     public class SeeProblema
     {
+        public int idSolucion { get; set; }
         public int idTicket { get; set; }
         public string Nombre_Problema { get; set; }
         public string descripción_problema { get; set; }

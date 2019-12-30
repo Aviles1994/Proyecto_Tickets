@@ -20,6 +20,7 @@ namespace Proyecto_Tickets.Controllers
         public ActionResult Especifico(Buscar model)
         {
             List<Especifico> lst = null;
+            ViewData["nombre_user"] = UserSession.nombre_user;
             using (var db = new Sistema_TicketsEntities())
             {
                 lst = (from d in db.Ticket
