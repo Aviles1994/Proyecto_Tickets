@@ -329,6 +329,7 @@
     <Content Include="Views\Problemas\SeeProblemas.cshtml" />
     <Content Include="Views\Problemas\Especifico.cshtml" />
     <Content Include="Views\TicketsOptions\VerMas2.cshtml" />
+    <Content Include="Views\Problemas\VerMasProblema.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

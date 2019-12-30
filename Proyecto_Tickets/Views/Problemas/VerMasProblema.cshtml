@@ -1,4 +1,4 @@
-﻿@model Proyecto_Tickets.Models.ViewsModels.VerMasTicket
+﻿@model Proyecto_Tickets.Models.TableViewsModels.VerMasProblema
 
 <main>
     <div class="div_formulario">
@@ -8,12 +8,22 @@
         </div>
 
         <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Descripcion Solución: </label>
+            @Html.DisplayFor(d => d.Descripcion_Solucion)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Fecha de la Solución: </label>
+            @Html.DisplayFor(d => d.Fecha_Solucion)
+        </div>
+
+        <div class="form-group">
             <label style="font-weight: bold; margin-right:10px">Fecha y Hora Inicio: </label>
             @Html.DisplayFor(d => d.fecha_hora_Inicio)
         </div>
 
         <div class="form-group">
-            <label style="font-weight: bold; margin-right:10px">Versión Cliente: </label>
+            <label style="font-weight: bold; margin-right:10px">Version del Usuario: </label>
             @Html.DisplayFor(d => d.versionUser)
         </div>
 
@@ -23,19 +33,14 @@
         </div>
 
         <div class="form-group">
-            <label style="font-weight: bold; margin-right:10px">Descripción del Problema: </label>
+            <label style="font-weight: bold; margin-right:10px">Descripcion del Problema: </label>
             @Html.DisplayFor(d => d.descrpcionProblema)
         </div>
 
         <div class="form-group">
-            <label style="font-weight: bold; margin-right:10px">Evidencia: </label>
-            @Html.DisplayFor(d => d.imagen)
+            <label style="font-weight: bold; margin-right:10px">Fecha y Hora Fin: </label>
+            @Html.DisplayFor(d => d.fecha_hora_Fin)
         </div>
-
-
-
-
-
 
         <div class="form-group">
             <label style="font-weight: bold; margin-right:10px">Pantalla: </label>
@@ -67,6 +72,31 @@
             @Html.DisplayFor(d => d.Nombre_Prioridad)
         </div>
 
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Nombre del Personal Estratei: </label>
+            @Html.DisplayFor(d => d.Nombre_Personal)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Apellido Paterno del Personal Estratei: </label>
+            @Html.DisplayFor(d => d.ApellidoP_Personal)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Apellido Materno del Personal Estratei: </label>
+            @Html.DisplayFor(d => d.ApellidoM_Personal)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Celular del Personal Estratei: </label>
+            @Html.DisplayFor(d => d.Celular)
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold; margin-right:10px">Puesto: </label>
+            @Html.DisplayFor(d => d.Puesto)
+        </div>
+
         <button class="button"><a style="width: 100%; height:100%; text-decoration:none; color: white;" href="javascript:window.history.back();">Volver atrás</a></button>
     </div>
 </main>
@@ -80,6 +110,8 @@
 
     </script>
 }
+
+
 
 
 

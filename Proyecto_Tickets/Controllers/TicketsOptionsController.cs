@@ -222,29 +222,14 @@ namespace Proyecto_Tickets.Controllers
             }
             var db = new Sistema_TicketsEntities();
             VerMasTicket oVerMas = new VerMasTicket();
-            List<VerMasTicket> lst = null;
-            using (var dbc = new Sistema_TicketsEntities())
-            {
-                lst = (from a in dbc.Solucion
-                       where a.ID_Ticket == id
-
-                       select new VerMasTicket
-                       {
-                           Solución = a.Descripcion_en_Pasos,
-                           Fecha_Solución = a.Fecha_Solucion
-                       }).ToList();
-            }
 
             var ticket = db.Ticket.Find(id);
             oVerMas.fecha_hora_Inicio = ticket.Fecha_Hora_Inicio;
             oVerMas.versionUser = ticket.Version_Usuario;
             oVerMas.nombreProblema = ticket.Nombre_Problema;
             oVerMas.descrpcionProblema = ticket.Descripcion_Problema;
-            oVerMas.fecha_hora_fin = (DateTime)ticket.Fecha_Hora_Fin;
             oVerMas.imagen = ticket.Imagen;
 
-            oVerMas.Solución = lst[0].Solución;
-            oVerMas.Fecha_Solución = lst[0].Fecha_Solución;
 
             var ticketPantalla = db.Pantallas.Find(ticket.ID_Pantalla);
             oVerMas.Nombre_Pantalla= ticketPantalla.Nombre_Pantalla;

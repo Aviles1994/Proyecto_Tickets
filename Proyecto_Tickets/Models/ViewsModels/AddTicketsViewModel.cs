@@ -55,7 +55,6 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string nombreProblema { get; set; }
         public string descrpcionProblema { get; set; }
         public string imagen { get; set; }
-        public DateTime fecha_hora_fin { get; set; }
 
         public string Nombre_Pantalla { get; set; }
         public string Nombre_Usuario_Cliente { get; set; }
@@ -64,7 +63,6 @@ namespace Proyecto_Tickets.Models.ViewsModels
         public string Nombre_Estado { get; set; }
         public string Nombre_Prioridad { get; set; }
 
-        public string Solución { get; set; }
-        public DateTime Fecha_Solución { get; set; }
+
     }
 }
