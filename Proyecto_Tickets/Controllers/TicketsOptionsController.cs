@@ -47,11 +47,11 @@ namespace Proyecto_Tickets.Controllers
                 var oticket = db.Ticket.Find(model.idTicket);
 
 
-                if (model.idEstado == 1 || oticket.ID_Estado==3)
+                if (model.idEstado == 1 || oticket.ID_Estado==4)
                 {
                     return Content("2");
                 }
-                else if (oticket.ID_Estado != model.idEstado && model.idEstado == 3 || model.idEstado == 4)
+                else if (oticket.ID_Estado != model.idEstado && model.idEstado == 4 || model.idEstado == 4)
                 {
                     oticket.ID_Estado = model.idEstado;
                     oticket.Fecha_Hora_Fin = DateTime.Now;
