@@ -16,7 +16,7 @@
                     <td> @Html.TextAreaFor(d => d.Descripcion, new { placeholder = "Escribe aqui la solución", cols = "200", rows = "10" })</td>
 
                     <td> <label for="fecha_solucion"> Fecha </label></td>
-                    <td> @Html.TextBoxFor(d => d.fecha, new { placeholder = "ejemplo 01/12/2019" })</td>
+                    <td> @Html.TextBoxFor(d => d.fecha, new { @type="date" })</td>
                 </tr>
             </table>
             <table class="table">
